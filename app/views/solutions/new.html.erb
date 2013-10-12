@@ -1,5 +1,94 @@
-<h1>New solution</h1>
+<h1>Crear Aporte (agregar aporte)</h1>
 
-<%= render 'form' %>
+<body>
+<table>
+<tr>
+<td><br>Para crear un nuevo aporte introduzca los siguientes datos:</br></body></td> 
+</tr>
 
-<%= link_to 'Back', solutions_path %>
+<%= form_for :post do |f| %>
+ <tr> 
+ <td></td>
+<td> 
+<p>
+    <%= f.label :aporte %><br>
+    <%= f.text_field :aporte %>
+  </p>
+</td>
+<td></td>
+</tr>
+<tr>
+ <td></td>
+ <td>
+  <p>
+    <%= f.label :presupuesto %><br>
+    <%= f.text_area :presupuesto %>
+  </p>
+ </td>
+ <td></td>
+</tr>
+<tr>
+ <td></td>
+<td>
+ <p>
+    <%= f.label :tipo_de_moneda %><br>
+    <%= f.text_area :tipo_de_moneda %></br>
+  </p>
+ </td>
+ <td></td>
+</tr>
+<tr>
+ <td></td>
+<td>
+  <p>
+    <%= f.label :correo_electrónico %><br>
+    <%= f.text_area :correo_electrónico %></br>
+  </p>
+</td>
+ <td></td>  
+</tr>
+<tr>
+ <td></td>
+<td>
+<p>
+    <%= f.label :numero_telefónico %><br>
+    <%= f.text_area :numero_telefónico %></br>
+  </p>
+</td>
+ <td></td>
+</tr>
+<tr>
+ <td></td>
+<td  
+<p>
+    <%= f.label :empresa %><br>
+    <%= f.text_area :empresa %></br>
+  </p>
+</td>
+ <td></td>
+</tr>
+<tr>
+ <td></td>
+<td> 
+ <p>
+    <%= f.label :telefono_empresa %><br>
+    <%= f.text_area :telefono_empresa %></br>
+  </p>
+</td>
+ <td></td>
+</tr>
+<tr>
+ <td></td>
+<td>
+  <p>
+    <%= f.submit:crear_aporte %>
+  </p>
+</td>
+<td>
+  <p>
+    <%= f.submit:cancelar%>
+  </p>
+</td>
+</tr>
+</table>
+<% end %>
