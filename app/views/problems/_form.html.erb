@@ -1,8 +1,7 @@
 <%= form_for(@problem) do |f| %>
   <% if @problem.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
-
+      <h2><%= pluralize(@problem.errors.count, "error") %> Se presentaron los siguientes errores al tratar de guargar el Problema:</h2>
       <ul>
       <% @problem.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -27,10 +26,18 @@
     <%= f.label :telephone %><br>
     <%= f.number_field :telephone %>
   </div>
-  <div class="field">
-    <%= f.label :areas_of_knowledge %><br>
-    <%= f.text_field :areas_of_knowledge %>
-  </div>
+  
+  <div>
+   <%= f.label :areas_of_knowledge %><br>
+   <%= f.select(:areas_of_knowledge,
+   options_for_select([["Fisica","Fis"],
+                       ["Matematicas","Mat"],
+                       ["Ciencias de la Computacion", "CC"],
+                       ["Biologia", "Bio"],
+                       ["Actuaria", "Act"],
+                       ["Ciencias de la Tierra", "CT"]
+                       ])) %><br /></div>
+  
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id %>
