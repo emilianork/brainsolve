@@ -20,4 +20,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :email, :password,:password_confirmation,
       :nickname, :first_name,:second_name, :third_name, :role, :telephone) }
   end
+  
+  def permission_denied
+    flash[:error] = "Sorry, you are not allowed to access that page."
+    redirect_to root_url
+  end
 end

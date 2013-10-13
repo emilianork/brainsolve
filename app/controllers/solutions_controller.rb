@@ -2,12 +2,6 @@ class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
   filter_resource_access
 
-  # GET /solutions
-  # GET /solutions.json
-  def index
-    @solutions = Solution.all
-  end
-
   # GET /solutions/1
   # GET /solutions/1.json
   def show
