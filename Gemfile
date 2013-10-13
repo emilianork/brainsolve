@@ -46,3 +46,6 @@ end
 
 #Login on Rails
 gem 'devise'
+
+# Permisos de usuarios
+gem 'declarative_authorization'

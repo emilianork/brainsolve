@@ -1,17 +1,31 @@
 <h2>Sign up</h2>
-Que onda
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :contraseña %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :verifica_contraseña %><br />
   <%= f.password_field :password_confirmation %></div>
-
+  
+  <div><%= f.label :apodo %>:<br />
+  <%= f.text_field :nickname %></div>
+  
+  <div><%= f.label :nombre %>:<br />
+  <%= f.text_field :first_name %></div>
+   
+  <div><%= f.label :apellido_paterno %>:<br />
+  <%= f.text_field :second_name %></div>
+   
+  <div><%= f.label :apellido_materno %>:<br />
+  <%= f.text_field :third_name %></div>
+  
+  <%= "Falta AgregarTelefono\n"%>
+  <div><%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %><br /></div>
+   
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

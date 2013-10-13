@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<% if current_role.nil? %>
+	<%= link_to "Entrar", new_user_session_path %>
+	<%= link_to "Registarse", new_user_registration_path %>
+	<% elsif current_role == "problematic" %>
+	<%= link_to "Crear problema", new_problem_path %>
+	<%= link_to "Salir",destroy_user_session_path, :method => :delete if !current_user.nil? %>
+	<% elsif current_role == "creative" %>
+	<%= link_to "Salir",destroy_user_session_path, :method => :delete if !current_user.nil? %>
+	<%end%>
 
 <%= yield %>
 

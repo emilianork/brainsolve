@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
+  filter_resource_access
 
   # GET /problems
   # GET /problems.json
