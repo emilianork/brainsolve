@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   validates :second_name, format: {with: /\A[\D]*\z/, message: "Formato inválido"}
   validates :third_name, format: {with: /\A[\D]*\z/, message: "Formato inválido"}
 
+  has_many :problems
+  has_many :solutions
+
   def role_symbols
       [role.underscore.to_sym]
   end
