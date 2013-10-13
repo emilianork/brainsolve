@@ -1,9 +1,11 @@
 Brainsolve::Application.routes.draw do
   devise_for :users
-  resources :solutions
+  #resources :solutions
 
   resources :problems
 
+  get '/problems/:problem_id/solutions/new' => 'solutions#new', as: :new_solution
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
