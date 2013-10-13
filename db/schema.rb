@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20131013185602) do
     t.text     "title",              null: false
     t.string   "contact"
     t.text     "description",        null: false
-    t.integer  "telephone"
     t.string   "areas_of_knowledge", null: false
     t.integer  "user_id",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "telephone"
   end
 
   create_table "solutions", force: true do |t|
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20131013185602) do
     t.integer  "estimate"
     t.string   "currency"
     t.string   "email",             null: false
-    t.integer  "telephone"
     t.string   "company"
-    t.integer  "company_telephone"
     t.integer  "problem_id",        null: false
     t.integer  "user_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "telephone"
+    t.string   "company_telephone"
   end
 
   create_table "users", force: true do |t|

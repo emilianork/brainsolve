@@ -30,5 +30,45 @@
   <%= @problem.user_id %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Estimate</th>
+      <th>Currency</th>
+      <th>Email</th>
+      <th>Telephone</th>
+      <th>Company</th>
+      <th>Company telephone</th>
+      <th>Problem</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solutions.each do |solution| %>
+      <tr>
+        <td><%= solution.text %></td>
+        <td><%= solution.estimate %></td>
+        <td><%= solution.currency %></td>
+        <td><%= solution.email %></td>
+        <td><%= solution.telephone %></td>
+        <td><%= solution.company %></td>
+        <td><%= solution.company_telephone %></td>
+        <td><%= solution.problem_id %></td>
+        <td><%= solution.user_id %></td>
+        <td><%= link_to 'Show', solution %></td>
+        <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
+        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'New Solution', new_solution_path %>
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Back', problems_path %>
