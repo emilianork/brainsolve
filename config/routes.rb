@@ -4,8 +4,14 @@ Brainsolve::Application.routes.draw do
 
   resources :problems
 
+  post   '/solutions' => 'solutions#create'
   get '/problems/:problem_id/solutions/new' => 'solutions#new', as: :new_solution
-  
+  get '/solutions/:id/edit' => 'solutions#edit', as: :edit_solution
+  get '/solutions/:id' => 'solutions#show', as: :solution
+  patch 'solutions/:id' => 'solutions#update'
+  put 'solutions/:id' => 'solutions#update'
+  delete 'solutions/:id' => 'solutions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
