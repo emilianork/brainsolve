@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012231801) do
+ActiveRecord::Schema.define(version: 20131013185602) do
 
   create_table "problems", force: true do |t|
     t.text     "title",              null: false
@@ -44,12 +44,12 @@ ActiveRecord::Schema.define(version: 20131012231801) do
     t.string   "first_name"
     t.string   "second_name"
     t.string   "third_name"
-    t.integer  "telephone"
     t.string   "role",                             null: false
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nickname"
+    t.string   "telephone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   
   def permission_denied
     flash[:error] = "Sorry, you are not allowed to access that page."
-    redirect_to root_url
+    redirect_to root_path
   end
 end

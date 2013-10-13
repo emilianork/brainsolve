@@ -49,3 +49,5 @@ gem 'devise'
 
 # Permisos de usuarios
 gem 'declarative_authorization'
+
+gem 'rails-i18n'
