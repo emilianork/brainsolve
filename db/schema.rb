@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010054308) do
+ActiveRecord::Schema.define(version: 20131013213531) do
 
   create_table "problems", force: true do |t|
     t.text     "title",              null: false
     t.string   "contact"
     t.text     "description",        null: false
-    t.integer  "telephone"
     t.string   "areas_of_knowledge", null: false
     t.integer  "user_id",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "telephone"
   end
 
   create_table "solutions", force: true do |t|
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20131010054308) do
     t.integer  "estimate"
     t.string   "currency"
     t.string   "email",             null: false
-    t.integer  "telephone"
     t.string   "company"
-    t.integer  "company_telephone"
     t.integer  "problem_id",        null: false
     t.integer  "user_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "telephone"
+    t.string   "company_telephone"
   end
 
   create_table "users", force: true do |t|
@@ -44,15 +44,14 @@ ActiveRecord::Schema.define(version: 20131010054308) do
     t.string   "first_name"
     t.string   "second_name"
     t.string   "third_name"
-    t.integer  "telephone"
-    t.integer  "nickname",                         null: false
     t.string   "role",                             null: false
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nickname"
+    t.string   "telephone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
 
 end
