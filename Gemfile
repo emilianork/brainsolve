@@ -51,3 +51,5 @@ gem 'devise'
 gem 'declarative_authorization'
 
 gem 'rails-i18n'
+
+gem 'protected_attributes'
