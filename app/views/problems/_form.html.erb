@@ -1,27 +1,46 @@
-<%= form_for(@problem) do |f| %>
-  <% if @problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@problem.errors.count, "error") %> Se presentaron los siguientes errores al tratar de guargar el Problema:</h2>
-      <ul>
-      <% @problem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@problem, remote: true) do |f| %>
 
+  <% if resource.errors.messages.include?(:title) %>
+      <%resource.errors.messages[:email].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_area :title %>
+    <span id="error" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  
+  <% if resource.errors.messages.include?(:contact) %>
+      <%resource.errors.messages[:email].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :contact %><br>
     <%= f.text_field :contact %>
   </div>
+  
+  <% if resource.errors.messages.include?(:description) %>
+      <%resource.errors.messages[:email].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  
+  <% if resource.errors.messages.include?(:telephone) %>
+      <%resource.errors.messages[:email].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :telephone %><br>
     <%= f.number_field :telephone %>
@@ -37,11 +56,6 @@
                        ["Actuaria", "Act"],
                        ["Ciencias de la Tierra", "CT"]
                        ])) %><br /></div>
-  
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

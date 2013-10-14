@@ -6,8 +6,10 @@
         <%= message%>
       <% end %>
   <% end %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div>
+   <%= f.label :email %><br />
+   <%= f.email_field :email, :autofocus => true %>
+  </div>
 
   <% if resource.errors.messages.include?(:password) %>
       <%resource.errors.messages[:password].each do |message|%>
@@ -63,7 +65,7 @@
       <% end %>
   <% end %>
   <div><%= f.label :telefono %>:<br />
-  <%= f.text_field :telephone %>
+  <%= f.text_field :telephone %></div>
 
   <div><%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %><br /></div>
    
