@@ -1,36 +1,45 @@
-<%= form_for(@problem) do |f| %>
-  <% if @problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@problem.errors.count, "error") %> Se presentaron los siguientes errores al tratar de guargar el Problema:</h2>
-      <ul>
-      <% @problem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@problem, remote: true) do |f| %>
 
-<% if @problem.errors.messages.include?(:title) %>
-      <%resource.errors.messages[:title].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-
+  
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_area :title %>
+    <span class="titleerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
   <div class="field">
     <%= f.label :contact %><br>
     <%= f.text_field :contact %>
+    <span id="emailerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo debe ser un correo electronico valido!!!
+    </span>
   </div>
+  
+  
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+    <span class="descriperror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
   <div class="field">
     <%= f.label :telephone %><br>
     <%= f.text_field :telephone %>
+    <span class="telerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo debe ser un numero de telefono valido
+    </span>
   </div>
   
   <div>
@@ -43,7 +52,6 @@
                        ["Actuaria", "Act"],
                        ["Ciencias de la Tierra", "CT"]
                        ])) %><br /></div>
-  
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %><br>
   </div>

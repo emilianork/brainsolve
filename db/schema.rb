@@ -44,9 +44,7 @@ ActiveRecord::Schema.define(version: 20131013213531) do
     t.string   "first_name"
     t.string   "second_name"
     t.string   "third_name"
-    t.string   "role", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string   "role",                             null: false
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,6 +53,5 @@ ActiveRecord::Schema.define(version: 20131013213531) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
