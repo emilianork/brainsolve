@@ -35,6 +35,7 @@ class ProblemsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
+        format.js {render json: @problem, status: :unprocessable_entity }
       end
     end
   end
@@ -48,7 +49,7 @@ class ProblemsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
+        format.json { render json: @problem.errors, content_type: 'text/json' }
       end
     end
   end
