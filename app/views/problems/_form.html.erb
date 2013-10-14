@@ -1,6 +1,11 @@
 <%= form_for(@problem, remote: true) do |f| %>
 
-  
+  <% if @problem.errors.messages.include?(:title) %>
+      <%@problem.errors.messages[:title].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_area :title %>
@@ -11,6 +16,11 @@
     </span>
   </div>
   
+  <% if @problem.errors.messages.include?(:contact) %>
+      <%@problem.errors.messages[:contact].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :contact %><br>
     <%= f.text_field :contact %>
@@ -21,7 +31,11 @@
     </span>
   </div>
   
-  
+  <% if @problem.errors.messages.include?(:description) %>
+      <%@problem.errors.messages[:description].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
@@ -32,6 +46,12 @@
     </span>
   </div>
   
+
+  <% if @problem.errors.messages.include?(:telephone) %>
+      <%@problem.errors.messages[:telephone].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :telephone %><br>
     <%= f.text_field :telephone %>
