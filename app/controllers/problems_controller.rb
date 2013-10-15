@@ -1,5 +1,7 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
+  filter_resource_access
 
   # GET /problems
   # GET /problems.json
@@ -10,6 +12,7 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
+    @solutions = Problem.find(params[:id]).solutions
   end
 
   # GET /problems/new
@@ -25,7 +28,6 @@ class ProblemsController < ApplicationController
   # POST /problems.json
   def create
     @problem = Problem.new(problem_params)
-
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
@@ -41,12 +43,12 @@ class ProblemsController < ApplicationController
   # PATCH/PUT /problems/1.json
   def update
     respond_to do |format|
-      if @problem.update(problem_params)
+      if @problem.update(problem_params.permit!)
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @problem.errors, status: :unprocessable_entity }
+        format.json { render json: @problem.errors, content_type: 'text/json' }
       end
     end
   end

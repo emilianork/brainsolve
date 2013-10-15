@@ -1,0 +1,73 @@
+<h2>Sign up</h2>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  
+  <% if resource.errors.messages.include?(:email) %>
+      <%resource.errors.messages[:email].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div>
+   <%= f.label :email %><br />
+   <%= f.email_field :email, :autofocus => true %>
+  </div>
+
+  <% if resource.errors.messages.include?(:password) %>
+      <%resource.errors.messages[:password].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :contraseña %><br />
+  <%= f.password_field :password %></div>
+
+  <% if resource.errors.messages.include?(:password_confirmation) %>
+      <%resource.errors.messages[:password_confirmation].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :verifica_contraseña %><br />
+  <%= f.password_field :password_confirmation %></div>
+  
+  <% if resource.errors.messages.include?(:nickname) %>
+      <%resource.errors.messages[:nickname].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :apodo %>:<br />
+  <%= f.text_field :nickname %></div>
+  
+  <% if resource.errors.messages.include?(:first_name) %>
+      <%resource.errors.messages[:first_name].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :nombre %>:<br />
+  <%= f.text_field :first_name %></div>
+  
+  <% if resource.errors.messages.include?(:second_name) %>
+      <%resource.errors.messages[:second_name].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :apellido_paterno %>:<br />
+  <%= f.text_field :second_name %></div>
+
+  <% if resource.errors.messages.include?(:third_name) %>
+      <%resource.errors.messages[:third_name].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :apellido_materno %>:<br />
+  <%= f.text_field :third_name %></div>
+  
+  <% if resource.errors.messages.include?(:telephone) %>
+      <%resource.errors.messages[:telephone].each do |message|%>
+        <%= message%>
+      <% end %>
+  <% end %>
+  <div><%= f.label :telefono %>:<br />
+  <%= f.text_field :telephone %></div>
+
+  <div><%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %><br /></div>
+   
+  <div><%= f.submit "Registar" %></div>
+<% end %>

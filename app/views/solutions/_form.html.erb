@@ -1,48 +1,125 @@
 <%= form_for(@solution) do |f| %>
-  <% if @solution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
-
-      <ul>
-      <% @solution.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  
+  <% if @solution.errors.messages.include?(:text) %>
+     <%@solution.errors.messages[:text].each do |message|%>
+       <%= message%>
+     <% end %>
   <% end %>
-
   <div class="field">
     <%= f.label :text %><br>
     <%= f.text_area :text %>
+    <span id="texterror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:estimate) %>
+     <%@solution.errors.messages[:estimate].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :estimate %><br>
     <%= f.number_field :estimate %>
+    <span id="estimateerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:currency) %>
+     <%@solution.errors.messages[:currency].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :currency %><br>
     <%= f.text_field :currency %>
+    <span id="currencyerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:email) %>
+     <%@solution.errors.messages[:email].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
+    <span id="emailerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:telephone) %>
+     <%@solution.errors.messages[:telephone].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :telephone %><br>
     <%= f.number_field :telephone %>
+    <span id="telerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:company) %>
+     <%@solution.errors.messages[:company].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :company %><br>
     <%= f.text_field :company %>
+    <span id="companyerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:company_telephone) %>
+     <%@solution.errors.messages[:company_telephone].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :company_telephone %><br>
     <%= f.number_field :company_telephone %>
+    <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo no debe estar vacio!!!
+    </span>
   </div>
+  
+  <% if @solution.errors.messages.include?(:problem) %>
+     <%@solution.errors.messages[:problem].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :problem_id %><br>
     <%= f.number_field :problem_id %>
   </div>
+  
+  <% if @solution.errors.messages.include?(:title) %>
+     <%@solution.errors.messages[:title].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id %>

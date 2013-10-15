@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20131013204858) do
     t.text     "title",              null: false
     t.string   "contact"
     t.text     "description",        null: false
-    t.integer  "telephone"
     t.string   "areas_of_knowledge", null: false
     t.integer  "user_id",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "telephone"
   end
 
   create_table "solutions", force: true do |t|

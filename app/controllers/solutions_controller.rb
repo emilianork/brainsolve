@@ -1,11 +1,7 @@
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
-
-  # GET /solutions
-  # GET /solutions.json
-  def index
-    @solutions = Solution.all
-  end
+   before_filter :authenticate_user!, :except => [:show]
+  filter_resource_access
 
   # GET /solutions/1
   # GET /solutions/1.json

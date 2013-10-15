@@ -46,3 +46,10 @@ end
 
 #Login on Rails
 gem 'devise'
+
+# Permisos de usuarios
+gem 'declarative_authorization'
+
+gem 'rails-i18n'
+
+gem 'protected_attributes'
