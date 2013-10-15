@@ -10,10 +10,6 @@ class SolutionsController < ApplicationController
 
   # GET /problems/:problem_id/solutions/new
   def new
-    @problem = Problem.find_by_id(params[:problem_id])
-    if (@problem.nil?) 
-      redirect_to problems_path
-    end 
     @solution = Solution.new
     @problem = Problem.find_by_id(params[:id])
     if (@problem.nil?) then
