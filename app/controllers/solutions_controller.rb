@@ -19,6 +19,10 @@ class SolutionsController < ApplicationController
 
   # GET /solutions/1/edit
   def edit
+	@problem = Problem.find_by_id(params[:id])
+    if (@problem.nil?) then
+      redirect_to problem_url
+    end
   end
 
   # POST /solutions
