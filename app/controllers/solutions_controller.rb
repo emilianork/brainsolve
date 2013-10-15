@@ -8,9 +8,13 @@ class SolutionsController < ApplicationController
   def show
   end
 
-  # GET /solutions/new
+  # GET /problems/:problem_id/solutions/new
   def new
     @solution = Solution.new
+    @problem = Problem.find_by_id(params[:id])
+    if (@problem.nil?) then
+      redirect_to problem_url
+    end
   end
 
   # GET /solutions/1/edit
@@ -21,7 +25,6 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(solution_params)
-
     respond_to do |format|
       if @solution.save
         format.html { redirect_to @solution, notice: 'Solution was successfully created.' }

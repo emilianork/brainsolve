@@ -14,10 +14,10 @@ Campo =
     expr.test(correo)
     
   telefonoValido: (numero) ->
-    expr = /^([0-9])+$/
+    expr = /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/
     expr.test(numero)
 
-jQuery ->
+ready = ->
   $("#problem_title").blur ->
     if Campo.campoValido(@value)
       $(".titleerror").css visibility: 'hidden'
@@ -41,3 +41,6 @@ jQuery ->
       $("#emailerror").css visibility: 'hidden'
     else
       $("#emailerror").css visibility: 'visible'
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

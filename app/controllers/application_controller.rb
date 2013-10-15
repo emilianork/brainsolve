@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_role
+
   
   def current_role
     if current_user.nil? then
@@ -14,6 +15,21 @@ class ApplicationController < ActionController::Base
     return @current_role
   end
   
+  def isCreative?
+    if current_role.nil?
+      nil
+    else
+      current_role == "creative"
+    end
+  end
+
+  def isProblematic?
+    if current_role.nil?
+      nil
+    else
+      current_role == "problematic"
+    end
+  end
   protected
   
   def configure_permitted_parameters
