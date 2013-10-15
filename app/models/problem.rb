@@ -1,7 +1,7 @@
 class Problem < ActiveRecord::Base
 	attr_accessible :title, :contact, :description, :telephone, :user_id, :areas_of_knowledge
 
-	has_many :solutions
+	has_many :solutions, :dependent => :destroy
  	belongs_to :user
   
   	validates :title, presence: true
