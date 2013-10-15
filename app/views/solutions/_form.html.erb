@@ -105,7 +105,7 @@
     </span>
   </div>
   
-  <% if @solution.errors.messages.include?(:problem) %>
+  <% if @solution.errors.messages.include?(:problem_id) %>
      <%@solution.errors.messages[:problem].each do |message|%>
        <%= message%>
      <% end %>
@@ -115,8 +115,8 @@
     <%= f.number_field :problem_id %>
   </div>
   
-  <% if @solution.errors.messages.include?(:title) %>
-     <%@solution.errors.messages[:title].each do |message|%>
+  <% if @solution.errors.messages.include?(:user_id) %>
+     <%@solution.errors.messages[:user_id].each do |message|%>
        <%= message%>
      <% end %>
   <% end %>
