@@ -3,6 +3,8 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   filter_resource_access
 
+  respond_to :html, :only => [:show, :index]
+
   # GET /problems
   # GET /problems.json
   def index
@@ -66,7 +68,10 @@ class ProblemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_problem
-      @problem = Problem.find(params[:id])
+      @problem = Problem.find_by_id(params[:id])
+      if @problem.nil? then
+        redirect_to root_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

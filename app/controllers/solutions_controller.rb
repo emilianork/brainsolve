@@ -11,6 +11,10 @@ class SolutionsController < ApplicationController
   # GET /solutions/new
   def new
     @solution = Solution.new
+    @problem = Problem.find_by_id(params[:id])
+    if (@problem.nil?) then
+      redirect_to problem_url
+    end
   end
 
   # GET /solutions/1/edit

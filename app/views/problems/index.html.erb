@@ -24,8 +24,10 @@
         <td><%= problem.telephone %></td>
         <td><%= problem.areas_of_knowledge %></td>
         <td><%= link_to 'Show', problem %></td>
-        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-        <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if (problem.owner(current_user)) %>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+         <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

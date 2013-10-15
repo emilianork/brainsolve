@@ -1,4 +1,4 @@
-<%= form_for(@problem, remote: true) do |f| %>
+<%= form_for(@problem) do |f| %>
   
   <% if @problem.errors.messages.include?(:title) %>
      <%@problem.errors.messages[:title].each do |message|%>
