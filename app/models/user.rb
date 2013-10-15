@@ -19,5 +19,4 @@ class User < ActiveRecord::Base
   def role_symbols
       [role.underscore.to_sym]
   end
->>>>>>> development
 end
