@@ -4,8 +4,8 @@ Brainsolve::Application.routes.draw do
 
   resources :problems
 
-  post   '/solutions' => 'solutions#create'
-  get '/problems/:problem_id/solutions/new' => 'solutions#new', as: :new_solution
+  post	 '/solutions'	=> 'solutions#create'
+  get '/problems/:id/solutions/new' => 'solutions#new', as: :new_solution
   get '/solutions/:id/edit' => 'solutions#edit', as: :edit_solution
   get '/solutions/:id' => 'solutions#show', as: :solution
   patch 'solutions/:id' => 'solutions#update'
