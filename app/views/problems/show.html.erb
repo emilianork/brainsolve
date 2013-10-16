@@ -42,9 +42,6 @@
       <th>Company telephone</th>
       <th>Problem</th>
       <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -61,8 +58,12 @@
         <td><%= solution.problem_id %></td>
         <td><%= solution.user_id %></td>
         <td><%= link_to 'Show', solution %></td>
-        <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%if solution.owner(current_user) %>
+        	<td><%= link_to 'Edit', edit_solution_path(solution) %></td>
+	<%end%>
+        <%if solution.owner(current_user) %>
+		<td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%end%>
       </tr>
     <% end %>
   </tbody>
