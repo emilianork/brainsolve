@@ -22,7 +22,7 @@
   <% end %>
   <div class="field">
     <%= f.label :estimate %><br>
-    <%= f.number_field :estimate %>
+    <%= f.text_field :estimate %>
     <span id="estimateerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
@@ -67,7 +67,7 @@
   <% end %>
   <div class="field">
     <%= f.label :telephone %><br>
-    <%= f.number_field :telephone %>
+    <%= f.text_field :telephone %>
     <span id="telerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
@@ -97,7 +97,7 @@
   <% end %>
   <div class="field">
     <%= f.label :company_telephone %><br>
-    <%= f.number_field :company_telephone %>
+    <%= f.text_field :company_telephone %>
     <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
@@ -112,7 +112,11 @@
   <% end %>
 
   <div class="field">
+    <% if !@problem.nil? %>
     <%= f.hidden_field :problem_id, :value => @problem.id %><br>
+    <% else %>
+    <%= f.hidden_field :problem_id, :valude => @solution.problem_id %>
+    <%end%>
   </div>
   
   <div class="field">
