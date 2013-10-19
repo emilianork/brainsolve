@@ -11,6 +11,7 @@ attr_accessible :text, :estimate, :currency, :email, :telephone, :company, :comp
   validates :telephone, format: {with: /(\A(((\d{8})|((\d{2}-){3}\d{2})){1}\s*)\z)|\A\z/, message: "Formato inválido debe ser un numero telefonico"}
   validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, message: "Formato inválido se necesita un correo"},        presence: true
   validates :currency, format: {with: /(\AMX\z)|(\AUS\z)|(\ANone\z)/, message: "Tipo de moneda invalida"}, presence: true
+  validates :company_telephone, format: {with: /(\A(((\d{8})|((\d{2}-){3}\d{2})){1}\s*)\z)|\A\z/, message: "Formato inválido debe ser un numero telefonico"}
   
   def owner(user)
   	if user.nil?
