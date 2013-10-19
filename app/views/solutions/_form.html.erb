@@ -37,7 +37,12 @@
   <% end %>
   <div class="field">
     <%= f.label :Tipo_de_moneda %><br>
-    <%= f.text_field :currency %>
+   <%= f.select(:currency,
+   options_for_select([["Ninguno","None"],
+                       ["MX","MX"],
+                       ["US", "US"]
+                       ])) %><br /></div>
+
     <span id="currencyerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">

@@ -68,6 +68,12 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
+      solution = params.require(:solution).permit(:text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
+      if (solution["estimate"] == "") then
+        solution["currency"] = "None"
+      end
+      print solution
+      puts "  aca paso"
+      solution
     end
 end
