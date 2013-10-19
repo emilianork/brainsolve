@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Text:</strong>
+  <strong>Texto:</strong>
   <%= @solution.text %>
 </p>
 
 <p>
-  <strong>Estimate:</strong>
+  <strong>Presupuesto:</strong>
   <%= @solution.estimate %>
 </p>
 
 <p>
-  <strong>Currency:</strong>
+  <strong>Tipo de moneda:</strong>
   <%= @solution.currency %>
 </p>
 
@@ -21,28 +21,23 @@
 </p>
 
 <p>
-  <strong>Telephone:</strong>
+  <strong>Telefono de contacto</strong>
   <%= @solution.telephone %>
 </p>
 
 <p>
-  <strong>Company:</strong>
+  <strong>Compañia</strong>
   <%= @solution.company %>
 </p>
 
 <p>
-  <strong>Company telephone:</strong>
+  <strong>Telefono de la compañia</strong>
   <%= @solution.company_telephone %>
 </p>
 
 <p>
-  <strong>Problem:</strong>
-  <%= @solution.problem_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @solution.user_id %>
+  <strong>Usuario:</strong>
+  <%= @solution.user.nickname %>
 </p>
 <%if @solution.owner(current_user) %>
 	<%= link_to 'Editar', edit_solution_path(@solution) %> |
