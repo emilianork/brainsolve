@@ -1,14 +1,14 @@
-<h1>Listing problems</h1>
+<h1>Problemas</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Contact</th>
-      <th>Description</th>
-      <th>Telephone</th>
-      <th>Areas of knowledge</th>
-      <th>User</th>
+      <th>Texto</th>
+      <th>Email</th>
+      <th>Descripcion</th>
+      <th>Telefono de contacto</th>
+      <th>Area de conocimiento</th>
+      <th>Usuario</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,10 +23,11 @@
         <td><%= problem.description %></td>
         <td><%= problem.telephone %></td>
         <td><%= problem.areas_of_knowledge %></td>
-        <td><%= link_to 'Show', problem %></td>
+        <td><%= problem.user.nickname %>
+        <td><%= link_to 'Ver', problem %></td>
         <% if (problem.owner(current_user)) %>
-          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-         <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Editar', edit_problem_path(problem) %></td>
+         <td><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
         <% end %>
       </tr>
     <% end %>
