@@ -4,7 +4,6 @@
 
 
 Campo =
-  
   campoValido: (relleno) ->
     relleno != "" 
     
@@ -13,7 +12,7 @@ Campo =
     expr.test(correo)
     
   telefonoValido: (numero) ->
-    expr = /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/
+    expr = /(^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$)|(^$)|(^([0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9])$)/
     expr.test(numero)
 
 ready = ->

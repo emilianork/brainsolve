@@ -13,11 +13,11 @@ Campo =
     expr.test(correo)
     
   telefonoValido: (numero) ->
-    expr = /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]){1}$/
+    expr = /(^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$)|(^$)|(^([0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9])$)/
     expr.test(numero)
     
   numeroValido: (numero) ->
-    expr = /^([0-9]+)$/
+    expr = /(^([0-9]+)$)|(^$)/
     expr.test(numero)
 
 ready = ->
@@ -33,12 +33,6 @@ ready = ->
     else
       $("#estimateerror").css visibility: 'visible'
       
-  $("#solution_currency").blur ->
-    if Campo.campoValido(@value)
-      $("#currencyerror").css visibility: 'hidden'
-    else
-      $("#currencyerror").css visibility: 'visible'
-      
   $("#solution_email").blur ->
     if Campo.correoValido(@value)
       $("#emailerror").css visibility: 'hidden'
@@ -47,16 +41,9 @@ ready = ->
       
   $("#solution_telephone").blur ->
     if Campo.telefonoValido(@value)
-      $(".telerror").css visibility: 'hidden'
+      $("#telerror").css visibility: 'hidden'
     else
-      $(".telerror").css visibility: 'visible'
- 
- 
-   $("#solution_company").blur ->
-    if Campo.campoValido(@value)
-      $("#companyerror").css visibility: 'hidden'
-    else
-      $("#companyerror").css visibility: 'visible'
+      $("#telerror").css visibility: 'visible'
       
   $("#solution_company_telephone").blur ->
     if Campo.telefonoValido(@value)
