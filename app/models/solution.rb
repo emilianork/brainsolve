@@ -2,8 +2,6 @@ class Solution < ActiveRecord::Base
   belongs_to :user
   belongs_to :problem
 
-  has_one :problem
-
 attr_accessible :text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id
   
   validates :text, presence: true
