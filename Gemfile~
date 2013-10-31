@@ -22,10 +22,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 # Bootstrap
-
-gem 'twitter-bootstrap-rails'
-gem "therubyracer"
-gem "less-rails"
+#group :assets do
+#  gem 'twitter-bootstrap-rails'
+#end
 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
