@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20131030202419) do
 
+
   create_table "problems", force: true do |t|
     t.text     "title",              null: false
     t.string   "contact"
