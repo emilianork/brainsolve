@@ -2,10 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-arpovado = false;
 
 Campo =
-  
   campoValido: (relleno) ->
     relleno != "" 
     
@@ -14,7 +12,7 @@ Campo =
     expr.test(correo)
     
   telefonoValido: (numero) ->
-    expr = /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/
+    expr = /(^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$)|(^$)|(^([0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9])$)/
     expr.test(numero)
 
 ready = ->

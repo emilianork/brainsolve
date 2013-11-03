@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
     
-  attr_accessible :telephone, :id, :email, :password, :nickname, :first_name, :second_name, :third_name, :role
+  attr_accessible :telephone, :id, :email, :password, :password_confirmation, :encrypted_password, :nickname, :first_name, :second_name, :third_name, :role
   
   validates :nickname, format: {with: /(\A((([a-zA-Z]|\d)+)\s*)\z)|/,message: "Formato inválido"}, presence: true
   validates :telephone, format: {with: /(\A(((\d{8})|((\d{2}-){3}\d{2})){1}\s*)\z)|(\A\z)/, message: "Formato inválido"}
