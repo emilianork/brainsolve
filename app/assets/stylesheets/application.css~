@@ -19,7 +19,7 @@ p {
 }
 
 .loquese{
- width: 20%;
+ width: 5%;
  max-height:7%; 
 }
 

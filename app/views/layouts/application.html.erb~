@@ -35,52 +35,70 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
-  </head>
-  <body>
 
+ </head>
+  <body >
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Brainsolve</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
+<td>
+	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Registarse", new_user_registration_path %></li>
+	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   </td>    
+	<div class = "span10">
+        <p class="p"><h1 class = "p">Brainsolve</h1></p>
+	<!--<img src="/images.jepg/" alt="" class="img-circle">-->
+
+	
+<!--ruby.railstutorial.org/chapter/stati-pages# -->
+
+<div class = "loquese" > <%= image_tag("images.jpeg") %></div>
+
+
+    <div class="navbar">
+    <div class="navbar-inner">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    </ul>
+    </div>
     </div>
 
+	</div>	
+	</div>
+      </div>
+    </div>
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
+<div class="row-fluid">
+        <div class="span2">
           <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+            <ul class="nav nav-pills">
+	      <li><b>Menú Principal</b></li>
+              <li><%= link_to "¿Qué es Brainsolve?", "/path1"  %></li>	
+              <li><%= link_to "Noticias", "menu_noticias_path"  %></li>
+              <li><%= link_to "Problemas", "/path2"  %></li>
+              <li><%= link_to "Top 10 - Mejores Soluciones", "/path3"  %></li>
             </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
+          </div><!p--/.well --> 
+       </div><!--/span-->
 
+ <div class="span3 offset7"><form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+
+
+      <button type="submit" class="btn btn-default">Buscar</button>
+    </form></div>
+	 <div class="span9">
+          <%= bootstrap_flash %>
+       <%= yield %> 
+        </div>
+     </div><!--/row-->
       <footer>
         <p>&copy; Company 2013</p>
       </footer>
-
     </div> <!-- /container -->
-
   </body>
 </html>

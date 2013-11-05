@@ -42,13 +42,8 @@
       <div class="navbar-inner">
         <div class="container-fluid">
 <td>
-	<% if !current_user %>
 	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Registarse", new_user_registration_path %></li>
-	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   
-	<%else%>
-	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Salir",destroy_user_session_path, :method => :delete%></li>
-	<%end%>
-	   </td> 
+	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   </td>    
 	<div class = "span10">
         <p class="p"><h1 class = "p">Brainsolve</h1></p>
 	<!--<img src="/images.jepg/" alt="" class="img-circle">-->
@@ -56,7 +51,6 @@
 	
 <!--ruby.railstutorial.org/chapter/stati-pages# -->
 
-<div class = "loquese" > <%= image_tag("images.jpeg") %></div>
 
 
     <div class="navbar">
@@ -81,7 +75,7 @@
             <ul class="nav nav-pills">
 	      <li><b>Menú Principal</b></li>
               <li><%= link_to "¿Qué es Brainsolve?", "/path1"  %></li>	
-              <li><%= link_to "Noticias", "menu_noticias_path"  %></li>
+              <li><%= link_to "Noticias", "/path1"  %></li>
               <li><%= link_to "Problemas", "/path2"  %></li>
               <li><%= link_to "Top 10 - Mejores Soluciones", "/path3"  %></li>
             </ul>
