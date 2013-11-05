@@ -42,8 +42,14 @@
       <div class="navbar-inner">
         <div class="container-fluid">
 <td>
+	<% if !current_user %>
 	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Registarse", new_user_registration_path %></li>
-	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   </td>    
+	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   
+	<%else%>
+	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Crear problema", new_problem_path if current_role == "problematic"%></li>
+	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Salir",destroy_user_session_path, :method => :delete%></li>
+	<%end%>
+	   </td> 
 	<div class = "span10">
         <p class="p"><h1 class = "p">Brainsolve</h1></p>
 	<!--<img src="/images.jepg/" alt="" class="img-circle">-->
