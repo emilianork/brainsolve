@@ -76,7 +76,7 @@
             <ul class="nav nav-pills">
 	      <li><b>Menú Principal</b></li>
               <li><%= link_to "¿Qué es Brainsolve?", "/path1"  %></li>	
-              <li><%= link_to "Noticias", "menu_noticias_path"  %></li>
+              <li><%= link_to "Noticias", "/path1"  %></li>
               <li><%= link_to "Problemas", "/path2"  %></li>
               <li><%= link_to "Top 10 - Mejores Soluciones", "/path3"  %></li>
             </ul>

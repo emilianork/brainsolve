@@ -14,7 +14,21 @@ class ApplicationController < ActionController::Base
     return @current_role
   end
   
- 
+  def isCreative?
+    if current_role.nil?
+      nil
+    else
+      current_role == "creative"
+    end
+  end
+
+  def isProblematic?
+    if current_role.nil?
+      nil
+    else
+      current_role == "problematic"
+    end
+  end
   protected
   
   def configure_permitted_parameters

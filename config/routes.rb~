@@ -13,11 +13,8 @@ Brainsolve::Application.routes.draw do
   patch 'solutions/:id' => 'solutions#update'
   put 'solutions/:id' => 'solutions#update'
   delete 'solutions/:id' => 'solutions#destroy'
-
-
 #controlador/vista  =>  controlador#metodo as: nombre
-
-  get 'menu/noticias' => 'menu#noticias' 	
+  get 'menu/noticias' => 'menu#noticias' as: :noticias	
 
   root "problems#index"
   # The priority is based upon order of creation: first created -> highest priority.
