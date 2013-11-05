@@ -1,6 +1,6 @@
-<h1>Problemas</h1>
+<h2 class="text-center">Problemas</h2>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Texto</th>
@@ -15,7 +15,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody >
     <% @problems.each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
@@ -24,10 +24,10 @@
         <td><%= problem.telephone %></td>
         <td><%= problem.areas_of_knowledge %></td>
         <td><%= problem.user.nickname %>
-        <td><%= link_to 'Ver', problem %></td>
+        <td class="btn btn-primary"><%= link_to 'Ver', problem %></td>
         <% if (problem.owner(current_user)) %>
-          <td><%= link_to 'Editar', edit_problem_path(problem) %></td>
-         <td><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+          <td class="btn btn-info"><%= link_to 'Editar', solutions_path(problem) %></td>
+         <td class="btn btn-warning"><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
         <% end %>
       </tr>
     <% end %>
