@@ -8,7 +8,7 @@ class SolutionsController < ApplicationController
   def show
   end
 
-  # GET /solutions/new
+  # GET /problems/:problem_id/solutions/new
   def new
     @solution = Solution.new
     @problem = Problem.find_by_id(params[:id])
@@ -25,7 +25,6 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(solution_params)
-
     respond_to do |format|
       if @solution.save
         format.html { redirect_to @solution, notice: 'Solution was successfully created.' }
@@ -54,9 +53,10 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1
   # DELETE /solutions/1.json
   def destroy
+    problem = @solution.problem
     @solution.destroy
     respond_to do |format|
-      format.html { redirect_to solutions_url }
+      format.html { redirect_to problem_path(problem) }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,12 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
+      solution = params.require(:solution).permit(:text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
+      if (solution["estimate"] == "") then
+        solution["currency"] = "None"
+      end
+      print solution
+      puts "  aca paso"
+      solution
     end
 end
