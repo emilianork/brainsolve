@@ -17,7 +17,11 @@ Brainsolve::Application.routes.draw do
 
 #controlador/vista  =>  controlador#metodo as: nombre
 
+#Rutas para links del Menú
   get 'menu/noticias' => 'menu#noticias' 	
+  get 'menu/queesbrainsolve' => 'menu#queesbrainsolve'
+  get 'menu/problemas' => 'menu#menuproblemas'
+  get 'menu/top10' => 'menu#top10'
 
   root "problems#index"
   # The priority is based upon order of creation: first created -> highest priority.

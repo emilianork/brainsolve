@@ -16,7 +16,6 @@
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
-    <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
 
     <!-- For iPhone with high-resolution Retina display: -->
     <!-- Size should be 114 x 114 pixels -->
@@ -42,18 +41,18 @@
       <div class="navbar-inner">
         <div class="container-fluid">
 <td>
+	<% if !current_user %>
 	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Registarse", new_user_registration_path %></li>
-	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   </td>    
+	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   
+	<%else%>
+	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Salir",destroy_user_session_path, :method => :delete%></li>
+	<%end%>
+	   </td> 
+
 	<div class = "span10">
-        <p class="p"><h1 class = "p">Brainsolve</h1></p>
-	<!--<img src="/images.jepg/" alt="" class="img-circle">-->
-
-	
-<!--ruby.railstutorial.org/chapter/stati-pages# -->
-
-<div class = "loquese" > <%= image_tag("images.jpeg") %></div>
-
-
+        <p class="p"><h1 class = "loquese"> Brainsolve</h1></p>
+	<!--ruby.railstutorial.org/chapter/stati-pages# -->
+	<div class = "loquese"> <%= image_tag("images.jpeg") %></div>
     <div class="navbar">
     <div class="navbar-inner">
     <a class="brand" href="#">Title</a>
@@ -75,10 +74,10 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-pills">
 	      <li><b>Menú Principal</b></li>
-              <li><%= link_to "¿Qué es Brainsolve?", "/path1"  %></li>	
-              <li><%= link_to "Noticias", "menu_noticias_path"  %></li>
-              <li><%= link_to "Problemas", "/path2"  %></li>
-              <li><%= link_to "Top 10 - Mejores Soluciones", "/path3"  %></li>
+              <li><%= link_to "¿Qué es Brainsolve?", menu_queesbrainsolve_path  %></li>	
+              <li><%= link_to "Noticias", menu_noticias_path  %></li>
+              <li><%= link_to "Problemas", menu_problemas_path  %></li>
+              <li><%= link_to "Top 10 - Mejores Soluciones", menu_top10_path  %></li>
             </ul>
           </div><!p--/.well --> 
        </div><!--/span-->
