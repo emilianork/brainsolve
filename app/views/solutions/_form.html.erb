@@ -6,7 +6,7 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :text %><br>
+    <%= f.label :Texto%>*<br>
     <%= f.text_area :text %>
     <span id="texterror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
@@ -21,12 +21,12 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :estimate %><br>
-    <%= f.number_field :estimate %>
+    <%= f.label :Presupuesto%><br>
+    <%= f.text_field :estimate %>
     <span id="estimateerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+         El campo debe tener un telefono valido!!!
     </span>
   </div>
   
@@ -36,8 +36,13 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :currency %><br>
-    <%= f.text_field :currency %>
+    <%= f.label :Tipo_de_moneda %><br>
+   <%= f.select(:currency,
+   options_for_select([["Ninguno","None"],
+                       ["MX","MX"],
+                       ["US", "US"]
+                       ])) %><br /></div>
+
     <span id="currencyerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
@@ -51,12 +56,12 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :Email%>*<br>
     <%= f.text_field :email %>
     <span id="emailerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+         El campo debe tener un correo valido!!!
     </span>
   </div>
   
@@ -66,12 +71,12 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.number_field :telephone %>
+    <%= f.label :Telefono_de_contacto %><br>
+    <%= f.text_field :telephone %>
     <span id="telerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+         El campo debe tener un telefono valido!!!
     </span>
   </div>
   
@@ -81,7 +86,7 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :company %><br>
+    <%= f.label :Compañia %><br>
     <%= f.text_field :company %>
     <span id="companyerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
@@ -96,34 +101,33 @@
      <% end %>
   <% end %>
   <div class="field">
-    <%= f.label :company_telephone %><br>
-    <%= f.number_field :company_telephone %>
+    <%= f.label :Telefono_de_la_compañia %><br>
+    <%= f.text_field :company_telephone %>
     <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+       	 El campo debe tener un telefono valido!!!
     </span>
   </div>
   
-  <% if @solution.errors.messages.include?(:problem) %>
+  <% if @solution.errors.messages.include?(:problem_id) %>
      <%@solution.errors.messages[:problem].each do |message|%>
        <%= message%>
      <% end %>
   <% end %>
+
   <div class="field">
-    <%= f.label :problem_id %><br>
-    <%= f.number_field :problem_id %>
+    <% if !@problem.nil? %>
+    <%= f.hidden_field :problem_id, :value => @problem.id %><br>
+    <% else %>
+    <%= f.hidden_field :problem_id, :valude => @solution.problem_id %>
+    <%end%>
   </div>
   
-  <% if @solution.errors.messages.include?(:title) %>
-     <%@solution.errors.messages[:title].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %><br>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

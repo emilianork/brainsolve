@@ -1,8 +1,9 @@
 class Problem < ActiveRecord::Base
-	attr_accessible :title, :contact, :description, :telephone, :user_id, :areas_of_knowledge
 
-	has_many :solutions, :dependent => :destroy
- 	belongs_to :user
+  has_many :solutions, :dependent => :destroy
+  belongs_to :user
+
+	attr_accessible :title, :contact, :description, :telephone, :user_id, :areas_of_knowledge
   
   	validates :title, presence: true
   	validates :telephone, format: {with: /(\A(((\d{8})|((\d{2}-){3}\d{2})){1}\s*)\z)|\A\z/, message: "Formato inválido debe ser un numero telefonico"}
