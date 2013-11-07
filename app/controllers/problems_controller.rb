@@ -21,14 +21,12 @@ class ProblemsController < ApplicationController
   # GET /problems/new
   def new
     @problem = Problem.new
-    @areas_of_knowlegde = AreasOfKnowledge.all
-    @areas_of_knowlegde = @areas_of_knowlegde.map{|a| [a.name,a.id]}
+    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
   end
 
   # GET /problems/1/edit
   def edit
-    @areas_of_knowlegde = AreasOfKnowledge.all
-    @areas_of_knowlegde = @areas_of_knowlegde.map{|a| [a.name,a.id]}
+    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
   end
 
   # POST /problems

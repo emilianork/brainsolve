@@ -15,10 +15,13 @@ class SolutionsController < ApplicationController
     if (@problem.nil?) then
       redirect_to problem_url
     end
+    @currencies = Currency.all.map{ |c| [c.acronym, c.id] }
   end
 
   # GET /solutions/1/edit
   def edit
+    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
+    @currencies = Currency.all.map{ |c| [c.acronym, c.id] }
   end
 
   # POST /solutions
@@ -69,12 +72,10 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      solution = params.require(:solution).permit(:text, :estimate, :currency, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
+      solution = params.require(:solution).permit(:text, :estimate, :currency_id, :email, :telephone, :company, :company_telephone, :problem_id, :user_id)
       if (solution["estimate"] == "") then
-        solution["currency"] = "None"
+        solution["currency_id"] = Currency.find_by_acronym_and_country("None","None").id
       end
-      print solution
-      puts "  aca paso"
       solution
     end
 end
