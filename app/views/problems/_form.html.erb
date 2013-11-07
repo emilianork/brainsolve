@@ -65,14 +65,14 @@
   
   <div>
    <%= f.label :Area_de_conocimiento %><br>
-   <%= f.select(:areas_of_knowledge,
-   options_for_select([["Fisica","Fis"],
-                       ["Matematicas","Mat"],
-                       ["Ciencias de la Computacion", "CC"],
-                       ["Biologia", "Bio"],
-                       ["Actuaria", "Act"],
-                       ["Ciencias de la Tierra", "CT"]
-                       ])) %><br /></div>
+   <% if (@problem.areas_of_knowledge.nil?) %>
+   <%= f.select(:areas_of_knowledge_id,
+   options_for_select(@areas_of_knowlegde)) %><br />
+   <%else%>
+   <%= f.select(:areas_of_knowledge_id,
+   options_for_select(@areas_of_knowlegde, [@problem.areas_of_knowledge.name,@problem.areas_of_knowledge.id])) %><br />
+   <%end%>
+	</div>
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %><br>
   </div>

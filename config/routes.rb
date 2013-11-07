@@ -1,4 +1,6 @@
 Brainsolve::Application.routes.draw do
+  get "choose_solutions/choose_solution"
+  get "choose_solutions/notification_view"
   devise_for :users
   #resources :solutions
 
