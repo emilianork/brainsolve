@@ -25,17 +25,23 @@ class Problem < ActiveRecord::Base
     if search
       string_search = ""
       regexs = construct_regex(search)
-        string_search += "title REGEXP \'#{regexs}\' OR description REGEXP \'#{regexs}\' " + 
-                        "OR contact REGEXP \'#{regexs}\' OR telephone REGEXP \'#{regexs}\' "
+      if Rails.env.to_s == "production" then
+        simbol = "~"
+      else
+        simbol = "REGEXP"
+      end
+        
+        string_search += "title #{simbol} \'#{regexs}\' OR description #{simbol} \'#{regexs}\' " + 
+                        "OR contact #{simbol} \'#{regexs}\' OR telephone #{simbol} \'#{regexs}\' "
 
-        areas_of_knowledge = AreasOfKnowledge.where('name REGEXP ? ', regexs)
+        areas_of_knowledge = AreasOfKnowledge.where("name #{simbol} ? ", regexs)
 
         areas_of_knowledge.each do |area|
             string_search += "OR areas_of_knowledge_id = \'#{area.id}\' "
         end
 
-        users = User.where('nickname REGEXP ? ', regexs)
-        users += User.where('email REGEXP ? ', regexs)
+        users = User.where("nickname #{simbol} ? ", regexs)
+        users += User.where("email #{simbol} ? ", regexs)
 
         users.uniq!
 
