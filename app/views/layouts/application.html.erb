@@ -6,7 +6,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+<nav class="navbar navbar-inverse" role="navigation">
+  ola k ase
+</nav>
+
+
 	<% if current_role.nil? %>
 	<%= link_to "Entrar", new_user_session_path %>
 	<%= link_to "Registarse", new_user_registration_path %>
@@ -19,5 +25,5 @@
 
 <%= yield %>
 
-</body>
+</body >
 </html>

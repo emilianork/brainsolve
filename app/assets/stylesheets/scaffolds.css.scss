@@ -4,12 +4,20 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  background-image:url('opera.jpg');
+  
 }
 
 p, ol, ul, td {
+
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+table{
+border-radius:10px;
+-moz-border-radius:10px;
 }
 
 pre {
@@ -32,6 +40,7 @@ a {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+   
   }
 }
 
@@ -65,5 +74,25 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+    table-layout:auto;
   }
 }
+
+centrarSesion{
+
+width:100px;
+
+}
+
+
+tablareducida{
+border-collapse:separated;
+table-layout:auto;
+}
+
+bordesCurvas{
+border-radius:5px;
+-moz-border-radius:5px;
+
+}
+

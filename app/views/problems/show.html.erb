@@ -1,48 +1,35 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">app/viewsproblems/show.html.erb<%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
+<adress>
+
+  <h3><strong><%= @problem.user.nickname %></strong></h3>
+  
+  
+  <strong>Titulo Problema:</strong><br>
   <%= @problem.title %>
-</p>
+  <br>
 
-<p>
-  <strong>Email de contacto:</strong>
-  <%= @problem.contact %>
-</p>
+  Correo:
+  <%= @problem.contact%>
+  <br>
 
-<p>
-  <strong>Descripcion:</strong>
+
+  <h4>Descripcion:</h4>
   <%= @problem.description %>
-</p>
-
-<p>
-  <strong>Telefono de contacto:</strong>
+  <br>
+  
+  Teléfono:
   <%= @problem.telephone %>
-</p>
-
-<p>
-  <strong>Area de conocimiento:</strong>
+  <br>
+  
+  Area de conocimiento:
   <%= @problem.areas_of_knowledge %>
-</p>
+  <br>
 
-<p>
-  <strong>Usuario:</strong>
-  <%= @problem.user.nickname %>
-</p>
+  
+</adress>
 
-<table>
-  <thead>
-    <tr>
-      <th>Texto</th>
-      <th>Presupuesto estimado</th>
-      <th>Tipo de moneda</th>
-      <th>Email</th>
-      <th>Telefono de contacto</th>
-      <th>Compañia</th>
-      <th>Telefono de la compañia</th>
-      <th>Usuario</th>
-    </tr>
-  </thead>
+
 
   <tbody>
     <% @solutions.each do |solution| %>

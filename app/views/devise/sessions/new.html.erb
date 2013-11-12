@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<p><h2>Sign in (/devise/sessions/new.html.erb)</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
@@ -10,7 +10,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :contraseña %><br />
+  <div><%= f.label :contraseña, :class => 'form-control' %><br />
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
@@ -19,3 +19,4 @@
 
   <div><%= f.submit "Sign in" %></div>
 <% end %>
+</p>
