@@ -23,7 +23,7 @@
 
 <p>
   <strong>Area de conocimiento:</strong>
-  <%= @problem.areas_of_knowledge %>
+  <%= @problem.areas_of_knowledge.name %>
 </p>
 
 <p>
@@ -50,7 +50,7 @@
       <tr>
         <td><%= solution.text %></td>
         <td><%= solution.estimate %></td>
-        <td><%= solution.currency %></td>
+        <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
         <td><%= solution.telephone %></td>
         <td><%= solution.company %></td>

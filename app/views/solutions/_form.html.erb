@@ -37,11 +37,16 @@
   <% end %>
   <div class="field">
     <%= f.label :Tipo_de_moneda %><br>
-   <%= f.select(:currency,
-   options_for_select([["Ninguno","None"],
-                       ["MX","MX"],
-                       ["US", "US"]
-                       ])) %><br /></div>
+  <% if (@solution.currency.nil?) %>
+   <%= f.select(:currency_id,
+   options_for_select(@currencies)) %><br />
+   <%else%>
+   <%= f.select(:currency_id,
+   options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id])) %><br />
+   <%end%>
+
+
+    </div>
 
     <span id="currencyerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
