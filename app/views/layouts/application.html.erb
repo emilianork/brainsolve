@@ -44,7 +44,7 @@
 	<tr><%= link_to 'Registrarse',new_user_registration_path, :class => 'btn'  %>
 	<%= link_to 'Entrar', new_user_session_path, :class => 'btn' %></tr>
  	<%else%>
-	<tr><%= link_to'Salir', destroy_user_session_path, :class => 'btn'%></tr>
+	<tr><%= link_to'Salir', destroy_user_session_path, :method => :delete,  :class => 'btn'%></tr>
 	<%end%>
 	</td>
 <!-- request.url metodo paara poner ruta-->
