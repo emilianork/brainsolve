@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th>Texto</th>
-      <th>Email</th>
+      <!--<th>Email</th>-->
       <th>Descripcion</th>
-      <th>Telefono de contacto</th>
+      <!--<th>Telefono de contacto</th>-->
       <th>Area de conocimiento</th>
       <th>Usuario</th>
       <th></th>
@@ -19,14 +19,14 @@
     <% @problems.each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
-        <td><%= problem.contact %></td>
+        <!--<td><%= problem.contact %></td>-->
         <td><%= problem.description %></td>
-        <td><%= problem.telephone %></td>
+        <!--<td><%= problem.telephone %></td> -->
         <td><%= problem.areas_of_knowledge %></td>
         <td><%= problem.user.nickname %>
         <td class="btn btn-primary"><%= link_to 'Ver', problem %></td>
         <% if (problem.owner(current_user)) %>
-          <td class="btn btn-info"><%= link_to 'Editar', solutions_path(problem) %></td>
+          <td><%= link_to 'Editar', solutions_path(problem), :class => 'btn btn-info' %></td>
          <td class="btn btn-warning"><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
         <% end %>
       </tr>

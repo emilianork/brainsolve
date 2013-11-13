@@ -34,43 +34,45 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
-
  </head>
   <body >
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-<td>
-	<% if !current_user %>
-	<li   class="btn btn-warning btn-sm" href="#home"><%= link_to "Registarse", new_user_registration_path %></li>
-	<li class="btn btn-primary btn-sm"><%= link_to "Entrar", new_user_session_path %></li>   
-	<%else%>
-	<li class="btn btn-warning btn-sm" href="#home"><%= link_to "Salir",destroy_user_session_path, :method => :delete%></li>
+    <div class="navbar navbar-fluid-top"> 
+  <!--    <div class="navbar-inner"> -->
+        <div class="form-actions" >
+	
+	<td> <% if !current_user %>
+	<tr><%= link_to 'Registrarse',new_user_registration_path, :class => 'btn'  %>
+	<%= link_to 'Entrar', new_user_session_path, :class => 'btn' %></tr>
+ 	<%else%>
+	<tr><%= link_to'Salir', destroy_user_session_path, :class => 'btn'%></tr>
 	<%end%>
-	   </td> 
+	</td>
+<!-- request.url metodo paara poner ruta-->
+	<div class = "span11 offset0">
 
-	<div class = "span10">
-        <p class="p"><h1 class = "loquese"> Brainsolve</h1></p>
+
+ 	 <p class="p"><h1 class = "loquese"> Brainsolve  <%= image_tag("images.jpeg") %></h1> </p>
 	<!--ruby.railstutorial.org/chapter/stati-pages# -->
-	<div class = "loquese"> <%= image_tag("images.jpeg") %></div>
-    <div class="navbar">
-    <div class="navbar-inner">
-    <a class="brand" href="#">Title</a>
-    <ul class="nav">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    </ul>
-    </div>
-    </div>
+	
+    	<div class="navbar">
+    	<div class="navbar-inner">
+    	<a class="brand" href="#">Title</a>
+    	<ul class="nav">
+    	<li class="active"><a href="#">Home</a></li>
+    	<li><a href="#">Link</a></li>
+    	<li><a href="#">Link</a></li>
+    	</ul>
+  	</div>
 
-	</div>	
 	</div>
+	</div>	
+	<!-- </div> -->
       </div>
     </div>
+
     <div class="container-fluid">
-<div class="row-fluid">
-        <div class="span2">
+	<div class="row-fluid">
+        <div class="span2 offset1">
           <div class="well sidebar-nav">
             <ul class="nav nav-pills">
 	      <li><b>Menú Principal</b></li>
@@ -82,17 +84,21 @@
           </div><!p--/.well --> 
        </div><!--/span-->
 
- <div class="span3 offset7"><form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
+ 
+	 <div class="span7 offset">
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200">
+      <div class="caption">
+       
 
-
-      <button type="submit" class="btn btn-default">Buscar</button>
-    </form></div>
-	 <div class="span9">
-          <%= bootstrap_flash %>
+<%= bootstrap_flash %>
        <%= yield %> 
+      </div>
+    </div>
+  </div>
+</div>
         </div>
      </div><!--/row-->
       <footer>
