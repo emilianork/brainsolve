@@ -19,4 +19,14 @@ class User < ActiveRecord::Base
   def role_symbols
       [role.underscore.to_sym]
   end
+  
+  def self.db_connect?
+    begin
+      connection = ActiveRecord::Base.connection
+      connection.reconnect!
+    rescue
+      return false
+    end
+    return true
+  end
 end
