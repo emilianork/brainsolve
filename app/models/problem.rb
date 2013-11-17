@@ -3,6 +3,7 @@ class Problem < ActiveRecord::Base
   has_many :solutions, :dependent => :destroy
   belongs_to :areas_of_knowledge
   belongs_to :user
+  has_many :notifications
 
 	attr_accessible :title, :contact, :description, :telephone, :user_id, :areas_of_knowledge_id
   

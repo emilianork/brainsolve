@@ -1,6 +1,5 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :edit, :update, :destroy]
-  before_action :db_exits?
+  before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution]
   before_filter :authenticate_user!, :except => [:show]
   filter_resource_access
 
@@ -32,7 +31,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.new(solution_params)
     respond_to do |format|
       if @solution.save
-        format.html { redirect_to @solution, notice: 'Solution was successfully created.' }
+        format.html { redirect_to @solution, notice: 'El aporte fue creado con exito.' }
         format.json { render action: 'show', status: :created, location: @solution }
       else
         format.html { render action: 'new' }
@@ -46,7 +45,7 @@ class SolutionsController < ApplicationController
   def update
     respond_to do |format|
       if @solution.update(solution_params)
-        format.html { redirect_to @solution, notice: 'Solution was successfully updated.' }
+        format.html { redirect_to @solution, notice: 'El aporte fue modificado con exito.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,6 +62,26 @@ class SolutionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to problem_path(problem) }
       format.json { head :no_content }
+    end
+  end
+
+  def choose_solution
+    if current_user.id != @solution.problem.user.id then 
+      redirect_to @solution.problem
+    end
+    
+    notification = Notification.new
+    notification.solution_id = @solution.id
+    notification.problem_id = @solution.id
+    notification.user_id = @solution.user
+    notification.view = false
+    
+    respond_to do |format|
+      if notification.save
+        format.html {redirect_to @solution.problem, notice: 'Has escogido el aporte con exito'}
+      else
+        format.html {redirect_to @solution.problem, error: 'Hubo un error al escoger el aporte'}
+      end
     end
   end
 

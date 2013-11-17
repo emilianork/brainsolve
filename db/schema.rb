@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131107191912) do
+ActiveRecord::Schema.define(version: 20131117032545) do
 
   create_table "areas_of_knowledges", force: true do |t|
     t.string   "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20131107191912) do
     t.string   "telephone"
     t.string   "company_telephone"
     t.integer  "currency_id"
+    t.integer  "notification_id"
   end
 
   create_table "users", force: true do |t|
