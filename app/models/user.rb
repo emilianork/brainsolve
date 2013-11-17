@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_many :problems, :dependent => :destroy
   has_many :solutions, :dependent => :destroy
-
+  has_many :notifications, :dependent => :destroy
   def role_symbols
       [role.underscore.to_sym]
   end

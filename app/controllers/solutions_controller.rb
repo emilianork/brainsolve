@@ -73,11 +73,12 @@ class SolutionsController < ApplicationController
     notification = Notification.new
     notification.solution_id = @solution.id
     notification.problem_id = @solution.id
-    notification.user_id = @solution.user
+    notification.user_id = @solution.user.id
     notification.view = false
     
     respond_to do |format|
       if notification.save
+        @solution.update_attributes(:notification_id => notification.id)
         format.html {redirect_to @solution.problem, notice: 'Has escogido el aporte con exito'}
       else
         format.html {redirect_to @solution.problem, error: 'Hubo un error al escoger el aporte'}

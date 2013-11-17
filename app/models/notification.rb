@@ -3,4 +3,9 @@ class Notification < ActiveRecord::Base
   
   belongs_to :solution
   belongs_to :problem
+  belongs_to :user
+  
+  after_destroy do
+    solution.update_attributes(:notification_id => nil)
+  end
 end
