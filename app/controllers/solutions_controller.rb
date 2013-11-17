@@ -15,6 +15,7 @@ class SolutionsController < ApplicationController
     if (@problem.nil?) then
       redirect_to problem_url
     end
+    @solution.email = current_user.email
     @currencies = Currency.all.map{ |c| [c.acronym, c.id] }
   end
 

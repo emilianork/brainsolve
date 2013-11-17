@@ -26,7 +26,7 @@
     <span id="estimateerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo debe tener un telefono valido!!!
+         El campo debe ser un numero entero positivo.
     </span>
   </div>
   
@@ -37,22 +37,14 @@
   <% end %>
   <div class="field">
     <%= f.label :Tipo_de_moneda %><br>
-  <% if (@solution.currency.nil?) %>
-   <%= f.select(:currency_id,
-   options_for_select(@currencies)) %><br />
-   <%else%>
-   <%= f.select(:currency_id,
-   options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id])) %><br />
-   <%end%>
+  	<% if (@solution.currency.nil?) %>
+   		<%= f.select(:currency_id,
+   		options_for_select(@currencies)) %><br />
+   	<%else%>
+   		<%= f.select(:currency_id,
+   		options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id])) %><br />
+   	<%end%>
 
-
-    </div>
-
-    <span id="currencyerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
-    </span>
   </div>
   
   <% if @solution.errors.messages.include?(:email) %>
@@ -81,7 +73,7 @@
     <span id="telerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo debe tener un telefono valido!!!
+         El campo debe tener un numero de telefono de 8 digitos
     </span>
   </div>
   
@@ -111,7 +103,7 @@
     <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-       	 El campo debe tener un telefono valido!!!
+       	 El campo debe ser un numero de telefono de 8 digitos
     </span>
   </div>
   

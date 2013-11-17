@@ -22,6 +22,7 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
+    @problem.contact = current_user.email
   end
 
   # GET /problems/1/edit
