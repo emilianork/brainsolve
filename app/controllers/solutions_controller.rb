@@ -66,6 +66,10 @@ class SolutionsController < ApplicationController
   end
 
   def choose_solution
+    if current_user.nil? then
+      redirect_to @solution.problem
+    end
+    
     if current_user.id != @solution.problem.user.id then 
       redirect_to @solution.problem
     end
