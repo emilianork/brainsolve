@@ -38,6 +38,8 @@
         <% if (problem.owner(current_user)) %>
           <td><%= link_to 'Editar', edit_problem_path(problem) %></td>
          <td><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+	 <td><%= link_to 'Elimina con Ajax', problem, method: :delete, data: {alert:
+'Se elimino el problema'}%></td>
         <% end %>
       </tr>
     <% end %>

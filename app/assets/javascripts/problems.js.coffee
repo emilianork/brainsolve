@@ -15,6 +15,10 @@ Campo =
     expr = /(^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$)|(^$)|(^([0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9])$)/
     expr.test(numero)
 
+$ ->
+  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
+    alert "The post was deleted."
+
 ready = ->
   $("#problem_title").blur ->
     if Campo.campoValido(@value)
