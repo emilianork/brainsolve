@@ -11,6 +11,37 @@
  *= require_self
  *= require_tree .
  */
-fondoPantalla{
-  background: .../home/charly/Imágenes/opera.jpg
+
+
+
+.loquese{
+ width: 7%;
+ max-height:7%; 
 }
+
+.loquese img{
+/*position: absolute; */
+width: 100%;
+
+}
+
+ul.nav
+{
+   list-style:none;
+}
+
+
+ul.nav ul /* Para todos los ul debajo del ul.menu */
+{
+   display:none;
+   list-style:none;
+} 
+
+.pull-center > .navbar  {
+    float:none;
+    display:inline-block;
+    *display: inline; *zoom: 1;
+    height: 32px;
+}  
+
+

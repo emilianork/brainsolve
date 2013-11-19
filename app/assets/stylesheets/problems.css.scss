@@ -1,3 +1,72 @@
 // Place all the styles related to the problems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ .table-nonfluid { width: auto; }
+
+.table tbody td{
+  overflow:hidden; max-width:20em; 
+  
+}
+
+.box{
+  width:240px;
+  height:100px;
+  float:left;
+}
+
+.box2{
+
+height:200px;
+
+clear:left;
+}
+
+
+/* Aplica las propiedades aproximadas de twitter para el fondo blanco para ambos cuadros */
+.fondoBlanco{
+  
+  background-color:red;
+  
+  width:1100px;
+  
+  
+}
+
+
+/*define el texto de la cajita del perfil principal */
+.cajitaPerfil{
+  width:180px;
+  height:250px;
+  min-width:60px;
+  min-height: 20px;
+padding: 19px;
+margin-bottom: 20px;
+background-color: rgb(245, 245, 245);
+border: 1px solid rgb(227, 227, 227);
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+  
+}
+
+
+.anchoCajaBlanca{
+  
+  width:200px;
+  
+}
+
+/*Define la posicón de la caja de preguntas y el perfíl*/
+.problemas{
+  
+  
+  padding-top:200px;
+  
+}
+
+/*da formato al menu superior brainsolve*/
+.menuSuperior{
+  
+  padding-top:10px;
+  height:50px;
+  
+}

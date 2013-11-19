@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -112,6 +112,9 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.8)
+    sqlite3_ar_regexp (2.0.0)
+      activerecord (>= 3.2)
+      sqlite3
     therubyracer (0.11.1)
       libv8 (~> 3.11.8.7)
       ref
@@ -133,8 +136,10 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicode_utils (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -152,7 +157,10 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
+  sqlite3_ar_regexp (~> 2.0)
   therubyracer
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
+  unicode_utils
+  will_paginate

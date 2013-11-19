@@ -1,33 +1,41 @@
-<p id="notice">app/viewsproblems/show.html.erb<%= notice %></p>
+
+
+<p id="notice"><%= notice %></p>
+
 
 <adress>
-
+  <div style="border-radius:10px;" class="img-thumbnail"></div>
   <h3><strong><%= @problem.user.nickname %></strong></h3>
   
   
-  <strong>Titulo Problema:</strong><br>
+  <strong>Titulo</strong><br>
   <%= @problem.title %>
   <br>
-
-  <strong>Correo:</strong>
+  <br>
+  <strong>Correo:</strong><br>
   <%= @problem.contact%>
   <br>
+  <br>
 
-
-  <strong>Descripcion:</strong>
+  <strong>Descripcion:</strong><br>
   <%= @problem.description %>
   <br>
-  
-  Teléfono:
+  <br>
+  <strong>Teléfono:</strong><br>
   <%= @problem.telephone %>
   <br>
-  
-  Area de conocimiento:
-  <%= @problem.areas_of_knowledge %>
   <br>
-
+  
+  <strong>Categoría:</strong><br>
+  <%= @problem.areas_of_knowledge.name %>
+  <br>
+  <br>
   
 </adress>
+
+</p>
+
+
 
 
 
@@ -36,7 +44,7 @@
       <tr>
         <td><%= solution.text %></td>
         <td><%= solution.estimate %></td>
-        <td><%= solution.currency %></td>
+        <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
         <td><%= solution.telephone %></td>
         <td><%= solution.company %></td>

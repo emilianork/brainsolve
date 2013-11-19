@@ -1,21 +1,16 @@
+
 <h2 align="center">Problemas</h2>
-
-
-<div style="padding-left:500px;">
-<div style="border:solid; width:300px; height:450px; position:absolute; padding-left:30px;">
-<img src="onion.jpg" alt="Usuario"  ></img>
-<br>
-<span class="glyphicon glyphicon-ok"> aportes</span>
-</div>
-<div  style=" border-radius:25px; position:absolute; padding-left:350px;">
-<table class="table table-striped"  >
+<div >
+<div >
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Título</th>
-      <th>Email</th>
-      <th>Descripcion</th>
-
+      <th>Titulo</th>
+      
+      <th>Categoría</th>
       <th>Usuario</th>
+
+
     </tr>
   </thead>
 
@@ -23,13 +18,17 @@
     <% @problems.each do |problem| %>
       <tr>
         <td><%= problem.title %></td>
-        <td><%= problem.contact %></td>
-        <td><%= problem.description %></td>
-        <td><%= problem.user.nickname %>
-        <td ><%= link_to 'Ver', problem, :class => 'btn btn-primary' %>
+        <!--<td><%= problem.contact %></td>-->
+         
+        <!--<td><%= problem.telephone %></td> -->
+        <td><%= problem.areas_of_knowledge.acronym %></td>
+        <td><%= problem.user.nickname %></td>
+        <td ><%= link_to 'Ver', problem, :class => 'btn btn-info colorBlanco' %>
+
         <% if (problem.owner(current_user)) %>
-          <%= link_to 'Editar', edit_problem_path(problem) , :class => 'btn btn-info' %>
-         <%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' }, :class => 'btn btn-danger' %></td>
+          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-success' %>
+         <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-warning' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+
         <% end %>
       </tr>
     <% end %>
