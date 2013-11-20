@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -22,7 +23,7 @@
 
 <p>
   <strong>Area de conocimiento:</strong>
-  <%= @problem.areas_of_knowledge %>
+  <%= @problem.areas_of_knowledge.name %>
 </p>
 
 <p>
@@ -49,7 +50,7 @@
       <tr>
         <td><%= solution.text %></td>
         <td><%= solution.estimate %></td>
-        <td><%= solution.currency %></td>
+        <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
         <td><%= solution.telephone %></td>
         <td><%= solution.company %></td>
@@ -68,12 +69,12 @@
 </table>
 
 <%if @problem.owner(current_user) %>
-<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %>
+<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' }, :class =>'btn btn-danger' %>
 <%end%>
 <%if current_role == "creative" %>
-<%= link_to 'Crear aporte', new_solution_path(@problem) %>
+<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-primary'%>
 <%end%>
 <%if @problem.owner(current_user)%>
-<%= link_to 'Editar', edit_problem_path(@problem) %> |
+<%= link_to 'Editar', edit_problem_path(@problem),:class => 'btn  btn btn-primary' %> |
 <%end%>
-<%= link_to 'Regresar', problems_path %>
+<%= link_to 'Regresar', problems_path , :class => 'btn btn-inverse' %>

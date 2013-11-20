@@ -12,26 +12,19 @@
  *= require_tree .
  */
 
-p { 
-  font: 150% sans-serif; 
-	color:red;
-
+thead{
+ font: small-caps bold 100%/200% serif; 
 }
 
 .loquese{
- width: 7%;
- max-height:7%; 
+ width: 3%;
+ max-height:3%; 
 }
 
-.loquese img{
-/*position: absolute; */
-width: 100%;
-
-}
 
 ul.nav
 {
-   list-style:none;
+   font-family: verdana, arial, helvetica, sans-serif;
 }
 
 
@@ -40,6 +33,10 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
    display:none;
    list-style:none;
 } 
+
+.table-nonfluid {
+   width: auto;
+}
 
 .pull-center > .navbar  {
     float:none;

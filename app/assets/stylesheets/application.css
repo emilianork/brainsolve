@@ -12,21 +12,19 @@
  *= require_tree .
  */
 
+thead{
+ font: small-caps bold 100%/200% serif; 
+}
 
 .loquese{
- width: 7%;
- max-height:7%; 
+ width: 3%;
+ max-height:3%; 
 }
 
-.loquese img{
-/*position: absolute; */
-width: 100%;
-
-}
 
 ul.nav
 {
-   list-style:none;
+   font-family: verdana, arial, helvetica, sans-serif;
 }
 
 
@@ -36,6 +34,10 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
    list-style:none;
 } 
 
+.table-nonfluid {
+   width: auto;
+}
+
 .pull-center > .navbar  {
     float:none;
     display:inline-block;
@@ -43,3 +45,7 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
     height: 32px;
 }  
 
+
+.navbar{
+    background-color: #B40404;
+    }

@@ -34,43 +34,54 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
- </head>
-  <body >
-    <div class="navbar navbar-fluid-top"> 
-  <!--    <div class="navbar-inner"> -->
-        <div class="form-actions" >
-	
-	<td> <% if !current_user %>
-	<tr><%= link_to 'Registrarse',new_user_registration_path, :class => 'btn'  %>
-	<%= link_to 'Entrar', new_user_session_path, :class => 'btn' %></tr>
- 	<%else%>
-	<tr><%= link_to'Salir', destroy_user_session_path, :class => 'btn'%></tr>
-	<%end%>
-	</td>
-<!-- request.url metodo paara poner ruta-->
-	<div class = "span11 offset0">
-<div class="page-header">
-  <h1>Example page header <small class = "loquese">Subtext for header <%= image_tag("images.jpeg") %></small></h1>
-</div>
 
- 	 <p class="p"><h1 class = "loquese"> Brainsolve  <%= image_tag("images.jpeg") %></h1> </p>
-	<!--ruby.railstutorial.org/chapter/stati-pages# -->
-	
-    	<div class="navbar">
-    	<div class="navbar-inner">
-    	<a class="brand" href="#">Title</a>
-    	<ul class="nav">
-    	<li class="active"><a href="#">Home</a></li>
-    	<li><a href="#">Link</a></li>
-    	<li><a href="#">Link</a></li>
-    	</ul>
-  	</div>
+<!-- Estlilo enseñado por juan-- >
+<!--<style>
+.table tbody td{
+	overflow:hidden; 
+	max-width:20em;
+}
+</style> 
+-->
+</head>
+  <body>
+    <div class= "span12 offset0" > 
+  	<div class="form-actions" >
+	<div class = "span11 offset9">
+	<td> 
+
+        <% if !current_user %>
+        <tr><%= link_to 'Registarse', new_user_registration_path , :class => 'btn btn-primary'%>
+	<%= link_to 'Entrar', new_user_session_path , :class => 'btn btn-success'%>  </tr>      
+	<% elsif current_role == "problematic"%>
+        <%= link_to 'Crear problema', new_problem_path, :class => 'btn btn-info' %>
+        <%= link_to 'Salir',destroy_user_session_path, :method => :delete ,:class => 'btn btn-success' %>
+        <% elsif current_role == "creative" %>
+        <%= link_to 'Salir',destroy_user_session_path, :method => :delete, :class => 'btn btn-success' %>
+        <%end%>
+	</td>
 
 	</div>
+
+	<div class = "span11 offset0">  
+ 	 <p class="p"><h1 class = "loquese"> Brainsolve </h1> </p>
+	<div class="navbar">
+    	<div class="navbar-inner"> 
+    	<a class="brand loquese " href="http://localhost:3000"><%= image_tag("images.jpeg") %></a>
+    	<ul class="nav">
+    	<li><%= link_to "Problemas", problems_path  %></li>
+    	<li><%= link_to "problemativco", menu_queesbrainsolve_path   %></li>
+    	</ul>
+  	</div>
+	</div>
 	</div>	
-	<!-- </div> -->
+
+
+
+
       </div>
     </div>
+
 
     <div class="container-fluid">
 	<div class="row-fluid">
@@ -84,29 +95,27 @@
               <li><%= link_to "Top 10 - Mejores Soluciones", menu_top10_path  %></li>
             </ul>
           </div><!p--/.well --> 
-       </div><!--/span-->
+     </div><!--/span-->
 
- 
-	 <div class="span7 offset">
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200">
-      <div class="caption">
-       
 
-<%= bootstrap_flash %>
-       <%= yield %> 
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
+	<%= bootstrap_flash %>
+<div class="span6">
+  	 
+	<div class="thumbnail"> 
+	
+<%= yield %>
+	
      </div><!--/row-->
-      <footer>
+
+     </div>
+    
+  	<footer>
         <p>&copy; Company 2013</p>
       </footer>
-    </div> <!-- /container -->
+ 
+	
+	
+   </div> <!-- /container -->
   </body>
 
 </html>

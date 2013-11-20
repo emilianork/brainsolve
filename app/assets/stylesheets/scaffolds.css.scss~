@@ -4,12 +4,17 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  background-image: url('opera.jpg');
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+}
+
+table td{
+  font-family: Courier new, Courier, monospace;
 }
 
 pre {
@@ -40,9 +45,10 @@ div {
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+ box-shadow: 0px 0px 7px #A00000;
+ height: 28px;
+ width: 218px;	
+ padding: 2px 3px 4px 1px;
 }
 
 #error_explanation {
@@ -52,11 +58,13 @@ div {
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-  h2 {
+
+  
+h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    font-size: 9px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
@@ -66,4 +74,10 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+
+label{
+width: 100%;
+
 }
