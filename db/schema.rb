@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20131107191912) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "acronym"
   end
 
   create_table "currencies", force: true do |t|

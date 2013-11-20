@@ -1,77 +1,101 @@
+
+
 <%= form_for(@problem) do |f| %>
   
-  <% if @problem.errors.messages.include?(:title) %>
+
+  
+	<div>
+	
+	  <% if @problem.errors.messages.include?(:title) %>
      <%@problem.errors.messages[:title].each do |message|%>
        <%= message%>
      <% end %>
   <% end %>
-  <div class="field">
-    <%= f.label :Titulo%>*<br>
-    <%= f.text_area :title %>
-    <span class="titleerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
-    </span>
-  </div>
+	
+	  <%= f.label :Titulo%>
+	  <%= f.text_area :title, :style => "width:500px;  height:16px; resize:none" %>
+	  
+	  <span class="titleerror" style="font-family: Verdana, Arial, 
+	    Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	    position:relative;visibility:hidden;">
+	    El campo no debe estar vacio!!!
+	  </span>
+	</div>
+	  <br>
+	<div>
+	    <div class="box">
+	    
+	      <% if @problem.errors.messages.include?(:telephone) %>
+	      <%@problem.errors.messages[:telephone].each do |message|%>
+	      <%= message%>
+	      <% end %>
+	      <% end %>
+	    <%= f.label :Telefono_de_contacto %>
+	    <%= f.text_field :telephone %><br>
+	      <span class="telerror" style="font-family: Verdana, Arial, 
+	      Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	      position:relative;visibility:hidden;">
+	      El campo debe ser un numero de telefono de 8 digitos.
+	      </span></div>
+
+	    <div class="box"><%= f.label :Correo_electronico%>
+	    <%= f.text_field :contact %><br>
+	    <span id="emailerror" style="font-family: Verdana, Arial, 
+	    Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	    position:relative;visibility:hidden;">
+	    El campo debe ser un correo electronico valido!!!
+	    </span>
+	    </div>
+	    
+	    <div class="box">
+	       <%= f.label :Area_de_conocimiento %>
+	    <% if (@problem.areas_of_knowledge.nil?) %>
+	    <%= f.select(:areas_of_knowledge_id,
+	    options_for_select(@areas_of_knowlegde)) %>
+	    <%else%>
+	    <%= f.select(:areas_of_knowledge_id,
+	    options_for_select(@areas_of_knowlegde, [@problem.areas_of_knowledge.name,@problem.areas_of_knowledge.id])) %>
+	    <%end%>
+	    </div>
   
+  <!--TABLE-->
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
 
   <% if @problem.errors.messages.include?(:contact) %>
       <%@problem.errors.messages[:contact].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div class="field">
-    <%= f.label :Email%>*<br>
-    <%= f.text_field :contact %>
-    <span id="emailerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe ser un correo electronico valido!!!
-    </span>
-  </div>
-  
 
+  <div class="box2">
   <% if @problem.errors.messages.include?(:description) %>
       <%@problem.errors.messages[:description].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div class="field">
-    <%= f.label :Descripcion%>*<br>
-    <%= f.text_area :description %>
+  
+    
+    <%= f.label :Descripcion%>
+    <%= f.text_area :description, :style => "width:500px; height:100px; resize:none;" %><br>
     <span class="descriperror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
          El campo no debe estar vacio!!!
     </span>
+    
   </div>
+
   
 
-  <% if @problem.errors.messages.include?(:telephone) %>
-      <%@problem.errors.messages[:telephone].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Telefono_de_contacto %><br>
-    <%= f.text_field :telephone %>
-    <span class="telerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe ser un numero de telefono de 8 digitos.
-    </span>
-  </div>
+
+
   
   <div>
-   <%= f.label :Area_de_conocimiento %><br>
-   <% if (@problem.areas_of_knowledge.nil?) %>
-   <%= f.select(:areas_of_knowledge_id,
-   options_for_select(@areas_of_knowlegde)) %><br />
-   <%else%>
-   <%= f.select(:areas_of_knowledge_id,
-   options_for_select(@areas_of_knowlegde, [@problem.areas_of_knowledge.name,@problem.areas_of_knowledge.id])) %><br />
-   <%end%>
+
 	</div>
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %><br>
@@ -80,3 +104,4 @@
    <%= f.submit  %> 
   </div>
 <% end %>
+

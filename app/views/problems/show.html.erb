@@ -1,36 +1,39 @@
 
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
+
+<adress>
+  <div style="border-radius:10px;" class="img-thumbnail"></div>
+  <h3><strong><%= @problem.user.nickname %></strong></h3>
+  
+  
+  <strong>Titulo</strong><br>
   <%= @problem.title %>
-</p>
+  <br>
+  <br>
+  <strong>Correo:</strong><br>
+  <%= @problem.contact%>
+  <br>
+  <br>
 
-<p>
-  <strong>Email de contacto:</strong>
-  <%= @problem.contact %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
+  <strong>Descripcion:</strong><br>
   <%= @problem.description %>
-</p>
-
-<p>
-  <strong>Telefono de contacto:</strong>
+  <br>
+  <br>
+  <strong>Teléfono:</strong><br>
   <%= @problem.telephone %>
-</p>
-
-<p>
-  <strong>Area de conocimiento:</strong>
+  <br>
+  <br>
+  
+  <strong>Categoría:</strong><br>
   <%= @problem.areas_of_knowledge.name %>
-</p>
+  <br>
+  <br>
+  
+</adress>
 
-<p>
-  <strong>Usuario:</strong>
-  <%= @problem.user.nickname %>
 </p>
-
 <table>
 
 <!--  <thead>
@@ -46,6 +49,8 @@
     </tr>
   </thead>
 -->
+
+
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>

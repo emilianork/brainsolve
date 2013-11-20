@@ -1,41 +1,39 @@
-<%= form_tag problems_path, :method => 'get', :id => "problems_search" do %>
-  <p class = "span12 offset0">
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Buscar", :name => nil %>
-  </p>
-  <div id="problems"><%= render 'problems' %></div>
-	<% end %>
 
-<h2 class="text-center">Problemas</h2>
-
-
-
-<table class = "table table-striped span4" >
+<h2 align="center">Problemas</h2>
+<div >
+<div >
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Titulo</th>
-      <th>Email</th>
-      <th>Descripcion</th>
-      <!--<th>Telefono de contacto</th>-->
-      <th>Area de conocimiento</th>
+      
+      <th>Categoría</th>
+      <th>Usuario</th>
+
     </tr>
   </thead>
 
-  <tbody >
+  <tbody class="tablareducida" >
     <% @problems.each do |problem| %>
       <tr>
-         <td  ><%= problem.title %></td>
-        <td><%= problem.description %></td>
-        <td><%= problem.areas_of_knowledge.name %></td>
+
+        <td><%= problem.title %></td>
+        <!--<td><%= problem.contact %></td>-->
+         
+        <!--<td><%= problem.telephone %></td> -->
+        <td><%= problem.areas_of_knowledge.acronym %></td>
         <td><%= problem.user.nickname %></td>
-        <td ><%= link_to 'Ver', problem,:class => 'btn btn btn-info' %></td>
-	   <% if (problem.owner(current_user)) %>
-       <!--   <td><%= link_to 'Editar', edit_problem_path(@problem), :class => 'btn' %></td>  -->
-         <td ><%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo1?',:class => 'btn' },:class => 'btn  btn btn-primary' %></td>
+        <td ><%= link_to 'Ver', problem, :class => 'btn btn-info colorBlanco' %>
+
+        <% if (problem.owner(current_user)) %>
+          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-success' %>
+         <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-warning' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+
         <% end %>
       </tr>
     <% end %>
+	<%= will_paginate @problems %>
   </tbody>
 </table>
-
-<br>
+</div>
+</div>

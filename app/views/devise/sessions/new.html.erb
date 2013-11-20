@@ -1,9 +1,9 @@
+
 <%= javascript_include_tag 'jquery', 'application'%>
 
 
 <h2 class = "offset2">Ingresar a mi Cuenta</h2>
 </br>
-
 
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -22,6 +22,7 @@
 
   <div class = "offset4"><%= f.label :contraseña %></div>
   <div class = "offset3"><%= f.password_field :password , :placeholder => "Contraseña" %></div>
+
 
 
   <% if devise_mapping.rememberable? -%>
