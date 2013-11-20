@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_role
+  helper_method :view_notifications
   
   def current_role
     if current_user.nil? then
@@ -12,6 +13,23 @@ class ApplicationController < ActionController::Base
       @current_role ||= current_user.role
     end
     return @current_role
+  end
+  
+  def view_notifications
+    if current_user.nil? then
+      @notifications ||= []
+      return @notifications
+    end
+    
+    if current_role == "problematic" then
+      @notifications ||= []
+      return @notifications
+    end
+    
+    if current_role == "creative"
+      @notifications ||= current_user.notifications.where(:view => false).to_a
+      return @notifications
+    end
   end
   
   protected

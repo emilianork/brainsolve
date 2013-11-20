@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution]
+  before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution, :notification]
   before_filter :authenticate_user!, :except => [:show]
   filter_resource_access
 
@@ -91,6 +91,15 @@ class SolutionsController < ApplicationController
         format.html {redirect_to @solution.problem, error: 'Hubo un error al escoger el aporte'}
       end
     end
+  end
+
+  def notification_check
+      respond_to do |format|
+        if current_user.nil? then
+          format.js
+        end
+      end
+      
   end
 
   private
