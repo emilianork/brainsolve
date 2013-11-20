@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.string   "telephone"
     t.string   "company_telephone"
     t.integer  "currency_id"
+    t.integer  "notification_id"
   end
 
   create_table "users", force: true do |t|
