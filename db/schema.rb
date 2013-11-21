@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.integer  "areas_of_knowledge_id"
   end
 
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "solutions", force: true do |t|
     t.text     "text",              null: false
     t.integer  "estimate"
@@ -60,7 +67,6 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.string   "telephone"
     t.string   "company_telephone"
     t.integer  "currency_id"
-    t.integer  "notification_id"
   end
 
   create_table "users", force: true do |t|
