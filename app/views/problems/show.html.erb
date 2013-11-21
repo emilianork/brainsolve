@@ -35,9 +35,16 @@
 
 </p>
 
-
-
-
+<%if @problem.owner(current_user) %>
+<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %>
+<%end%>
+<%if current_role == "creative" %>
+<%= link_to 'Crear aporte', new_solution_path(@problem) %>
+<%end%>
+<%if @problem.owner(current_user)%>
+<%= link_to 'Editar', edit_problem_path(@problem) %> |
+<%end%>
+<%= link_to 'Regresar', problems_path %>
 
   <tbody>
     <% @solutions.each do |solution| %>
@@ -51,24 +58,15 @@
         <td><%= solution.company_telephone %></td>
         <td><%= solution.user.nickname %></td>
         <td><%= link_to 'Ver', solution %></td>
-	<%if solution.owner(current_user) %>
-        	<td><%= link_to 'Editar', edit_solution_path(solution) %></td>
-	<%end%>
+	       <%if solution.owner(current_user) %>
+        	 <td><%= link_to 'Editar', edit_solution_path(solution) %></td>
+	       <%end%>
         <%if solution.owner(current_user) %>
-		<td><%= link_to 'Eliminar', solution, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
-	<%end%>
+		      <td><%= link_to 'Eliminar', solution, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+	       <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%if @problem.owner(current_user) %>
-<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %>
-<%end%>
-<%if current_role == "creative" %>
-<%= link_to 'Crear aporte', new_solution_path(@problem) %>
-<%end%>
-<%if @problem.owner(current_user)%>
-<%= link_to 'Editar', edit_problem_path(@problem) %> |
-<%end%>
-<%= link_to 'Regresar', problems_path %>
+<%= will_paginate @solutions %>

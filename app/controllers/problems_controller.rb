@@ -6,16 +6,14 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
   def index
-    #@problems = Problem.order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
-    #@problems = Problem.search(params[:search])#.order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
-    @problems = Problem.search(params[:search]).order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
+    @problems = Problem.search(params[:search]).order(created_at: :desc).paginate(:per_page => 10, :page => params[:page])
 
   end
 
   # GET /problems/1
   # GET /problems/1.json
   def show
-    @solutions = Problem.find(params[:id]).solutions
+    @solutions = Solution.where(problem_id: params[:id]).order(created_at: :desc).paginate(:per_page => 10, :page => params[:page])
   end
 
   # GET /problems/new
