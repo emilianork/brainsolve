@@ -98,6 +98,17 @@
 </div>
 <div class="span10 offset9"><%= f.submit "Registar",:class => 'btn btn-primary'%></div>
     </div>
+ <div>
+        <% if (resource.role.nil?) %>
+		<%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
+   	<%else%>
+		<%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
+		[resource.role])) %>
+	<%end%>
+  <br/></div>
+  <div><%= f.submit "Registar" %>
+       <%= link_to_function "Back", "history.back()"%>
+  </div>
 <% end %>
 
 </div>

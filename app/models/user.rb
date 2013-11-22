@@ -14,8 +14,18 @@ class User < ActiveRecord::Base
   validates :third_name, format: {with: /\A[\D]*\z/, message: "Formato inválido"}
   has_many :problems, :dependent => :destroy
   has_many :solutions, :dependent => :destroy
-
+  has_many :notifications, :dependent => :destroy
   def role_symbols
       [role.underscore.to_sym]
+  end
+  
+  def self.db_connect?
+    begin
+      connection = ActiveRecord::Base.connection
+      connection.reconnect!
+    rescue
+      return false
+    end
+    return true
   end
 end

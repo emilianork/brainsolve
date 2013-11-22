@@ -6,10 +6,7 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
   def index
-    #@problems = Problem.order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
-    #@problems = Problem.search(params[:search])#.order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
     @problems = Problem.search(params[:search]).order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
-
   end
 
   # GET /problems/1
@@ -22,6 +19,7 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
+    @problem.contact = current_user.email
   end
 
   # GET /problems/1/edit

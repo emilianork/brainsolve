@@ -2,8 +2,9 @@ class Solution < ActiveRecord::Base
   belongs_to :user
   belongs_to :problem
   belongs_to :currency
-
-attr_accessible :text, :estimate, :currency_id, :email, :telephone, :company, :company_telephone, :problem_id, :user_id
+  belongs_to :notification, :dependent => :destroy
+  
+  attr_accessible :text, :estimate, :currency_id, :email, :telephone, :company, :company_telephone, :problem_id, :user_id, :notification_id
   
   validates :text, presence: true
   validates :estimate, format: {with: /(\A(\d+)\z)|(\A\z)/, message: "Debe ser un número"}
