@@ -1,37 +1,39 @@
-<h2 class="text-center">Problemas</h2>
 
+<h2 align="center">Problemas</h2>
+<div >
+<div >
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Textosksksk</th>
-      <th>Email</th>
-      <th>Descripcion</th>
-      <th>Telefono de contacto</th>
-      <th>Area de conocimiento</th>
+      <th>Titulo</th>
+      
+      <th>Categoría</th>
       <th>Usuario</th>
-      <th></th>
-      <th></th>
-      <th></th>
+
     </tr>
   </thead>
 
-  <tbody >
+  <tbody class="tablareducida" >
     <% @problems.each do |problem| %>
       <tr>
+
         <td><%= problem.title %></td>
-        <td><%= problem.contact %></td>
-        <td><%= problem.description %></td>
-        <td><%= problem.telephone %></td>
-        <td><%= problem.areas_of_knowledge %></td>
-        <td><%= problem.user.nickname %>
-        <td class="btn btn-primary"><%= link_to 'Ver', problem %></td>
+        <!--<td><%= problem.contact %></td>-->
+         
+        <!--<td><%= problem.telephone %></td> -->
+        <td><%= problem.areas_of_knowledge.acronym %></td>
+        <td><%= problem.user.nickname %></td>
+        <td ><%= link_to 'Ver', problem, :class => 'btn btn-info colorBlanco' %>
+
         <% if (problem.owner(current_user)) %>
-          <td class="btn btn-info"><%= link_to 'Editar', solutions_path(problem) %></td>
-         <td class="btn btn-warning"><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-success' %>
+         <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-warning' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+
         <% end %>
       </tr>
     <% end %>
+	<%= will_paginate @problems %>
   </tbody>
 </table>
-
-<br>
+</div>
+</div>

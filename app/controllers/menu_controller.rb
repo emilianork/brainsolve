@@ -1,8 +1,7 @@
-class MenuController < ApplicationController.	
+class MenuController < ApplicationController
 
 
 def noticias 
-
 end
 
 end

@@ -57,6 +57,7 @@
 	<span id="company_telephoneerror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
+<<<<<<< HEAD
        	 <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
 	</span>
       </div>
@@ -66,6 +67,31 @@
           <div style="padding-left:200px">
   <% if @solution.errors.messages.include?(:text) %>
      <%@solution.errors.messages[:text].each do |message|%>
+=======
+         El campo debe ser un numero entero positivo.
+    </span>
+  </div>
+  
+  <% if @solution.errors.messages.include?(:currency) %>
+     <%@solution.errors.messages[:currency].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
+  <div class="field">
+    <%= f.label :Tipo_de_moneda %><br>
+  	<% if (@solution.currency.nil?) %>
+   		<%= f.select(:currency_id,
+   		options_for_select(@currencies)) %><br />
+   	<%else%>
+   		<%= f.select(:currency_id,
+   		options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id])) %><br />
+   	<%end%>
+
+  </div>
+  
+  <% if @solution.errors.messages.include?(:email) %>
+     <%@solution.errors.messages[:email].each do |message|%>
+>>>>>>> design_erika
        <%= message%>
      <% end %>
   <% end %>
@@ -87,6 +113,23 @@
       </div>  
     </span>
   </div>
+<<<<<<< HEAD
+=======
+  
+  <% if @solution.errors.messages.include?(:telephone) %>
+     <%@solution.errors.messages[:telephone].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
+  <div class="field">
+    <%= f.label :Telefono_de_contacto %><br>
+    <%= f.text_field :telephone %>
+    <span id="telerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo debe tener un numero de telefono de 8 digitos
+    </span>
+>>>>>>> design_erika
   </div>
           </fieldset>
 
@@ -131,6 +174,23 @@
   </div>
 
   
+<<<<<<< HEAD
+=======
+  <% if @solution.errors.messages.include?(:company_telephone) %>
+     <%@solution.errors.messages[:company_telephone].each do |message|%>
+       <%= message%>
+     <% end %>
+  <% end %>
+  <div class="field">
+    <%= f.label :Telefono_de_la_compañia %><br>
+    <%= f.text_field :company_telephone %>
+    <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+       	 El campo debe ser un numero de telefono de 8 digitos
+    </span>
+  </div>
+>>>>>>> design_erika
   
   <% if @solution.errors.messages.include?(:problem_id) %>
      <%@solution.errors.messages[:problem].each do |message|%>

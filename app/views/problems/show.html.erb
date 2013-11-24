@@ -1,37 +1,42 @@
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titulo:</strong>
+
+<adress>
+  <div style="border-radius:10px;" class="img-thumbnail"></div>
+  <h3><strong><%= @problem.user.nickname %></strong></h3>
+  
+  
+  <strong>Titulo</strong><br>
   <%= @problem.title %>
-</p>
+  <br>
+  <br>
+  <strong>Correo:</strong><br>
+  <%= @problem.contact%>
+  <br>
+  <br>
 
-<p>
-  <strong>Email de contacto:</strong>
-  <%= @problem.contact %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
+  <strong>Descripcion:</strong><br>
   <%= @problem.description %>
-</p>
-
-<p>
-  <strong>Telefono de contacto:</strong>
+  <br>
+  <br>
+  <strong>Teléfono:</strong><br>
   <%= @problem.telephone %>
-</p>
+  <br>
+  <br>
+  
+  <strong>Categoría:</strong><br>
+  <%= @problem.areas_of_knowledge.name %>
+  <br>
+  <br>
+  
+</adress>
 
-<p>
-  <strong>Area de conocimiento:</strong>
-  <%= @problem.areas_of_knowledge %>
 </p>
-
-<p>
-  <strong>Usuario:</strong>
-  <%= @problem.user.nickname %>
-</p>
-
 <table>
-  <thead>
+
+<!--  <thead>
     <tr>
       <th>Texto::</th>
       <th>Presupuesto estimado</th>
@@ -43,13 +48,15 @@
       <th>Usuario</th>
     </tr>
   </thead>
+-->
+
 
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>
         <td><%= solution.text %>:</td>
         <td><%= solution.estimate %></td>
-        <td><%= solution.currency %></td>
+        <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
         <td><%= solution.telephone %></td>
         <td><%= solution.company %></td>
@@ -68,12 +75,12 @@
 </table>
 
 <%if @problem.owner(current_user) %>
-<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %>
+<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' }, :class =>'btn btn-danger' %>
 <%end%>
 <%if current_role == "creative" %>
-<%= link_to 'Crear aporte', new_solution_path(@problem) %>
+<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-primary'%>
 <%end%>
 <%if @problem.owner(current_user)%>
-<%= link_to 'Editar', edit_problem_path(@problem) %> |
+<%= link_to 'Editar', edit_problem_path(@problem),:class => 'btn  btn btn-primary' %> |
 <%end%>
-<%= link_to 'Regresar', problems_path %>
+<%= link_to 'Regresar', problems_path , :class => 'btn btn-inverse' %>

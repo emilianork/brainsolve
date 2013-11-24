@@ -5,6 +5,8 @@ gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'sqlite3_ar_regexp', '~> 2.0'
+gem 'unicode_utils'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -26,6 +28,8 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
+# User for pagination
+gem 'will_paginate'
 
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -37,6 +41,10 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :production do
+  #gem 'pg'
 end
 
 # Use ActiveModel has_secure_password

@@ -1,73 +1,112 @@
-<h2>Sign up</h2>
+<div class = "offset1">
+<div class = "offset3"><h2>Registrate!! </h2> </div>
+</br>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  
-  <% if resource.errors.messages.include?(:email) %>
-      <%resource.errors.messages[:email].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div>
-   <%= f.label :email %>*<br />
-   <%= f.email_field :email, :autofocus => true %>
-  </div>
 
-  <% if resource.errors.messages.include?(:password) %>
+<div class="row">
+ <div class= "span6">
+		<% if resource.errors.messages.include?(:email) %>
+  		    <%resource.errors.messages[:email].each do |message|%>
+ 		       <%= message%>
+      		    <% end %>
+	  	<% end %>
+     <div> 
+   		<%= f.label :email %>
+
+   		<%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca e-mail" %>  *
+     </div>
+ </div>
+ <div class="offset6 ">
+	 	<% if resource.errors.messages.include?(:nickname) %>
+      			<%resource.errors.messages[:nickname].each do |message|%>
+        			<%= message%>
+      			<% end %>
+  		<% end %>
+      <div>
+	<%= f.label :apodo %>
+  	<%= f.text_field  :nickname , :autofocus => true,:placeholder => "Elija un apodo"%> * 
+      </div> 
+ </div>
+</div>
+
+
+<div class="row">
+  <div class="span6">
+  <div><%= f.label :contraseña %>
+  <%= f.password_field :password, :placeholder => "Elija una contraseña" %> * 
+<% if resource.errors.messages.include?(:password) %>
       <%resource.errors.messages[:password].each do |message|%>
-        <%= message%>
+       <span> alsalskaslkal</span>
       <% end %>
   <% end %>
-  <div><%= f.label :contraseña %>*<br />
-  <%= f.password_field :password %></div>
+</div> 
+</div>
 
-  <% if resource.errors.messages.include?(:password_confirmation) %>
+
+
+    <div class="offset6 "><% if resource.errors.messages.include?(:password_confirmation) %>
       <%resource.errors.messages[:password_confirmation].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div><%= f.label :verifica_contraseña %>*<br />
-  <%= f.password_field :password_confirmation %></div>
-  
-  <% if resource.errors.messages.include?(:nickname) %>
-      <%resource.errors.messages[:nickname].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div><%= f.label :apodo %>*<br />
-  <%= f.text_field :nickname %></div>
-  
-  <% if resource.errors.messages.include?(:first_name) %>
+  <div><%= f.label :verifica_contraseña %>
+  <%= f.password_field :password_confirmation, :placeholder => "Repita la contraseña anterior" %>*</div>
+	</div>
+    </div>
+
+
+    <div class="row">
+    <div class="span6"><%= f.label :Rol%><div><%= f.select(:role, options_for_select([["Soy creativo","creative"],
+["Soy problematico","problematic"]])) %><br /></div>
+   </div>
+    </div>
+
+</br>
+</br>
+</br>
+<div class = "offset0"><h2>Ingresa tus datos!! (opcional) </h2></div>
+
+    <div class="row">
+    <div class="span6 offset0"><% if resource.errors.messages.include?(:first_name) %>
       <%resource.errors.messages[:first_name].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div><%= f.label :nombre%><br />
-  <%= f.text_field :first_name %></div>
-  
-  <% if resource.errors.messages.include?(:second_name) %>
+  <div><%= f.label :nombre%>  
+  <%= f.text_field :first_name , :placeholder => "Introduzca nombre(s)" %></div></div>
+    <div class="offset6"> <% if resource.errors.messages.include?(:second_name) %>
       <%resource.errors.messages[:second_name].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div><%= f.label :apellido_paterno%><br />
-  <%= f.text_field :second_name %></div>
+  <div > <%= f.label :apellido_paterno%>
+  <%= f.text_field :second_name , :placeholder => "Introduzca apellido(s)"%></div> </div> </div>
+    
 
-  <% if resource.errors.messages.include?(:third_name) %>
-      <%resource.errors.messages[:third_name].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div><%= f.label :apellido_materno%><br />
-  <%= f.text_field :third_name %></div>
-  
-  <% if resource.errors.messages.include?(:telephone) %>
+      <div class="row">
+    <div class="spa4 offset0"><% if resource.errors.messages.include?(:telephone) %>
       <%resource.errors.messages[:telephone].each do |message|%>
         <%= message%>
       <% end %>
   <% end %>
-  <div><%= f.label :telefono%><br />
-  <%= f.text_field :telephone %></div>
 
-  <div><%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %><br /></div>
-   
-  <div><%= f.submit "Registar" %></div>
+  <div class = "offset"><%= f.label :telefono%>
+  <%= f.text_field :telephone , :placeholder => "Introduzca teléfono" %></div>
+</br>
+
+    <% if (resource.role.nil?) %>
+    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
+    <%else%>
+    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
+    [resource.role])) %>
+  <%end%>
+	</div>
+<div class="span10 offset8">
+  <%= f.submit "Registar",:class => 'btn btn-primary'%>
+<%= link_to_function "Regresar", "history.back()", :class => "btn btn-default"%>
+</div>  
+    </div>
+ <div>
 <% end %>
+
+</div>

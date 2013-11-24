@@ -3,12 +3,10 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   filter_resource_access
 
-  respond_to :html, :only => [:show, :index]
-
   # GET /problems
   # GET /problems.json
   def index
-    @problems = Problem.all
+    @problems = Problem.search(params[:search]).order(created_at: :desc).paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /problems/1
@@ -20,10 +18,13 @@ class ProblemsController < ApplicationController
   # GET /problems/new
   def new
     @problem = Problem.new
+    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
+    @problem.contact = current_user.email
   end
 
   # GET /problems/1/edit
   def edit
+    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
   end
 
   # POST /problems
@@ -66,6 +67,7 @@ class ProblemsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_problem
       @problem = Problem.find_by_id(params[:id])
@@ -76,6 +78,6 @@ class ProblemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def problem_params
-      params.require(:problem).permit(:title, :contact, :description, :telephone, :areas_of_knowledge, :user_id)
+      params.require(:problem).permit(:title, :contact, :description, :telephone, :areas_of_knowledge_id, :user_id)
     end
 end

@@ -1,12 +1,15 @@
 Brainsolve::Application.routes.draw do
-  resources :products
-
   devise_for :users
   #resources :solutions
 
   resources :problems
 
+  post '/solutions/:id/choose_solution' => 'solutions#choose_solution', as: :choose_solution
+  put '/solutions/notification_check' => 'solutions#notification_check', as: :notification_check
+
+
   post	 '/solutions'	=> 'solutions#create'
+  
   get '/problems/:id/solutions/new' => 'solutions#new', as: :new_solution
   get '/solutions/:id/edit' => 'solutions#edit', as: :edit_solution
   get '/solutions/:id' => 'solutions#show', as: :solution
@@ -17,7 +20,11 @@ Brainsolve::Application.routes.draw do
 
 #controlador/vista  =>  controlador#metodo as: nombre
 
+#Rutas para links del Menú
   get 'menu/noticias' => 'menu#noticias' 	
+  get 'menu/queesbrainsolve' => 'menu#queesbrainsolve'
+  get 'menu/problemas' => 'menu#menuproblemas'
+  get 'menu/top10' => 'menu#top10'
 
   root "problems#index"
   
