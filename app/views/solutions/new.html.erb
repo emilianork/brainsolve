@@ -1,3 +1,6 @@
-<h1>Crear Aporte (agregar aporte)</h1>
-<%= render "form" %>
-<%= link_to 'Atras', problem_path(@solution.problem_id) %>
+<h1>Crear Aporte <small>(agregar aporte)</small></h1>
+<%= render "form"%>
+
+<%= link_to problem_path(@solution.problem_id)  do%>
+  <button type="button" class="btn btn-default">&larr;Atrás</button>
+<% end %>

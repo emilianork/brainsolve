@@ -1,114 +1,136 @@
 <%= form_for(@solution) do |f| %>
-  
+   <div class="row">
+    <div class="span4">  
+
+      <div class="field" id="email_err">
+	<div class="control-group">
+	  <%= f.label :Email%>
+	  <div class="controls">
+	    <div class="input-prepend">
+	      <span class="add-on"><i class="icon-envelope"></i></span>
+		<%= f.text_field :email, :placeholder => "Agregar Email (obligatorio)"%>
+	      <span id="emailerror" style="font-family: Verdana, Arial, 
+		Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+		position:relative;visibility:hidden;">
+		<strong>¡¡Error!!</strong> El campo debe tener un correo valido
+	      </span>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="span6">
+
+      <div class="field" id="telefono5">
+	<%= f.label :Telefono_de_contacto %>
+	<%= f.text_field :telephone, :placeholder => "Agregar Número de Contacto"  %>
+	<span id="telerror" style="font-family: Verdana, Arial, 
+	  Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	  position:relative;visibility:hidden;">
+	  <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
+	</span>
+      </div>
+    </div>
+   </div>
+   
+   <div class="row">
+    <div class="span4">  
+      <% if @solution.errors.messages.include?(:company) %>
+	<%@solution.errors.messages[:company].each do |message|%>
+	  <%= message%>
+	<% end %>
+      <% end %>
+      <div class="field">
+	<%= f.label :Compañia %>
+	<%= f.text_field :company,:placeholder => "Agregar Nombre de Compañia" %>
+	<span id="companyerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         <strong>¡¡Error!!</strong> El campo no debe estar vacio
+	</span>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="field" id="telcomp">
+	<%= f.label :Telefono_de_la_compañia %>
+	<%= f.text_field :company_telephone, :placeholder => "Agregar Teléfono de Compañia"  %>
+	<span id="company_telephoneerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+       	 <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
+	</span>
+      </div>
+   </div>
+
+          <fieldset> 
+          <div style="padding-left:200px">
   <% if @solution.errors.messages.include?(:text) %>
      <%@solution.errors.messages[:text].each do |message|%>
        <%= message%>
      <% end %>
   <% end %>
+
   <div class="field">
-    <%= f.label :Texto%>*<br>
-    <%= f.text_area :text %>
+    <%= f.text_area :text,:placeholder => "Escribir la Solución", :resize => "none" %>
     <span id="texterror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+      <div class="container">  
+	<div class="row">  
+	  <div class="span4"> 
+	    <div class="alert alert-error">  
+	      <a class="close" data-dismiss="alert">×</a>  
+	      <strong>¡¡Error!!</strong> El campo no debe estar vacio  
+	    </div>  
+	  </div>  
+	</div>  
+      </div>  
     </span>
   </div>
-  
-  <% if @solution.errors.messages.include?(:estimate) %>
-     <%@solution.errors.messages[:estimate].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Presupuesto%><br>
-    <%= f.text_field :estimate %>
-    <span id="estimateerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe tener un telefono valido!!!
-    </span>
   </div>
-  
-  <% if @solution.errors.messages.include?(:currency) %>
-     <%@solution.errors.messages[:currency].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Tipo_de_moneda %><br>
-   <%= f.select(:currency,
-   options_for_select([["Ninguno","None"],
-                       ["MX","MX"],
-                       ["US", "US"]
-                       ])) %><br /></div>
+          </fieldset>
 
-    <span id="currencyerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
-    </span>
-  </div>
-  
-  <% if @solution.errors.messages.include?(:email) %>
-     <%@solution.errors.messages[:email].each do |message|%>
-       <%= message%>
+  <div style="padding-left:30px">
+   <div class="row">
+    <div class="span4">
+     <% if @solution.errors.messages.include?(:estimate) %>
+      <%@solution.errors.messages[:estimate].each do |message|%>
+	<%= message%>
+      <% end %>
      <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Email%>*<br>
-    <%= f.text_field :email %>
-    <span id="emailerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe tener un correo valido!!!
-    </span>
+     <div class="field">
+      <%= f.label :Presupuesto%>
+      <%= f.text_field :estimate, :placeholder => "Ingresar Presupuesto" %>
+      <span id="estimateerror" style="font-family: Verdana, Arial, 
+	Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	position:relative;visibility:hidden;">
+       <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
+      </span>
+     </div>
+    </div>
+    <div class="span6">
+     <% if @solution.errors.messages.include?(:currency) %>
+      <%@solution.errors.messages[:currency].each do |message|%>
+        <%= message%>
+      <% end %>
+     <% end %> 
+     <div class="field">
+      <%= f.label :Tipo_de_moneda %>
+      <%= f.select(:currency,
+	options_for_select([["Ninguno","None"],
+			     ["MX","MX"],
+		             ["US", "US"]]))%>
+      <span id="currencyerror" style="font-family: Verdana, Arial, 
+	      Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+	      position:relative;visibility:hidden;">
+	<strong>¡¡Error!!</strong> El campo no debe estar vacio
+      </span>
+     </div>
+    </div>
+   </div>
   </div>
+
   
-  <% if @solution.errors.messages.include?(:telephone) %>
-     <%@solution.errors.messages[:telephone].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Telefono_de_contacto %><br>
-    <%= f.text_field :telephone %>
-    <span id="telerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe tener un telefono valido!!!
-    </span>
-  </div>
-  
-  <% if @solution.errors.messages.include?(:company) %>
-     <%@solution.errors.messages[:company].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Compañia %><br>
-    <%= f.text_field :company %>
-    <span id="companyerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
-    </span>
-  </div>
-  
-  <% if @solution.errors.messages.include?(:company_telephone) %>
-     <%@solution.errors.messages[:company_telephone].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Telefono_de_la_compañia %><br>
-    <%= f.text_field :company_telephone %>
-    <span id="company_telephoneerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-       	 El campo debe tener un telefono valido!!!
-    </span>
-  </div>
   
   <% if @solution.errors.messages.include?(:problem_id) %>
      <%@solution.errors.messages[:problem].each do |message|%>
@@ -129,6 +151,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <div class="span5">
+      <%= f.submit%>
+    </div>
   </div>
+
+  
 <% end %>

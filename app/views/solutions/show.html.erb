@@ -1,45 +1,51 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Texto:</strong>
+  <strong>Texto: </strong>
   <%= @solution.text %>
 </p>
 
 <p>
-  <strong>Presupuesto:</strong>
+  <strong>Presupuesto: </strong>
   <%= @solution.estimate %>
 </p>
 
 <p>
-  <strong>Tipo de moneda:</strong>
+  <strong>Tipo de moneda: </strong>
   <%= @solution.currency %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Email: </strong>
   <%= @solution.email %>
 </p>
 
 <p>
-  <strong>Telefono de contacto</strong>
+  <strong>Telefono de contacto: </strong>
   <%= @solution.telephone %>
 </p>
 
 <p>
-  <strong>Compañia</strong>
+  <strong>Compañia: </strong>
   <%= @solution.company %>
 </p>
 
 <p>
-  <strong>Telefono de la compañia</strong>
+  <strong>Telefono de la compañia: </strong>
   <%= @solution.company_telephone %>
 </p>
 
 <p>
-  <strong>Usuario:</strong>
+  <strong>Usuario: </strong>
   <%= @solution.user.nickname %>
 </p>
+<%= link_to problem_path(@solution.problem_id)  do%>
+  <button type="button" class="btn btn-default">&larr;Atrás</button>
+<% end %>
+
 <%if @solution.owner(current_user) %>
-	<%= link_to 'Editar', edit_solution_path(@solution) %> |
-<%end%>
-<%= link_to 'Atras', problem_path(@solution.problem_id) %>
+  <%= link_to edit_solution_path(@solution) do%> 
+    <button type="button" class="btn btn-default">Editar</button>
+  <% end %>
+<% end %>
+

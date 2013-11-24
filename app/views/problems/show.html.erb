@@ -33,7 +33,7 @@
 <table>
   <thead>
     <tr>
-      <th>Texto</th>
+      <th>Texto::</th>
       <th>Presupuesto estimado</th>
       <th>Tipo de moneda</th>
       <th>Email</th>
@@ -47,7 +47,7 @@
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>
-        <td><%= solution.text %></td>
+        <td><%= solution.text %>:</td>
         <td><%= solution.estimate %></td>
         <td><%= solution.currency %></td>
         <td><%= solution.email %></td>

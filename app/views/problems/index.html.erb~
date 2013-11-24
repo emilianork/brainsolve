@@ -27,7 +27,7 @@
         <td class="btn btn-primary"><%= link_to 'Ver', problem %></td>
         <% if (problem.owner(current_user)) %>
           <td class="btn btn-info"><%= link_to 'Editar', solutions_path(problem) %></td>
-         <td><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+         <td class="btn btn-warning"><%= link_to 'Eliminar', problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
         <% end %>
       </tr>
     <% end %>
