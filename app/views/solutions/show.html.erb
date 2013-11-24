@@ -11,13 +11,9 @@
 </p>
 
 <p>
-<<<<<<< HEAD
-  <strong>Tipo de moneda: </strong>
-  <%= @solution.currency %>
-=======
+
   <strong>Tipo de moneda:</strong>
   <%= @solution.currency.acronym %>
->>>>>>> design_erika
 </p>
 
 <p>
@@ -44,24 +40,20 @@
   <strong>Usuario: </strong>
   <%= @solution.user.nickname %>
 </p>
-<%= link_to problem_path(@solution.problem_id)  do%>
+<%= link_to problem_path(@solution.problem_id)  do %>
   <button type="button" class="btn btn-default">&larr;Atrás</button>
 <% end %>
 
 <%if @solution.owner(current_user) %>
-<<<<<<< HEAD
   <%= link_to edit_solution_path(@solution) do%> 
     <button type="button" class="btn btn-default">Editar</button>
   <% end %>
 <% end %>
 
-=======
-	<%= link_to 'Editar', edit_solution_path(@solution) %> |
-<%end%>
-<%= link_to 'Atras', problem_path(@solution.problem_id) %>
 <%if @solution.problem.owner(current_user)%>
-<%if @solution.notification.nil? then%>
-<%= link_to 'Elegir', choose_solution_path(@solution), :method => :post %>
+<%if @solution.notification.nil? then %>
+<%= link_to choose_solution_path(@solution), :method => :post do %>
+  <button type="button" class="btn btn-default">Elegir</button>
 <%end%>
 <%end%>
->>>>>>> design_erika
+<%end%>
