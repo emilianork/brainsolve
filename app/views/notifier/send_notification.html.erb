@@ -1,7 +1,7 @@
   <style>
  body {
     background-color: #FFFFFF;
-    color: CC0000;
+    color: #000000;
     text-align: center;
     font-family: arial, sans-serif;
 
@@ -19,32 +19,17 @@ h3 {
    font-variant: small-caps; 
   }
 </style>
+<td> 
+<%= image_tag attachments['cerebro_logo.png'].url, align: "left", vspace: "20", hspace: "30" %> 
 
-<div align = "left">    
-   <img  src="cerebro.jpg"  WIDTH=50 HEIGHT=35 />  
+
+</br>
+<h3>Una de tus ideas ha sido elegida.</h3>
+</br>
+<p> El usuario "<%= @user.nickname %>" con email <%= @user.email %> quiere ponerse en contacto contigo, por el problema "<%= @problem.title%>". </p>
+
+<div align="center">
+<%= link_to "#{@path}#{solution_path(@solution)}" do %>
+  <button type="button", class="btn btn-default">Ir al aporte</button>
+<%end%>
 </div>
-
-<div align="left" >
-<h3>Brainsolve!</h3>
- <img  src="cerebro.jpg"  WIDTH=50 HEIGHT=35 />
- <%= image_tag("cerebro.jpg") %>
-
-<%= image_tag ('cerebro.jpg') %>
-</div>
-</br>
-<h3>Aceptada!!</h3>
-</br>
-<p> Has recibido una notificación de aceptación de Brainsolve</p>
-</br>
-<p>Una de tus ideas fue aceptada!!</p>
-</br>
-
-<p> Aporte elegido por el usuario:  @user.nickname </p>
-<p> para que le ayudes con el problema @problem.title</p>
-<p> ¿Cómo no se le ocurrió a él? ...  ;) </p>
-
-
-<p> Da click en el siguiente link para ir a Brainsolve y </p>
-
-<a href="http://localhost:3000">Enterate de los detalles!!</a> 
-

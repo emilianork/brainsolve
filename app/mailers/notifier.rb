@@ -10,6 +10,11 @@ class Notifier < ActionMailer::Base
     @solution = solution
     @user = @solution.user
     @problem = @solution.problem
+    @path = "http://lvh.me:3000" if Rails.env == "development"
+    @path = "http://emilianork.me" if Rails.env == "production"
+
+    attachments.inline['cerebro_logo.png'] = File.read('public/cerebro_logo.png')
+
     mail to: @user.email, subject: 'Brainsolve - Notificación'
   end
 end
