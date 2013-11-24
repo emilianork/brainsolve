@@ -11,8 +11,8 @@ body {
 
 p, ol, ul {
 
-  /*font-family: Courier New, Courier, monospace;*/
-  font-family: AverageSans, regular;
+  font-family: Courier New, Courier, monospace;
+  /*font-family: AverageSans, regular;*/
   font-size: 17px;
   line-height: 18px;
 }
@@ -29,7 +29,8 @@ border-radius:10px;
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+font-family: arial, sans-serif;
+  font-size: 100%;
 }
 
 a {
