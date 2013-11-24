@@ -58,15 +58,19 @@
 	         <div id='cssmenu' > <!--menu CSS principal-->
 	            <ul>
 	               <li><%= link_to "Lista de Problemas", problems_path  %></li>
-	               <li class='last'>	<% if !current_user %>
+	               <!--<li class='last'>	-->
+                  <% if !current_user %>
 	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
 	               <li><%= link_to 'Entrar', new_user_session_path %></li>
 	               <%else%>
 	               <li><%= link_to "Crear problema", new_problem_path %></li> 
-	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
+	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %></li>
+                 <%end%>
+                 </li>
 	               <li><%= form_tag problems_path, :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search] %></li>
-	               <li><%= submit_tag "Buscar", :name => nil %> 
-                  <% end %></li>
+	               <li><%= submit_tag "Buscar", :name => nil %></li> 
+                  <% end %>
+                <!--</li>-->
 	            </ul>
 	         </div> <!--END cssmenu-->
 	        </div> <!--END padding-left-->
@@ -106,7 +110,7 @@
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
-
+<%= link_to 'Salir', destroy_user_session_path, method: :delete  %>
 </body >
 
 </html>
