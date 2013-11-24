@@ -64,7 +64,7 @@
 </br>
 </br>
 </br>
-<div class = "offset2"><h2>Ingresa tus datos!! (Opcional) </h2></div>
+<div class = "offset0"><h2>Ingresa tus datos!! (opcional) </h2></div>
 
     <div class="row">
     <div class="span6 offset0"><% if resource.errors.messages.include?(:first_name) %>
@@ -92,23 +92,21 @@
 
   <div class = "offset"><%= f.label :telefono%>
   <%= f.text_field :telephone , :placeholder => "Introduzca teléfono" %></div>
-	
+</br>
+
+    <% if (resource.role.nil?) %>
+    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
+    <%else%>
+    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
+    [resource.role])) %>
+  <%end%>
 	</div>
- 
-</div>
-<div class="span10 offset9"><%= f.submit "Registar",:class => 'btn btn-primary'%></div>
+<div class="span10 offset8">
+  <%= f.submit "Registar",:class => 'btn btn-primary'%>
+<%= link_to_function "Regresar", "history.back()", :class => "btn btn-default"%>
+</div>  
     </div>
  <div>
-        <% if (resource.role.nil?) %>
-		<%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
-   	<%else%>
-		<%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
-		[resource.role])) %>
-	<%end%>
-  <br/></div>
-  <div><%= f.submit "Registar" %>
-       <%= link_to_function "Back", "history.back()"%>
-  </div>
 <% end %>
 
 </div>

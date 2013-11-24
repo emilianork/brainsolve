@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-  <title>Brainsolve</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-
-<body>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,8 +37,7 @@
 
     <%= javascript_include_tag "application" %>
  </head>
-  
-  
+  <body>  
   <!--begin ventana fija-->
     <div class="navbar navbar-fluid-top" style="position:fixed; width:100%;"> 
         <div class="form-actions menuSuperior" >
@@ -64,7 +55,7 @@
 	      <li><%= link_to "Crear problema", new_problem_path %></li> 
 	      <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
 	      <li><%= form_tag problems_path, :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search] %></li>
-	      <li><%= submit_tag "Buscar", :name => nil %> <%= render 'problems' %> <% end %></li>
+	      <li><% end %></li>
 	     </ul>
 	</div> <!--END cssmenu-->
 	</div> <!--END padding-left-->
