@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution, :notification]
+  before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution]
   before_filter :authenticate_user!, :except => [:show]
-  filter_resource_access
+  #filter_resource_access
 
   # GET /solutions/1
   # GET /solutions/1.json
@@ -94,12 +94,18 @@ class SolutionsController < ApplicationController
   end
 
   def notification_check
-      respond_to do |format|
-        if current_user.nil? then
-          format.js
-        end
+    @notifications = params[:notifications]
+
+    @notifications.each do |notification|
+      notification = Notification.find_by_id(notification)
+      if !(notification.nil?) then
+        #notification.update_attributes(view: true)
       end
-      
+    end
+
+    respond_to do |format|
+      format.js
+    end  
   end
 
   private
