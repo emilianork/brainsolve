@@ -56,78 +56,59 @@
 
         <!-- BEGIN DIV MENU SUPERIOR-->
 
-	<div class = "span11 offset0">
-
-
-	  <div style="padding-left:650px; position:absolute;padding-top:20px; height:auto;">
-	  <div id='cssmenu' > <!--menu CSS principal-->
-	    <ul>
-	      <li><%= link_to "Lista de Problemas", problems_path  %></li>
-	      <li class='last'>	<% if !current_user %>
-	      <li><%= link_to 'Registrarse',new_user_registration_path %></li>
-	      <li><%= link_to 'Entrar', new_user_session_path %></li>
-	      <%else%>
-	      <li><%= link_to "Crear problema", new_problem_path %></li> 
-	      <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
-	      <li><%= form_tag problems_path, :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search] %></li>
-	      <li><%= submit_tag "Buscar", :name => nil %> 
-        <% end %></li>
-	     </ul>
-	</div> <!--END cssmenu-->
-
-	</div> <!--END padding-left-->
-
-	  <!--logotipo -->
- 	 <p><h1 >   <%= image_tag 'images.jpeg', :size => "60x100" %> Brainsolve</h1> </p>
-	
-	</div><!--END span11 ofset0-->
-	<!--END DIV MENU SUPERIOR-->
-	
-	<!-- </div><!--END form-actions-->
-      </div><!--END navbar navbar-->
+	       <div class = "span11 offset0">
+	        <div style="padding-left:650px; position:absolute;padding-top:20px; height:auto;">
+	         <div id='cssmenu' > <!--menu CSS principal-->
+	            <ul>
+	               <li><%= link_to "Lista de Problemas", problems_path  %></li>
+	               <!--<li class='last'>	-->
+                  <% if !current_user %>
+	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
+	               <li><%= link_to 'Entrar', new_user_session_path %></li>
+	               <%else%>
+	               <li><%= link_to "Crear problema", new_problem_path %></li> 
+	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %></li>
+                 <%end%>
+                 </li>
+	               <li><%= form_tag problems_path, :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search] %></li>
+	               <li><%= submit_tag "Buscar", :name => nil %></li> 
+                  <% end %>
+                <!--</li>-->
+	            </ul>
+	         </div> <!--END cssmenu-->
+	        </div> <!--END padding-left-->
+           <!--logotipo -->
+           <p>
+            <h1 class = "loquese"> Brainsolve  <%=link_to image_tag("images.jpeg"),url_for(problems_path) %></h1>
+           </p>
+	       </div><!--END span11 ofset0-->
+	       <!--END DIV MENU SUPERIOR-->
+	     </div><!--END form-actions-->
+    </div><!--END navbar navbar-->
+   
+   <div class="container problemas"> 
+      <div class="row">
+           
+         <div class="span2">
+            <div class="cajitaPerfil affix">
+               <%= image_tag 'onion.jpg', :alt => 'logo' %>
+               <div id= "enlaces">
+	               <h4>Usuario</h4>   	
+                  <%= link_to "Mis Problemas ", menu_noticias_path  %>
+                  <%= link_to "Mejores Aportadores", menu_problemas_path  %>
+               </div>
+            </div><!--/aqui se cierra la cajita del perfil --> 
+         </div><!--/span2 esta es la cajita que encierra al perfil -->
+         
+         <div class= "span7">
+            <%= bootstrap_flash %>
+            <%= yield %>
+         </div><!--/Dentro de esto va lo demas que genera rails -->
+      </div><!-- se cierra la columna general -->
+   </div><!-- Se cierra el contenedor general -->
     
 
-
-    <div class="offset0 problemas" > <!--define la caja que contiene el perfil y las preguntas-->
-    <div class="container-fluid">
-      <div class="row-fluid fondoBlanco"> 
-       
-       <div > <!-- BEGIN DIV del cual encerraremos todo en una cajita blanca-->
-       </div> <!--END DIV cajita blanca-->
-       <div class="span2">
-	
-          <div class="cajitaPerfil sidebar-nav">
-            <%= image_tag 'onion.jpg', :alt => 'logo', :size => "70x70" %></li>
-	      <h3>Usuario</h3><br>	
-              <%= link_to "Mis Problemas ", menu_noticias_path  %><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n+1</b><br>
-              <%= link_to "Mejores Aportadores", menu_problemas_path  %><br>
-             
-            
-          </div><!--/.well --> 
-       </div><!--/span2 -->
-
- <!--Tabla que marc-->
- <div class="span8" style="padding-left:80px; width:700px;">
- <div class="row-fluid">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-	<img data-src="holder.js/300x200"></img>
-	<div class="caption">
-       
-	  <%= bootstrap_flash %>
-	  <%= yield %> 
-      
-	</div> <!--END caption-->
-      </div> <!--END thumbnail-->
-    </div><!--END col-sm-6-->   
-  </div><!--END row-fluid-->
- </div> <!--END span6-->
- 
-  
- 
-        </div><!--/row-fluid-->
-     </div> <!--container-fluid-->
-      <div align="center">
+   <div align="center">
 
       <footer>
          <p >&copy; Brainsolve 2013</p>

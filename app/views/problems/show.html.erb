@@ -5,29 +5,25 @@
 
 <adress>
   <div style="border-radius:10px;" class="img-thumbnail"></div>
-  <h3><strong><%= @problem.user.nickname %></strong></h3>
+  <h3><%= @problem.title %></h3><div class="fondoDatos"><%= @problem.user.nickname %></div>
+ 
   
-  
-  <strong>Titulo</strong><br>
-  <%= @problem.title %>
   <br>
   <br>
-  <strong>Correo:</strong><br>
-  <%= @problem.contact%>
+  <div class="fondoDatos"><%= @problem.contact%></div> &nbsp;&nbsp; <div class="fondoDatos"><%= @problem.telephone %></div>
   <br>
   <br>
 
   <strong>Descripcion:</strong><br>
-  <%= @problem.description %>
+  <div class="fondoDatos"><%= @problem.description %></div>
   <br>
   <br>
-  <strong>Teléfono:</strong><br>
-  <%= @problem.telephone %>
+
   <br>
   <br>
   
   <strong>Categoría:</strong><br>
-  <%= @problem.areas_of_knowledge.name %>
+  <div class="fondoDatos"><%= @problem.areas_of_knowledge.name %></div>
   <br>
   <br>
   
