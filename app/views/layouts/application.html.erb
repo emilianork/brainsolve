@@ -46,9 +46,9 @@
 
     <%= javascript_include_tag "application" %>
  </head>
-  
-  
-  <!--begin ventana fija-->
+ <body> 
+   
+       <!--begin ventana fija-->
     <div class="navbar navbar-fluid-top" style="position:fixed; width:100%;"> 
         <div class="form-actions menuSuperior" >
 
@@ -72,16 +72,16 @@
 	        </div> <!--END padding-left-->
            <!--logotipo -->
            <p>
-            <h1 class = "loquese"> Brainsolve  <%=link_to image_tag("images.jpeg"),url_for(problems_path) %></h1>
+            <h1 class = "loquese"> Brainsolve  <%=link_to image_tag("images.jpeg"),url_for(root_path), :class => 'quick' %></h1>
            </p>
 	       </div><!--END span11 ofset0-->
 	       <!--END DIV MENU SUPERIOR-->
 	     </div><!--END form-actions-->
     </div><!--END navbar navbar-->
    
-   <div class="container problemas"> 
+   
+   <div class="container"> 
       <div class="row">
-           
          <div class="span2">
             <div class="cajitaPerfil affix">
                <%= image_tag 'onion.jpg', :alt => 'logo' %>
@@ -93,20 +93,13 @@
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
          
-         <div class= "span7">
+         <div class= "offset1 span7">
             <%= bootstrap_flash %>
             <%= yield %>
          </div><!--/Dentro de esto va lo demas que genera rails -->
       </div><!-- se cierra la columna general -->
    </div><!-- Se cierra el contenedor general -->
-    
-
-   <div align="center">
-      <footer>
-         <p >&copy; Brainsolve 2013</p>
-      </footer>
-   </div> <!--END align center-->
-
-</body >
+  
+ </body >
 
 </html>
