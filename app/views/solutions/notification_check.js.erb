@@ -1,0 +1,10 @@
+<%@notifications.each do |notification_id|%>
+<% @notification = Notification.find_by_id(notification_id) %>
+	<% if !(@notification.nil?) then %>
+		$(".notification-<%=@notification.id%>").remove();
+	<%end%>
+<%end%>
+
+if ($(".notifications").children().length == 0) {
+	$(".notifications").remove();
+}
