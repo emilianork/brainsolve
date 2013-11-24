@@ -45,3 +45,34 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
 }  
 
 
+/*define el texto de la cajita del perfil principal */
+.cajitaPerfil{
+  width: 11%;
+  height: 28%;
+  min-width:60px;
+  min-height: 20px;
+background-color: rgb(245, 245, 245);
+border: 1px solid rgb(227, 227, 227);
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+  
+}
+
+.cajitaPerfil #enlaces{
+   position: relative;
+   width: 80%;
+   height: 80%;
+   left: 10%;
+   top: 3%;
+}
+
+.cajitaPerfil img{
+   position: relative;
+   left: 18%;
+   top: 1em;
+   padding: 2%;
+   width: 70px;
+   height: 70px;
+}
+
+
