@@ -94,6 +94,9 @@ class SolutionsController < ApplicationController
   end
 
   def notification_check
+    if !(User.db_connect?) then
+      redirect_to root_path
+    end
     @notifications = params[:notifications]
 
     @notifications.each do |notification|
