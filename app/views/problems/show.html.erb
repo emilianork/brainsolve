@@ -5,8 +5,12 @@
 
 <adress>
   <div style="border-radius:10px;" class="img-thumbnail"></div>
+
   <h3><%= @problem.title %></h3><div class="fondoDatos"><%= @problem.user.nickname %></div>
  
+
+
+
   
   <br>
   <br>
@@ -67,4 +71,4 @@
   </tbody>
 </table>
 
-<%= will_paginate @solutions %>
+<%= will_paginate @solutions, :class=> "flickr_pagination"%>

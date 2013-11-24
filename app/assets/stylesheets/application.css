@@ -13,18 +13,6 @@
  */
 
 
-
-.loquese{
- width: 7%;
- max-height:7%; 
-}
-
-.loquese img{
-/*position: absolute; */
-width: 100%;
-
-}
-
 ul.nav
 {
    list-style:none;
@@ -47,8 +35,9 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
 
 /*define el texto de la cajita del perfil principal */
 .cajitaPerfil{
-  width: 11%;
-  height: 28%;
+  width: inherit;
+  height: inherit;
+  padding-bottom: 2%; 
   min-width:60px;
   min-height: 20px;
 background-color: rgb(245, 245, 245);
@@ -75,4 +64,11 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
    height: 70px;
 }
 
-
+/*Define los estilos del contenedor general de las demas vistas*/
+.contenedorGeneral{
+  
+  margin-top:8%;
+  width: 100%;
+  height: inherit;
+  
+}
