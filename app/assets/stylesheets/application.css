@@ -13,24 +13,11 @@
  */
 
 
-ul.nav
-{
-   list-style:none;
+@font-face { 
+   font-family: "AverageSans"; 
+   src: url("AverageSans-Regular.ttf");
+   format ("ttf"); 
 }
-
-
-ul.nav ul /* Para todos los ul debajo del ul.menu */
-{
-   display:none;
-   list-style:none;
-} 
-
-.pull-center > .navbar  {
-    float:none;
-    display:inline-block;
-    *display: inline; *zoom: 1;
-    height: 32px;
-}  
 
 
 /*define el texto de la cajita del perfil principal */
@@ -71,4 +58,9 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
   width: 100%;
   height: inherit;
   
+}
+
+td{
+   font-family: AverageSans, regular;
+   font-size: 1em;
 }
