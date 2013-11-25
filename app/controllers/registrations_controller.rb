@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
 	def create
-    flash[:error] = "ACA PASO ACA PASO2"
+    flash[:error] = ["ACA PASO", "ACA PASO2"]
     flash[:notice] = "ACA PASO1"
 		puts "aca paso"
 		build_resource(sign_up_params)
