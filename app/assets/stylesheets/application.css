@@ -35,13 +35,6 @@ ul.nav
    font-family: verdana, arial, helvetica, sans-serif;
 }
 
-
-ul.nav ul /* Para todos los ul debajo del ul.menu */
-{
-   display:none;
-   list-style:none;
-} 
-
 .table-nonfluid {
    width: auto;
 }
