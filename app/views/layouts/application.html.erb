@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <link rel="shortcut icon" href="/home/charly/brainsolve/app/assets/images/brain.jpg"/>
     <title><%= content_for?(:title) ? yield(:title) : "Brainsolve" %></title>
     <%= csrf_meta_tags %>
 
@@ -32,41 +34,41 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
  </head>
+
  <body>
-   <div class="navbar navbar-fixed-top ">
-      <div class= "navbar-inner ">
-         <div class="brand ">
-            <div class="span1 offset2" >
-               <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
-            </div>   
+   <div id="menu" class="navbar navbar-fixed-top" >
+      <div class= "navbar-inner">
+         <div class="row">
+            <div class="brand " style="padding-left:20%;">
+               <div class="span1">
+                  <%=link_to image_tag("logo.png"),url_for(root_path) %>
+               </div>   
+            </div>
+            <ul class="nav">
+               <li>
+               <li><%= link_to "Lista de Problemas", problems_path  %></li>
+	            <li class='last'>	
+	            <% if !current_user %>
+	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
+	               <li><%= link_to 'Entrar', new_user_session_path %></li>
+	            <%else%>
+	               <li><%= link_to "Crear problema", new_problem_path %></li> 
+	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
+	               <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
+	               <li><%= submit_tag "Buscar", :name => nil %></li>
+               <% end %>
+            </ul>
          </div>
-         <div class="brand">
-            <h1> Brainsolve </h1>
-         </div>
-         <ul class="nav">
-            <li>
-            <li><%= link_to "Lista de Problemas", problems_path  %></li>
-	         <li class='last'>	
-	         <% if !current_user %>
-	            <li><%= link_to 'Registrarse',new_user_registration_path %></li>
-	            <li><%= link_to 'Entrar', new_user_session_path %></li>
-	         <%else%>
-	            <li><%= link_to "Crear problema", new_problem_path %></li> 
-	            <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
-	            <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
-	            <li><%= submit_tag "Buscar", :name => nil %></li>
-            <% end %>
-         </ul>
       </div>
    </div>
    <div>
     <div class="container contenedorGeneral"> 
+
       <div class="row">
-         <div class="span2">
-            <div class="cajitaPerfil affix">
+         <div class="span2" >
+            <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
 	               <h4>Usuario</h4>   	
@@ -75,9 +77,9 @@
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
-         <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">
-         
-            
+
+         <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">  
+
             <%= bootstrap_flash %>
             <%= yield %>
          </div><!--/Dentro de esto va lo demas que genera rails -->
@@ -85,6 +87,7 @@
    </div><!-- Se cierra el contenedor general -->
     
    <div align="center">
+
       <footer>
          <p >&copy; Brainsolve 2013</p>
       </footer>

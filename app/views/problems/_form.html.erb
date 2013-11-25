@@ -1,113 +1,65 @@
 <%= form_for(@problem) do |f| %>
-  
-	<div>
-	
-	  <% if @problem.errors.messages.include?(:title) %>
-     <%@problem.errors.messages[:title].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-	
-	  <%= f.label :Titulo%>
-	  <%= f.text_area :title, :style => "width:500px;  height:16px; resize:none" %>
-	  
-	  <span class="titleerror" style="font-family: Verdana, Arial, 
-	    Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	    position:relative;visibility:hidden;">
-	    El campo no debe estar vacio!!!
-	  </span>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+<div class="row">
+	<div class="span6 offset0">
+		<%= f.label :Titulo, "Título *"%>
+	  	<%= f.text_area :title, :style => "width:605px; resize:none" %>
 	</div>
-	  <br>
-	<div>
-	    <div class="box">
-	    
-	      <% if @problem.errors.messages.include?(:telephone) %>
-	      <%@problem.errors.messages[:telephone].each do |message|%>
-	      <%= message%>
-	      <% end %>
-	      <% end %>
-	    <%= f.label :Telefono_de_contacto %>
-	    <%= f.text_field :telephone %><br>
-	      <span class="telerror" style="font-family: Verdana, Arial, 
-	      Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	      position:relative;visibility:hidden;">
-	      El campo debe ser un numero de telefono de 8 digitos.
-	      </span></div>
+</div>
 
-	    <div class="box"><%= f.label :Correo_electronico%>
-	    <%= f.text_field :contact %><br>
-	    <span id="emailerror" style="font-family: Verdana, Arial, 
-	    Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	    position:relative;visibility:hidden;">
-	    El campo debe ser un correo electronico valido!!!
-	    </span>
-	    </div>
-	    
-	    <div class="box">
-	       <%= f.label :Area_de_conocimiento %>
-	    <% if (@problem.areas_of_knowledge.nil?) %>
-	    <%= f.select(:areas_of_knowledge_id,
-	    options_for_select(@areas_of_knowlegde)) %>
-	    <%else%>
-	    <%= f.select(:areas_of_knowledge_id,
-	    options_for_select(@areas_of_knowlegde, [@problem.areas_of_knowledge.name,@problem.areas_of_knowledge.id])) %>
-	    <%end%>
-	    </div>
-  
-  <!--TABLE-->
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
+  <div class="row">
+    <div class="span3 offset0">  
+	     <div class="control-group">
+	     <%= f.label :Email, "Email de contacto *"%>
+	     <div class="controls">
+	     <div class="input-prepend">
+	     <span class="add-on"><i class="icon-envelope"></i></span>
+		   <%= f.text_field :contact, :placeholder => "Agregar Email (obligatorio)", style: "width: 180px;"%>
+       </div>
+	     </div>
+	     </div>
+      </div>
+    <div class="span3 offset1">
+      <%= f.label :Telefono_de_contacto, "Telefono de contacto" %>
+	    <%= f.text_field :telephone, :placeholder => "Agregar Número de Contacto"  %>
+    </div>
+    </div>
 
-  <% if @problem.errors.messages.include?(:contact) %>
-      <%@problem.errors.messages[:contact].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div class="field">
-    <%= f.label :Email%>*<br>
-    <%= f.text_field :contact %>
-    <span id="emailerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo debe ser un correo electronico valido
-    </span>
-  </div>
-  
-
-  <div class="box2">
-  <% if @problem.errors.messages.include?(:description) %>
-      <%@problem.errors.messages[:description].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  
-    
-    <%= f.label :Descripcion%>
-    <%= f.text_area :description, :style => "width:500px; height:100px; resize:none;" %><br>
-    <span class="descriperror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         El campo no debe estar vacio
-    </span>
-    
-  </div>
-
-  
-
-
-
-  
-  <div>
-
+<div class="row">
+	<div class="span6 offset0">
+		<%= f.label :Descripcion, "Descripción *"%>
+    	<%= f.text_area :description, :style => "width:605px; height:300px; resize:none;" %><br>
 	</div>
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %><br>
-  </div>
-  <div class="actions">
-   <%= f.submit  %> 
-  </div>
+</div>
+
+
+<div class="arrow">
+	<div class="span4 offset3">
+<%= f.label :Area_de_conocimiento, "Categoria" %>
+	<% if (@problem.areas_of_knowledge.nil?) %>
+		<%= f.select :areas_of_knowledge_id, options_for_select(@areas_of_knowlegde), {}, style: "width: 290px;"  %>
+    <%else%>
+        <%= f.select :areas_of_knowledge_id, 
+        	options_for_select(@areas_of_knowlegde, [@problem.areas_of_knowledge.name,@problem.areas_of_knowledge.id]),
+        	{}, style: "width: 290px;"  %>
+    <%end%>
+</div>
+</div>
+
+
+  <div align="right">
+      <%if @problem.created_at.nil?%>
+      	<%= f.submit "Crear problema",:class => "btn btn-info"%>&nbsp;
+      <%else%>
+      	<%= f.submit "Actualizar",:class => "btn btn-warning"%>&nbsp;
+      <%end%>
+      <%if request.env["HTTP_REFERER"].nil? %>
+    	<%= link_to 'Cancelar', root_path , :class => 'btn btn-default' %>
+  	<%else%>
+    	<%= link_to 'Cancelar', :back , :class => 'btn btn-default' %>
+	<%end%>
+&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+    </div>
 <% end %>
+
 
