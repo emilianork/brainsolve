@@ -14,8 +14,15 @@
 		$(".alert fade in alert-error").css(color: "blue");
 	});
   </script> 
+  <div class="control-group">
   <div><%= f.label :email, "Email *" %> </div>
-  <div> <%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca su correo electrónico"%></div>
+  <div class="controls">
+  <div class="input-prepend">
+  <span class="add-on"><i class="icon-envelope"></i></span>
+  <%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca su correo electrónico"%>
+</div>
+</div>
+</div>
 
   <div><%= f.label :contraseña, "Constraseña *" %></div>
   <div><%= f.password_field :password , :placeholder => "Contraseña" %></div>
