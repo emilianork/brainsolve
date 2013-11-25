@@ -17,9 +17,15 @@ p, ol, ul {
   line-height: 18px;
 }
 
-table td{
+.table td{
   font-family: Courier new, Courier, monospace;
+  height:15px;
+  
+overflow:hidden;
 }
+
+
+
 
 table{
 border-radius:10px;
@@ -61,6 +67,11 @@ div {
 
 label{
 width: 100%;
+
+}
+
+tr{
+height: 20px;
 
 }
 

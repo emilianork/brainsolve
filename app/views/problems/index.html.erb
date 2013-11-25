@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Titulo</th>
-      
       <th>Categoría</th>
       <th>Usuario</th>
 
@@ -17,10 +16,10 @@
     <% @problems.each do |problem| %>
       <tr>
 
-        <td><%= problem.title %></td>
+        <td><%= problem.title%></td>
 
-        <td><%= problem.areas_of_knowledge.acronym %></td>
-        <td><%= problem.user.nickname %></td>
+        <td><%= problem.areas_of_knowledge.acronym[0..10] %></td>
+        <td><%= problem.user.nickname[0..15] %></td>
         <td ><%= link_to 'Ver', problem, :class => 'btn btn-default colorBlanco' %>
 
         <% if (problem.owner(current_user)) %>

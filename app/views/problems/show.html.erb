@@ -43,7 +43,7 @@
 </div>
 
 <div class="row">
-  <div class="span2 offset0">
+  <div class="span2 offset0 ">
   <strong>Descripcion:</strong>
   <pre class="fondoDatos" style="width: 600px"><%= @problem.description %></pre>
 </div>
@@ -56,24 +56,30 @@
 </div>
 </div>
   
-<table>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Correo</th>
+
+
+    </tr>
+  </thead>
   <tbody class="tablareducida" >
     <% @solutions.each do |solution| %>
       <tr>
-        <td><%= solution.text %>:</td>
-        <td><%= solution.estimate %></td>
-        <td><%= solution.currency.acronym %></td>
-        <td><%= solution.email %></td>
-        <td><%= solution.telephone %></td>
-        <td><%= solution.company %></td>
-        <td><%= solution.company_telephone %></td>
-        <td><%= solution.user.nickname %></td>
-        <td><%= link_to 'Ver', solution %></td>
+        <td class="descripcion"><%= solution.user.nickname[0..15] %></td>
+        
+        <td><%= solution.email[0..14]%></td>
+
+
+        
+        <td><%= link_to 'Ver', solution , :class => 'btn btn-default'%></td>
 	       <%if solution.owner(current_user) %>
-        	 <td><%= link_to 'Editar', edit_solution_path(solution) %></td>
+        	 <td><%= link_to 'Editar', edit_solution_path(solution), :class => 'btn btn-warning' %></td>
 	       <%end%>
         <%if solution.owner(current_user) %>
-		      <td><%= link_to 'Eliminar', solution, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+		      <td><%= link_to 'Eliminar', solution, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } , :class => 'btn btn-danger'%></td>
 	       <%end%>
       </tr>
     <% end %>
