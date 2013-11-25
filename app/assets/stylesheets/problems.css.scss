@@ -47,21 +47,6 @@ background-color:white;
 }
 
 
-/*define el texto de la cajita del perfil principal */
-.cajitaPerfil{
-  width:180px;
-  height:250px;
-  min-width:60px;
-  min-height: 20px;
-padding: 19px;
-margin-bottom: 20px;
-background-color: rgb(245, 245, 245);
-border: 1px solid rgb(227, 227, 227);
-border-radius: 4px 4px 4px 4px;
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
-  
-}
-
 
 .anchoCajaBlanca{
   
@@ -69,17 +54,9 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
   
 }
 
-/*Define la posicón de la caja de preguntas y el perfíl*/
-.problemas{
-  
-  
-  padding-top:200px;
-  
-}
 
 /*da formato al menu superior brainsolve*/
-.menuSuperior{
-  
+.menuSuperior{  
   padding-top:10px;
   height:50px;
   
