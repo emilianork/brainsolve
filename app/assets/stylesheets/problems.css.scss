@@ -1,6 +1,20 @@
 // Place all the styles related to the problems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+.table tbody td{
+	overflow:hidden; 
+	max-width:20em;
+}
+
+
+
+
+
+
  .table-nonfluid { width: auto; }
 
 .table tbody td{
@@ -33,6 +47,8 @@ clear:left;
 
 /*estilos para centrar el menu principal*/
 .menuCentro{
+
+background-color:white;
   
   
   

@@ -13,30 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131117091434) do
 
-  create_table "areas_of_knowledges", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "acronym"
-  end
-
-  create_table "currencies", force: true do |t|
-    t.string   "country"
-    t.string   "acronym"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "notifications", force: true do |t|
-    t.integer  "solution_id"
-    t.integer  "problem_id"
-    t.integer  "user_id"
-    t.boolean  "view"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "problems", force: true do |t|
     t.text     "title",                 null: false
     t.string   "contact"
@@ -50,7 +26,6 @@ ActiveRecord::Schema.define(version: 20131117091434) do
 
   create_table "solutions", force: true do |t|
     t.text     "text",              null: false
-    t.integer  "estimate"
     t.string   "email",             null: false
     t.string   "company"
     t.integer  "problem_id",        null: false
@@ -59,7 +34,7 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.datetime "updated_at"
     t.string   "telephone"
     t.string   "company_telephone"
-    t.integer  "currency_id"
+    t.string   "estimate"
   end
 
   create_table "users", force: true do |t|

@@ -1,16 +1,4 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-  <title>Brainsolve</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-   <%= stylesheet_link_tag "pagination", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-
-<body>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -89,7 +77,9 @@
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
+
          <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">  
+
             <%= bootstrap_flash %>
             <%= yield %>
          </div><!--/Dentro de esto va lo demas que genera rails -->
@@ -102,6 +92,6 @@
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
-
+   <%render "layouts/notifications"%>
 </body >
 </html>

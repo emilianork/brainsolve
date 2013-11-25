@@ -1,17 +1,9 @@
 
-
-<p id="notice"><%= notice %></p>
-
-
 <adress>
   <div style="border-radius:10px;" class="img-thumbnail"></div>
 
   <h3><%= @problem.title %></h3><div class="fondoDatos"><%= @problem.user.nickname %></div>
- 
-
-
-
-  
+   
   <br>
   <br>
   <div class="fondoDatos"><%= @problem.contact%></div> &nbsp;&nbsp; <div class="fondoDatos"><%= @problem.telephone %></div>
@@ -35,23 +27,11 @@
 
 </p>
 
-
-<%if @problem.owner(current_user) %>
-<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' } %>
-<%end%>
-<%if current_role == "creative" %>
-<%= link_to 'Crear aporte', new_solution_path(@problem) %>
-<%end%>
-<%if @problem.owner(current_user)%>
-<%= link_to 'Editar', edit_problem_path(@problem) %> 
-<%end%>
-
-
-
+<table>
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>
-        <td><%= solution.text %></td>
+        <td><%= solution.text %>:</td>
         <td><%= solution.estimate %></td>
         <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
@@ -71,4 +51,14 @@
   </tbody>
 </table>
 
+<%if @problem.owner(current_user) %>
+<%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' }, :class =>'btn btn-danger' %>
+<%end%>
+<%if current_role == "creative" %>
+<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-primary'%>
+<%end%>
+<%if @problem.owner(current_user)%>
+<%= link_to 'Editar', edit_problem_path(@problem),:class => 'btn  btn btn-primary' %> |
+<%end%>
+<%= link_to 'Regresar', root_path , :class => 'btn btn-inverse' %>
 <%= will_paginate @solutions, :class=> "flickr_pagination"%>

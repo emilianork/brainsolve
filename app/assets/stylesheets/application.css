@@ -12,6 +12,13 @@
  *= require_tree .
  */
 
+div.box1 {
+width:220px;
+margin:0px;
+margin-left: auto;
+margin-right: auto;
+position: center;
+}
 
 @font-face { 
    font-family: "AverageSans"; 
@@ -19,6 +26,37 @@
    format ("ttf"); 
 }
 
+
+thead{
+ font: small-caps bold 100%/200% serif; 
+}
+
+
+.loquese{
+ width: 3%;
+ max-height:3%; 
+}
+
+ul.nav
+{
+   font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.table-nonfluid {
+   width: auto;
+}
+
+.pull-center > .navbar  {
+    float:none;
+    display:inline-block;
+    *display: inline; *zoom: 1;
+    height: 32px;
+}  
+
+
+.navbar{
+    background-color:     #800000  ;
+    }
 
 /*define el texto de la cajita del perfil principal */
 .cajitaPerfil{

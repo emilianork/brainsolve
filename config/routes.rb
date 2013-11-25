@@ -1,13 +1,15 @@
 Brainsolve::Application.routes.draw do
-
-  get "choose_solutions/choose_solution"
-  get "choose_solutions/notification_view"
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   #resources :solutions
 
   resources :problems
 
+  post '/solutions/:id/choose_solution' => 'solutions#choose_solution', as: :choose_solution
+  put '/solutions/notification_check' => 'solutions#notification_check', as: :notification_check
+
+
   post	 '/solutions'	=> 'solutions#create'
+  
   get '/problems/:id/solutions/new' => 'solutions#new', as: :new_solution
   get '/solutions/:id/edit' => 'solutions#edit', as: :edit_solution
   get '/solutions/:id' => 'solutions#show', as: :solution

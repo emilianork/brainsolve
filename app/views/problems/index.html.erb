@@ -10,13 +10,13 @@
       <th>Categoría</th>
       <th>Usuario</th>
 
-
     </tr>
   </thead>
 
   <tbody class="tablareducida" >
     <% @problems.each do |problem| %>
       <tr>
+
         <td><%= problem.title %></td>
 
         <td><%= problem.areas_of_knowledge.acronym %></td>

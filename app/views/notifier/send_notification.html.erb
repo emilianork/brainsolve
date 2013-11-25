@@ -1,0 +1,35 @@
+  <style>
+ body {
+    background-color: #FFFFFF;
+    color: #000000;
+    text-align: center;
+    font-family: arial, sans-serif;
+
+  }
+
+
+h3 {
+    color: #000000 ;
+    line-height: 0em;	
+    font: oblique bold 120% ; 
+
+  }	
+
+  body > p {
+   font-variant: small-caps; 
+  }
+</style>
+<td> 
+<%= image_tag attachments['cerebro_logo.png'].url, align: "left", vspace: "20", hspace: "30" %> 
+
+
+</br>
+<h3>Una de tus ideas ha sido elegida.</h3>
+</br>
+<p> El usuario "<%= @user.nickname %>" con email <%= @user.email %> quiere ponerse en contacto contigo, por el problema "<%= @problem.title%>". </p>
+
+<div align="center">
+<%= link_to "#{@path}#{solution_path(@solution)}" do %>
+  <button type="button", class="btn btn-default">Ir al aporte</button>
+<%end%>
+</div>
