@@ -25,23 +25,24 @@
 
 
   <div class="row">
-    <div class="span3 offset0">
+    <div class="span2 offset0">
       <strong>Apodo:</strong>
-      <div class="fondoDatos" style="width: 200px"><%= @problem.user.nickname %></div>
+      <div class="fondoDatos" style="width: 240px"><%= @problem.user.nickname %></div>
   </div>
   
-  <div class="span3 offset1">
+  <div class="span2 offset1">
     <strong>Email de contacto:</strong>
-    <div class="fondoDatos" style="width: 200px"><%= @problem.contact%></div> 
+    <div class="fondoDatos" style="width: 296px"><%= @problem.contact%></div> 
   </div>
 </div>
+<%if !@problem.telephone.nil? %>
 <div class="row">
   <div class="span2 offset0">
     <strong>Telefono:</strong>
     <div class="fondoDatos" style="width: 200px"><%= @problem.telephone %></div>
   </div>
 </div>
-
+<%end%>
 <div class="row">
   <div class="span2 offset0">
   <strong>Descripcion:</strong>
@@ -50,9 +51,9 @@
 </div>
 
 <div class="row">
-  <div class="span3 offset4">
+  <div class="span3 offset3">
   <strong>Categoría:</strong>
-  <div class="fondoDatos" style="width: 200px"><%= @problem.areas_of_knowledge.name %></div>
+  <div class="fondoDatos" style="width: 296px"><%= @problem.areas_of_knowledge.name %></div>
 </div>
 </div>
   
