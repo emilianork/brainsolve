@@ -8,10 +8,7 @@
 <%= link_to 'Eliminar', @problem, method: :delete, data: { confirm: '¿Estas seguro de eliminarlo?' }, :class =>'btn btn-danger' %>
 <%end%>
 <%if current_role == "creative" %>
-<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-primary'%>
-<%end%>
-<%if @problem.owner(current_user)%>
-
+<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-info'%>
 <%end%>
 <%if request.env["HTTP_REFERER"].nil? %>
     <%= link_to 'Regresar', root_path , :class => 'btn btn-default' %>
@@ -79,3 +76,16 @@
   </tbody>
 </table>
 
+<div class="row">
+  <div class="span6 offset4">
+<%if current_role == "creative" %>
+<%= link_to 'Crear aporte', new_solution_path(@problem) , :class => 'btn  btn btn-info'%>
+<%end%>
+
+<%if request.env["HTTP_REFERER"].nil? %>
+    <%= link_to 'Regresar', root_path , :class => 'btn btn-default' %>
+  <%else%>
+    <%= link_to 'Regresar', :back , :class => 'btn btn-default' %>
+<%end%>
+</div>
+</div>
