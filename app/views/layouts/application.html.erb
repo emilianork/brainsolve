@@ -46,45 +46,35 @@
 
     <%= javascript_include_tag "application" %>
  </head>
- <body> 
-   
-       <!--begin ventana fija-->
-    <div class="navbar navbar-fluid-top" style="position:fixed; width:100%;"> 
-        <div class="form-actions menuSuperior" >
-
-        <!-- BEGIN DIV MENU SUPERIOR-->
-	       <div class = "span11 offset0">
-	        <div style="padding-left:650px; position:absolute;padding-top:20px; height:auto;">
-	         <div id='cssmenu' > <!--menu CSS principal-->
-	            <ul>
-	               <li><%= link_to "Lista de Problemas", problems_path  %></li>
-	               <!--<li class='last'>	-->
-                  <% if !current_user %>
-	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
-	               <li><%= link_to 'Entrar', new_user_session_path %></li>
-	               <%else%>
-	               <li><%= link_to "Crear problema", new_problem_path %></li> 
-	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %></li>
-                 <%end%>
-                 </li>
-	               <li><%= form_tag problems_path, :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search] %></li>
-	               <li><%= submit_tag "Buscar", :name => nil %></li> 
-                  <% end %>
-                <!--</li>-->
-	            </ul>
-	         </div> <!--END cssmenu-->
-	        </div> <!--END padding-left-->
-           <!--logotipo -->
-           <p>
-            <h1 class = "loquese"> Brainsolve  <%=link_to image_tag("images.jpeg"),url_for(root_path), :class => 'quick' %></h1>
-           </p>
-	       </div><!--END span11 ofset0-->
-	       <!--END DIV MENU SUPERIOR-->
-	     </div><!--END form-actions-->
-    </div><!--END navbar navbar-->
-   
-   
-   <div class="container"> 
+ <body>
+   <div class= "navbar">
+      <div class= "navbar-inner">
+         <div class="brand">
+            <div class="span1" >
+               <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
+            </div>   
+         </div>
+         <div class="brand">
+            <h1> Brainsolve </h1>
+         </div>
+         <ul class="nav">
+            <li>
+            <li><%= link_to "Lista de Problemas", problems_path  %></li>
+	         <li class='last'>	
+	         <% if !current_user %>
+	            <li><%= link_to 'Registrarse',new_user_registration_path %></li>
+	            <li><%= link_to 'Entrar', new_user_session_path %></li>
+	         <%else%>
+	            <li><%= link_to "Crear problema", new_problem_path %></li> 
+	            <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
+	            <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
+	            <li><%= submit_tag "Buscar", :name => nil %></li>
+            <% end %>
+         </ul>
+      </div>
+   </div>
+   <div>
+    <div class="container contenedorGeneral"> 
       <div class="row">
          <div class="span2">
             <div class="cajitaPerfil affix">
