@@ -3,7 +3,8 @@
 <html>
 <head>
   <title>Brainsolve</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+   <%= stylesheet_link_tag "pagination", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -47,10 +48,10 @@
     <%= javascript_include_tag "application" %>
  </head>
  <body>
-   <div class= "navbar">
-      <div class= "navbar-inner">
-         <div class="brand">
-            <div class="span1" >
+   <div class="navbar navbar-fixed-top ">
+      <div class= "navbar-inner ">
+         <div class="brand ">
+            <div class="span1 offset2" >
                <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
             </div>   
          </div>
@@ -78,7 +79,7 @@
       <div class="row">
          <div class="span2">
             <div class="cajitaPerfil affix">
-               <%= image_tag 'onion.jpg', :alt => 'logo' %>
+               <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
 	               <h4>Usuario</h4>   	
                   <%= link_to "Mis Problemas ", menu_noticias_path  %>
@@ -86,8 +87,8 @@
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
+         <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">
          
-         <div class= "offset1 span7">
             <%= bootstrap_flash %>
             <%= yield %>
          </div><!--/Dentro de esto va lo demas que genera rails -->
@@ -99,7 +100,5 @@
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
-<%= link_to 'Salir', destroy_user_session_path, method: :delete  %>
 </body >
-
 </html>
