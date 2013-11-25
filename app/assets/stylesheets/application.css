@@ -20,6 +20,14 @@ margin-right: auto;
 position: center;
 }
 
+div.box2 {
+margin:0px;
+margin-left: auto;
+margin-right: auto;
+position: center;
+}
+
+
 thead{
  font: small-caps bold 100%/200% serif; 
 }

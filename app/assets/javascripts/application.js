@@ -25,6 +25,3 @@ $(function() {
     return false;
   });
 });
-
-ready = ->
-	$(".alert fade in alert-error").
