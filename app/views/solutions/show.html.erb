@@ -1,45 +1,88 @@
 <p id="notice"><%= notice %></p>
+   <div class="row">
+    <div class="span3 offset0">  
+	     <p>
+		  <strong>Usuario: </strong>
+		  <div class="fondoDatos">
+		      <%= @solution.user.nickname %>
+		  </div>
+	      </p>
+	   
+  </div>
+  <div class="row">
+    <div class="span3 offset0">  
+	     <p>
+		  <strong>Email: </strong>
+		  <div class="fondoDatos">
+		      <%= @solution.email %>
+		  </div>
+	     </p>
+      </div>
+    <div class="span3 offset1">
+	      <p>
+		  <strong>Telefono de contacto: </strong>
+		  <div class="fondoDatos">
+		      <%= @solution.telephone %>
+		  </div>
+	      </p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="span3 offset0">  
+	     <p>
+		  <strong>Compañia: </strong>
+		  <div class="fondoDatos">
+		      <%= @solution.company %>
+		  </div>
+	     </p>
+      </div>
+    <div class="span3 offset1">
+	      <p>
+		   <strong>Telefono de la compañia: </strong>
+		   <div class="fondoDatos">
+		      <%= @solution.company_telephone %>
+		   </div>
+	      </p>
+    </div>
+  </div>
+    
+    
+    <div class="row">
+    <div class="span7 offset0">
+	      <p>
+		   <strong>Texto: </strong>
+		   <div class="fondoDatos">
+		      <%= @solution.text %>
+		   </div>
+	      </p>
+    </div>
+  </div>
+  
+    <div class="row">
 
-<p>
-  <strong>Texto: </strong>
-  <%= @solution.text %>
-</p>
+        <div class="span1 offset0">
+	      <p>
+		    <strong>Presupuesto: </strong>
+		    <div class="fondoDatos">
+			<%= @solution.estimate %>
+		    </div>
+	      </p>
+      </div>
 
-<p>
-  <strong>Presupuesto: </strong>
-  <%= @solution.estimate %>
-</p>
 
-<p>
+      <div class="span3 offset1">
+	      <p>
+		    <strong>Tipo de moneda:</strong>
+		    <div class="fondoDatos">
+			<%= @solution.currency.acronym %>
+		    </div>
+	      </p>
+     </div>
+  
+</div>
 
-  <strong>Tipo de moneda:</strong>
-  <%= @solution.currency.acronym %>
-</p>
 
-<p>
-  <strong>Email: </strong>
-  <%= @solution.email %>
-</p>
-
-<p>
-  <strong>Telefono de contacto: </strong>
-  <%= @solution.telephone %>
-</p>
-
-<p>
-  <strong>Compañia: </strong>
-  <%= @solution.company %>
-</p>
-
-<p>
-  <strong>Telefono de la compañia: </strong>
-  <%= @solution.company_telephone %>
-</p>
-
-<p>
-  <strong>Usuario: </strong>
-  <%= @solution.user.nickname %>
-</p>
 <%= link_to problem_path(@solution.problem_id)  do %>
   <button type="button" class="btn btn-default">&larr;Atrás</button>
 <% end %>
