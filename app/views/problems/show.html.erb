@@ -35,11 +35,10 @@
 
 </p>
 <table>
-
   <tbody>
     <% @solutions.each do |solution| %>
       <tr>
-        <td><%= solution.text %></td>
+        <td><%= solution.text %>:</td>
         <td><%= solution.estimate %></td>
         <td><%= solution.currency.acronym %></td>
         <td><%= solution.email %></td>
