@@ -1,5 +1,5 @@
 
-<h2 align="center">Problemas</h2>
+<h4 align="center">Problemas</h4>
 <div >
 <div >
 <table class="table table-striped">
@@ -32,8 +32,8 @@
         <% end %>
       </tr>
     <% end %>
-	<%= will_paginate @problems %>
   </tbody>
 </table>
+      <%= will_paginate @problems, :class=> "flickr_pagination"%>
 </div>
 </div>

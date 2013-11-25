@@ -12,6 +12,14 @@
  *= require_tree .
  */
 
+div.box1 {
+width:220px;
+margin:0px;
+margin-left: auto;
+margin-right: auto;
+position: center;
+}
+
 thead{
  font: small-caps bold 100%/200% serif; 
 }
@@ -22,18 +30,10 @@ thead{
  max-height:3%; 
 }
 
-
 ul.nav
 {
    font-family: verdana, arial, helvetica, sans-serif;
 }
-
-
-ul.nav ul /* Para todos los ul debajo del ul.menu */
-{
-   display:none;
-   list-style:none;
-} 
 
 .table-nonfluid {
    width: auto;
@@ -48,5 +48,45 @@ ul.nav ul /* Para todos los ul debajo del ul.menu */
 
 
 .navbar{
-    background-color: #B40404;
+    background-color:     #800000  ;
     }
+
+/*define el texto de la cajita del perfil principal */
+.cajitaPerfil{
+  width: inherit;
+  height: inherit;
+  padding-bottom: 2%; 
+  min-width:60px;
+  min-height: 20px;
+background-color: rgb(245, 245, 245);
+border: 1px solid rgb(227, 227, 227);
+border-radius: 4px 4px 4px 4px;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+  
+}
+
+.cajitaPerfil #enlaces{
+   position: relative;
+   width: 80%;
+   height: 80%;
+   left: 10%;
+   top: 3%;
+}
+
+.cajitaPerfil img{
+   position: relative;
+   left: 18%;
+   top: 1em;
+   padding: 2%;
+   width: 70px;
+   height: 70px;
+}
+
+/*Define los estilos del contenedor general de las demas vistas*/
+.contenedorGeneral{
+  
+  margin-top:8%;
+  width: 100%;
+  height: inherit;
+  
+}

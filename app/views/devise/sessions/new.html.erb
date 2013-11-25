@@ -2,9 +2,10 @@
 <%= javascript_include_tag 'jquery', 'application'%>
 
 
-<h2 class = "offset2">Ingresar a mi Cuenta</h2>
+<h2 align="center">Ingresar</h2>
 </br>
 
+<div class="box1">
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
@@ -13,22 +14,32 @@
 		$(".alert fade in alert-error").css(color: "blue");
 	});
   </script> 
-  
-  <div class = "offset4"><%= f.label :email %> </div>
-  <div class = "offset3"> <%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca su correo electrónico"%>
-	<span id="estimateerror" style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12pt;color: #CC3300; position:relative;visibility:hidden;"> <strong>¡¡Error!!</strong>El e-mail indicado no está registrado</span>
-	</div>
+  <div class="control-group">
+  <div><%= f.label :email, "Email *" %> </div>
+  <div class="controls">
+  <div class="input-prepend">
+  <span class="add-on"><i class="icon-envelope"></i></span>
+  <%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca su correo electrónico", style: "width: 180px;"%>
+</div>
+</div>
+</div>
+
+  <div><%= f.label :contraseña, "Constraseña *" %></div>
+  <div><%= f.password_field :password , :placeholder => "Contraseña" %></div>
 
 
-  <div class = "offset4"><%= f.label :contraseña %></div>
-  <div class = "offset3"><%= f.password_field :password , :placeholder => "Contraseña" %></div>
 
+  <% if devise_mapping.rememberable? %>
+  <%= f.label :recuerdame, align: "right" do %>
+  <%= f.check_box :remember_me %>
+  Recuerdame
+  <%end%>
+  <% end %>
+  </br>
+  <div align="right"><%= f.submit "Aceptar" , :class => "btn btn-default"%>
+    <%= link_to  "Cancelar", root_path, :class => "btn btn-default"%>
 
-
-  <% if devise_mapping.rememberable? -%>
-  <div class = "offset2"><%= f.check_box :remember_me %> <%= f.label :Recuerdame %></div>
-  <% end -%>
-  <div class = "offset8"><%= f.submit "Aceptar" , :class => 'btn btn-success'%></div>
+  </div>
 
 <% end %>
-
+</div>

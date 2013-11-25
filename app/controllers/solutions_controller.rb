@@ -1,5 +1,6 @@
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy, :choose_solution]
+  before_action :set_currencies
   before_filter :authenticate_user!, :except => [:show]
   #filter_resource_access
 
@@ -34,6 +35,16 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @solution, notice: 'El aporte fue creado con exito.' }
         format.json { render action: 'show', status: :created, location: @solution }
       else
+        flash[:error] = []
+        @solution.errors.messages.each do |key, messages|
+          messages.each do |message|
+            flash[:error] << "Descripcion: #{message}." if key.to_s == "text"
+            flash[:error] << "Presupuesto: #{message}." if key.to_s == "estimate"
+            flash[:error] << "Telefono de contacto: #{message}." if key.to_s == "telephone"
+            flash[:error] << "Telefono de compañia: #{message}." if key.to_s == "company_telephone"
+            flash[:error] << "Email de contacto: #{message}." if key.to_s == "email"
+          end
+        end
         format.html { render action: 'new' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
@@ -48,6 +59,16 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @solution, notice: 'El aporte fue modificado con exito.' }
         format.json { head :no_content }
       else
+        flash[:error] = []
+        @solution.errors.messages.each do |key, messages|
+          messages.each do |message|
+            flash[:error] << "Descripcion: #{message}." if key.to_s == "text"
+            flash[:error] << "Presupuesto: #{message}." if key.to_s == "estimate"
+            flash[:error] << "Telefono de contacto: #{message}." if key.to_s == "telephone"
+            flash[:error] << "Telefono de compañia: #{message}." if key.to_s == "company_telephone"
+            flash[:error] << "Email de contacto: #{message}." if key.to_s == "email"
+          end
+        end
         format.html { render action: 'edit' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
@@ -102,7 +123,7 @@ class SolutionsController < ApplicationController
     @notifications.each do |notification|
       notification = Notification.find_by_id(notification)
       if !(notification.nil?) then
-        #notification.update_attributes(view: true)
+        notification.update_attributes(view: true)
       end
     end
 
@@ -112,6 +133,10 @@ class SolutionsController < ApplicationController
   end
 
   private
+
+    def set_currencies
+      @currencies = Currency.all.map{ |c| [c.acronym, c.id] }
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
       @solution = Solution.find(params[:id])

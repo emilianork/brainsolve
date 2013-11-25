@@ -26,6 +26,9 @@ gem 'jquery-rails'
 # Bootstrap
 
 gem 'twitter-bootstrap-rails'
+
+gem 'bootstrap_forms'
+
 gem "therubyracer"
 gem "less-rails"
 # User for pagination

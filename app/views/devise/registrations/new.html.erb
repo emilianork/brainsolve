@@ -1,112 +1,81 @@
-<div class = "offset1">
-<div class = "offset3"><h2>Registrate!! </h2> </div>
-</br>
+
+<h2 align="left">Registrate</h2> 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-
 <div class="row">
- <div class= "span6">
-		<% if resource.errors.messages.include?(:email) %>
-  		    <%resource.errors.messages[:email].each do |message|%>
- 		       <%= message%>
-      		    <% end %>
-	  	<% end %>
-     <div> 
-   		<%= f.label :email %>
-
-   		<%= f.email_field :email, :autofocus => true , :placeholder => "Introduzca e-mail" %>  *
-     </div>
+ <div class= "span3 offset0">
+      <div class="control-group">
+      <div><%= f.label :email, "Email *" %> </div>
+      <div class="controls">
+      <div class="input-prepend">
+      <span class="add-on"><i class="icon-envelope"></i></span>
+      <%= f.email_field :email,:autofocus => true , :placeholder => "Introduzca e-mail", style: "width: 180px;"  %>
  </div>
- <div class="offset6 ">
-	 	<% if resource.errors.messages.include?(:nickname) %>
-      			<%resource.errors.messages[:nickname].each do |message|%>
-        			<%= message%>
-      			<% end %>
-  		<% end %>
-      <div>
-	<%= f.label :apodo %>
-  	<%= f.text_field  :nickname , :autofocus => true,:placeholder => "Elija un apodo"%> * 
-      </div> 
+      </div>
+      </div>
+      </div>
+ <div class="span3 offset1">
+	  <%= f.label :apodo, "Apodo *", align: "left" %>
+  	<%= f.text_field  :nickname, :autofocus => true, :placeholder => "Elija un apodo"%>
  </div>
 </div>
 
+  <div class="row">
+  <div class="span3 offset0">
+  <%= f.label :contraseña , "Contraseña *"%>
+  <%= f.password_field :password, :placeholder => "Elija una contraseña" %> 
+  </div>
+
+  <div class="span3 offset1">
+    <%= f.label :verifica_contraseña, "Verifica contraseña*"%>
+    <%= f.password_field :password_confirmation, :placeholder => "Repita la contraseña anterior" %>
+	</div>
+</div>
+
 
 <div class="row">
-  <div class="span6">
-  <div><%= f.label :contraseña %>
-  <%= f.password_field :password, :placeholder => "Elija una contraseña" %> * 
-<% if resource.errors.messages.include?(:password) %>
-      <%resource.errors.messages[:password].each do |message|%>
-       <span> alsalskaslkal</span>
-      <% end %>
-  <% end %>
-</div> 
+  <div class="span3 offset0">
+      <%=f.label :role do%>
+        Rol * <p>
+        <% if (resource.role.nil?) %>
+            <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
+        <%else%>
+            <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
+                                [resource.role])) %>
+        <%end%>
+      <%end%>
+  </div>
 </div>
 
+<h2 align="left">Datos</h2>
 
+<div class="row">
+  <div class="span3 offset0">
+    <%= f.label :nombre%>  
+    <%= f.text_field :first_name , :placeholder => "Introduzca nombre(s)" %>
+  </div>
 
-    <div class="offset6 "><% if resource.errors.messages.include?(:password_confirmation) %>
-      <%resource.errors.messages[:password_confirmation].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div><%= f.label :verifica_contraseña %>
-  <%= f.password_field :password_confirmation, :placeholder => "Repita la contraseña anterior" %>*</div>
-	</div>
-    </div>
-
-
-    <div class="row">
-    <div class="span6"><%= f.label :Rol%><div><%= f.select(:role, options_for_select([["Soy creativo","creative"],
-["Soy problematico","problematic"]])) %><br /></div>
-   </div>
-    </div>
-
-</br>
-</br>
-</br>
-<div class = "offset0"><h2>Ingresa tus datos!! (opcional) </h2></div>
-
-    <div class="row">
-    <div class="span6 offset0"><% if resource.errors.messages.include?(:first_name) %>
-      <%resource.errors.messages[:first_name].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div><%= f.label :nombre%>  
-  <%= f.text_field :first_name , :placeholder => "Introduzca nombre(s)" %></div></div>
-    <div class="offset6"> <% if resource.errors.messages.include?(:second_name) %>
-      <%resource.errors.messages[:second_name].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-  <div > <%= f.label :apellido_paterno%>
-  <%= f.text_field :second_name , :placeholder => "Introduzca apellido(s)"%></div> </div> </div>
-    
-
-      <div class="row">
-    <div class="spa4 offset0"><% if resource.errors.messages.include?(:telephone) %>
-      <%resource.errors.messages[:telephone].each do |message|%>
-        <%= message%>
-      <% end %>
-  <% end %>
-
-  <div class = "offset"><%= f.label :telefono%>
-  <%= f.text_field :telephone , :placeholder => "Introduzca teléfono" %></div>
-</br>
-
-    <% if (resource.role.nil?) %>
-    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]])) %>
-    <%else%>
-    <%= f.select(:role, options_for_select([["Soy creativo","creative"],["Soy problematico","problematic"]],
-    [resource.role])) %>
-  <%end%>
-	</div>
-<div class="span10 offset8">
-  <%= f.submit "Registar",:class => 'btn btn-primary'%>
-<%= link_to_function "Regresar", "history.back()", :class => "btn btn-default"%>
-</div>  
-    </div>
- <div>
-<% end %>
-
+  <div class="span3 offset1">
+    <%= f.label :apellido_paterno%>
+    <%= f.text_field :second_name , :placeholder => "Introduzca apellido paterno"%>
+  </div>
 </div>
+<div class="row">
+  <div class="span3 offset0">
+    <%= f.label :apellido_materno %>
+    <%= f.text_field :third_name, :placeholder => "Introduzca apellido materno"%>
+  </div>
+</div>
+   
+
+<div class="row">
+  <div class="span3 offset0">
+    <%= f.label :telefono, "Telefono" %>
+    <%= f.text_field :telephone , :placeholder => "Introduzca teléfono" %>
+  </div>
+</div>
+<div class="row">
+  <div class="span3 offset5">
+  <%= f.submit "Registar",:class => "btn btn-info"%> &nbsp; &nbsp;
+  <%= link_to  "Cancelar", root_path, :class => "btn btn-default" %>
+</div>
+<%end%>
