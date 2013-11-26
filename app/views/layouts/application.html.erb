@@ -54,25 +54,33 @@
 	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
 	               <li><%= link_to 'Entrar', new_user_session_path %></li>
 	            <%else%>
-	               <li><%= link_to "Crear problema", new_problem_path %></li> 
-	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
-	               <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
+                   <% if current_user.role == 'problematic' %>
+                <li><%= link_to "Crear problema", new_problem_path %></li> 
+	              <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %></li>
+                   <%else%>
+                <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %></li>
+                   <%end%>
+                   <%end%>
+                   <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do%> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
 	               <li><%= submit_tag "Buscar", :name => nil %></li>
                <% end %>
             </ul>
          </div>
       </div>
    </div>
+
    <div>
     <div class="container contenedorGeneral"> 
-
       <div class="row">
-         <div class="span2" >
+         <div class="span2" > 
             <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
-	               <h4>Usuario</h4>   	
-                  <%= link_to "Mis Problemas ", menu_noticias_path  %>
+	               <h4 aling = 'center'><%= @problem.user.nickname[0..1] %></h4>
+                  <%= link_to "Mis Problemas  #"%> <%= Problem.find_by_user_id(current_user.id) each do |x| %>
+                  <p><% x.title%></p>
+                    
+                  end %>
                   <%= link_to "Mejores Aportadores", menu_problemas_path  %>
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
