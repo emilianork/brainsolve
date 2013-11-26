@@ -48,30 +48,32 @@
     <%= javascript_include_tag "application" %>
  </head>
  <body>
-   <div class="navbar navbar-fixed-top ">
-      <div class= "navbar-inner ">
-         <div class="brand ">
-            <div class="span1 offset2" >
-               <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
-            </div>   
+   <div id="menu" class="navbar navbar-fixed-top" >
+      <div class= "navbar-inner">
+         <div class="row">
+            <div class="brand " style="padding-left:23%;">
+               <div class="span1">
+                  <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
+               </div>   
+            </div>
+            <div class="brand">
+               <h1> Brainsolve </h1>
+            </div>
+            <ul class="nav">
+               <li>
+               <li><%= link_to "Lista de Problemas", problems_path  %></li>
+	            <li class='last'>	
+	            <% if !current_user %>
+	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
+	               <li><%= link_to 'Entrar', new_user_session_path %></li>
+	            <%else%>
+	               <li><%= link_to "Crear problema", new_problem_path %></li> 
+	               <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
+	               <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
+	               <li><%= submit_tag "Buscar", :name => nil %></li>
+               <% end %>
+            </ul>
          </div>
-         <div class="brand">
-            <h1> Brainsolve </h1>
-         </div>
-         <ul class="nav">
-            <li>
-            <li><%= link_to "Lista de Problemas", problems_path  %></li>
-	         <li class='last'>	
-	         <% if !current_user %>
-	            <li><%= link_to 'Registrarse',new_user_registration_path %></li>
-	            <li><%= link_to 'Entrar', new_user_session_path %></li>
-	         <%else%>
-	            <li><%= link_to "Crear problema", new_problem_path %></li> 
-	            <li><%= link_to 'Salir', destroy_user_session_path, :method => :delete  %><%end%></li>
-	            <li><%= form_tag problems_path, class: "navbar-search", :method => 'get', :id => "problems_search" do %> <%= text_field_tag :search, params[:search], :class => "search-query"  %></li>
-	            <li><%= submit_tag "Buscar", :name => nil %></li>
-            <% end %>
-         </ul>
       </div>
    </div>
    <div>
