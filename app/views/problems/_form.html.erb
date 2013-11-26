@@ -1,4 +1,5 @@
-
+<%= form_for(@problem) do |f| %>
+  
   <div align="right">
       <%if @problem.created_at.nil?%>
         <%= f.submit "Crear problema",:class => "btn btn-info"%>&nbsp;
@@ -13,7 +14,6 @@
 &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     </div>
 
-<%= form_for(@problem) do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 <div class="row">
 	<div class="span6 offset0">
