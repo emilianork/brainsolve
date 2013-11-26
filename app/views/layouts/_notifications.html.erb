@@ -2,13 +2,12 @@
 	<%idNotificaciones = view_notifications.map{ |actual|
 		actual.id}%>
 	<%= link_to 'x', notification_check_path(notifications:idNotificaciones), :type => "button", :class => "close", :id => "cierraNoti", :method => :put, :remote => true%>
-	<div class="span5">
+	<div class="span6">
 		<% view_notifications.each do |notification| %>
 			<div class="notification-<%=notification.id%> alert fade in alert-info notification">
 				<%= link_to 'x', notification_check_path(notifications: [notification.id]), :type => "button", :class => "close cierraAlerta", :method => :put, :remote => true%>
 				<b><%= notification.problem.title %></b>
 				<p>Se escogio uno de tus aportes en este problema</p>
-				<%= link_to 'Visto', notification_check_path(notifications: [notification.id]), :method => :put, :remote => true%>
 			</div>
 		<%end%>
 	</div>
