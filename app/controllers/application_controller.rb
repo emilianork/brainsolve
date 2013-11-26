@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_role
 
   helper_method :view_notifications
+  helper_method :aportadores
+  helper_method :problematicos
   
 
   def current_role
@@ -17,6 +19,78 @@ class ApplicationController < ActionController::Base
     return @current_role
   end
   
+  def aportadores
+    if @aportadores.nil?
+
+    problems = current_user.problems
+    solutions = []
+    problems.each do |problem|
+      solutions.push(problem.solutions)
+    end
+
+    solutions = solutions.flatten
+
+    aportadores_id = Hash.new
+
+    solutions.each do |x|
+      if aportadores_id[x.user_id].nil? then
+        aportadores_id[x.user_id] = 1
+      else
+        aportadores_id[x.user_id] += 1
+      end
+    end
+
+    aportadores = aportadores_id.to_a
+
+    aportadores = aportadores.sort{|x,y| x[1] <=> y[1]}.reverse
+
+    aportadores = aportadores.map {|x| User.find(x[0])}
+
+    @aportadores = aportadores
+
+    return @aportadores
+  else
+    return @aportadores
+  end
+  end
+
+
+    def problematicos
+
+    if @problematicos.nil?
+      solutions = current_user.solutions
+
+      problems = solutions.map{|x| x.notification}
+      problems = problems.keep_if {|x| !x.nil?}
+
+      problems = problems.map{ |x| x.problem}
+
+
+
+      problematicos_id = Hash.new
+
+      problems.each do |x|
+        if problematicos_id[x.user_id].nil? then
+          problematicos_id[x.user_id] = 1
+        else
+          problematicos_id[x.user_id] += 1
+        end
+      end
+
+    problematicos = problematicos_id.to_a
+
+    problematicos  = problematicos.sort{|x,y| x[1] <=> y[1]}.reverse
+
+    problematicos  = problematicos .map {|x| User.find(x[0])}
+
+    @problematicos = problematicos 
+
+    else
+      return @problematicos
+    end
+  end
+
+
   def view_notifications
     if current_user.nil? then
       @notifications ||= []

@@ -50,7 +50,7 @@
                <li>
                <li><%= link_to "Lista de Problemas", problems_path  %></li>
 	            <li class='last'>	
-	            <% if !current_user %>
+	            <% if current_user.nil? %>
 	               <li><%= link_to 'Registrarse',new_user_registration_path %></li>
 	               <li><%= link_to 'Entrar', new_user_session_path %></li>
 	            <%else%>
@@ -76,13 +76,47 @@
             <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
-	               <h4 aling = 'center'><%= @problem.user.nickname[0..1] %></h4>
-                  <%= link_to "Mis Problemas  #"%> <%= Problem.find_by_user_id(current_user.id) each do |x| %>
-                  <p><% x.title%></p>
-                    
-                  end %>
-                  <%= link_to "Mejores Aportadores", menu_problemas_path  %>
-               </div>
+                 <% if !current_user.nil? %>
+	               <h4 aling = 'center'><%= current_user.nickname[0..16] %></h4>
+                 <div class="fondoDatos">
+                  <%if current_user.role == "problematic"%>
+                    <%= "Mis problemas # #{current_user.problems.count}"%>
+                   </br>
+                   <% if !aportadores.first.nil? %>
+                   Mis aportadores: </br>
+                    <% count  = 0 %>
+                    <% aportadores.each do |aportador| %>
+                      <% break if count == 5%>
+                      &nbsp;&nbsp;&nbsp;<%= aportador.nickname[0..10]%> </br>
+                      <%end%>
+                    <%end%>
+                    <%end%>
+
+
+                  <%if current_user.role == "creative"%>
+                    <%= "Mis soluciones # #{current_user.solutions.count}"%>
+                    <% if !problematicos.first.nil? %>
+                   </br>Mis problematicos: </br>
+                    <% count  = 0%>
+                    <% problematicos.each do |problematico| %>
+                      <% break if count == 5%>
+                      &nbsp;&nbsp;&nbsp;<%= problematico.nickname[0..10]%> </br>
+                      <%end%>
+                    <%end%>
+                    <%end%>
+                    </div>
+                    <% else %>
+                    <h4 aling = 'center'> Invitado </h4>
+                  <%end%>
+                
+              
+              
+                <div class="fondoDatos" style="width: 109px; margin-top: 15px;">
+                    <strong align="center">Estadisticas:</strong><br>
+                     <%= "# problemas #{Problem.count}"%><br>
+                     <%= "# aportaciones #{Solution.count}"%>
+                  </div>
+                  </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
 
