@@ -77,11 +77,7 @@
             <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
-	               <h4 aling = 'center'><%= @problem.user.nickname[0..1] %></h4>
-                  <%= link_to "Mis Problemas  #"%> <%= Problem.find_by_user_id(current_user.id) each do |x| %>
-                  <p><% x.title%></p>
-                    
-                  end %>
+                  <%= link_to "Mis Problemas  #"%>
                   <%= link_to "Mejores Aportadores", menu_problemas_path  %>
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 

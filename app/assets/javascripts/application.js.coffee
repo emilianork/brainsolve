@@ -21,7 +21,8 @@ lightBox =
 		else
 			lightBox.muestraContenido()
 	cuentaNotificaciones: -> $(".notifications .notification").length	
-	
+	ultimaNotificacion: -> if lightBox.cuentaNotificaciones() == 1
+				lightBox.ocultaContenido()
 		
 		
 
@@ -29,6 +30,7 @@ ready = ->
 	lightBox.hayNotificaciones()
 	$("#cierraNoti").click -> lightBox.ocultaContenido()
 	$(".cierraAlerta").attr 'data-dismiss' : 'alert'
+	$(".cierraAlerta").click -> lightBox.ultimaNotificacion()
 		
 $(document).ready(ready)
 $(document).on('page:load', ready)
