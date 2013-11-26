@@ -5,10 +5,7 @@
 
 
 
-.table tbody td{
-	overflow:hidden; 
-	max-width:20em;
-}
+
 
 
 
@@ -17,10 +14,7 @@
 
  .table-nonfluid { width: auto; }
 
-.table tbody td{
-  overflow:hidden; max-width:20em; 
-  
-}
+
 
 .box{
   width:240px;
@@ -54,6 +48,9 @@ background-color:white;
   
 }
 
+.descripcion{}
+
+
 
 
 .anchoCajaBlanca{
@@ -82,4 +79,5 @@ background-color:white;
   padding: 0px 4px;
   font-size: 85%;
 }
+
 
