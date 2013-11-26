@@ -5,4 +5,32 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+//= require_tree 
+
+
+lightBox =
+	ocultaContenido: ->
+		$(".sobrepuesto_negro").css display: 'none'
+		$(".contenido_blanco").css display: 'none'
+	muestraContenido: ->
+		$(".sobrepuesto_negro").css display: 'block'
+		$(".contenido_blanco").css display: 'block'
+	hayNotificaciones: ->
+		if lightBox.cuentaNotificaciones() == 0
+			lightBox.ocultaContenido()
+		else
+			lightBox.muestraContenido()
+	cuentaNotificaciones: -> $(".notifications .notification").length	
+	ultimaNotificacion: -> if lightBox.cuentaNotificaciones() == 1
+				lightBox.ocultaContenido()
+		
+		
+
+ready = ->
+	lightBox.hayNotificaciones()
+	$("#cierraNoti").click -> lightBox.ocultaContenido()
+	$(".cierraAlerta").attr 'data-dismiss' : 'alert'
+	$(".cierraAlerta").click -> lightBox.ultimaNotificacion()
+		
+$(document).ready(ready)
+$(document).on('page:load', ready)

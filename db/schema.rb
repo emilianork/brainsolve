@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.datetime "updated_at"
     t.string   "telephone"
     t.string   "company_telephone"
+    t.integer  "currency_id"
+    t.integer  "notification_id"
     t.string   "estimate"
     t.integer  "currency_id"
     t.integer  "notification_id"

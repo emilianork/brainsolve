@@ -15,7 +15,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-
+ 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
 
@@ -38,6 +38,7 @@
  </head>
 
  <body>
+   <div id="negro" class="sobrepuesto_negro"></div>
    <div id="menu" class="navbar navbar-fixed-top" >
       <div class= "navbar-inner">
          <div class="row">
@@ -76,6 +77,7 @@
             <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
+
                  <% if !current_user.nil? %>
 	               <h4 aling = 'center'><%= current_user.nickname[0..16] %></h4>
                  <div class="fondoDatos">
@@ -117,6 +119,7 @@
                      <%= "# aportaciones #{Solution.count}"%>
                   </div>
                   </div>
+
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
 
@@ -134,6 +137,6 @@
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
-   <%render "layouts/notifications"%>
+   <%= render "layouts/notifications"%>
 </body >
 </html>
