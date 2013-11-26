@@ -18,16 +18,14 @@
       <tr>
 
         <td><%= problem.title %></td>
-        <!--<td><%= problem.contact %></td>-->
-         
-        <!--<td><%= problem.telephone %></td> -->
+
         <td><%= problem.areas_of_knowledge.acronym %></td>
         <td><%= problem.user.nickname %></td>
-        <td ><%= link_to 'Ver', problem, :class => 'btn btn-info colorBlanco' %>
+        <td ><%= link_to 'Ver', problem, :class => 'btn btn-default colorBlanco' %>
 
         <% if (problem.owner(current_user)) %>
-          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-success' %>
-         <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-warning' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
+          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-warning' %>
+         <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-danger' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
 
         <% end %>
       </tr>

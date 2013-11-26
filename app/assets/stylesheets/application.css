@@ -13,12 +13,19 @@
  */
 
 div.box1 {
-width:220px;
-margin:0px;
-margin-left: auto;
-margin-right: auto;
-position: center;
+	width:220px;
+	margin:0px;
+	margin-left: auto;
+	margin-right: auto;
+	position: center;
 }
+
+@font-face { 
+   font-family: "AverageSans"; 
+   src: url("AverageSans-Regular.ttf");
+   format ("ttf"); 
+}
+
 
 thead{
  font: small-caps bold 100%/200% serif; 
@@ -34,13 +41,6 @@ ul.nav
 {
    font-family: verdana, arial, helvetica, sans-serif;
 }
-
-
-ul.nav ul /* Para todos los ul debajo del ul.menu */
-{
-   display:none;
-   list-style:none;
-} 
 
 .table-nonfluid {
    width: auto;
@@ -125,3 +125,9 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
             overflow: auto;
 	    border-radius: 4px 4px 4px 4px;
         }
+
+td{
+   font-family: AverageSans, regular;
+   font-size: 1em;
+}
+

@@ -9,10 +9,11 @@ body {
 
 }
 
-p, ol, ul, td {
+p, ol, ul {
 
   font-family: Courier New, Courier, monospace;
-  font-size: 13px;
+  /*font-family: AverageSans, regular;*/
+  font-size: 17px;
   line-height: 18px;
 }
 
@@ -28,7 +29,8 @@ border-radius:10px;
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+font-family: arial, sans-serif;
+  font-size: 100%;
 }
 
 a {
@@ -81,7 +83,6 @@ border-radius:5px;
 colorBlanco{
 color:white;
 }
-
 
 
 /*@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);*/
@@ -255,3 +256,13 @@ ajustarTam{
   height:100px;
   
 }
+
+
+
+/* ---------------------- colores navegador azul ---------------------- */
+#tabs25{position:relative;display:block;height:42px;font-size:11px;font-weight:bold;background:transparent url(blueslate_background.gif) repeat-x top left;font-family:Arial,Verdana,Helvitica,sans-serif;text-transform:uppercase;}
+#tabs25 ul{margin:0px;padding:0;list-style-type:none;width:auto;}
+#tabs25 ul li{display:block;float:left;margin:0 1px 0 0;}
+#tabs25 ul li a{display:block;float:left;color:#D5F1FF;text-decoration:none;padding:14px 22px 0 22px;height:28px;}
+#tabs25 ul li a:hover,#tabs25 ul li a.current{color:#fff;background:transparent url(blueslate_backgroundOVER.gif) no-repeat top center;}
+/* ---------------------- END Blueslate nav ---------------------- */

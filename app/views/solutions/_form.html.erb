@@ -1,179 +1,74 @@
 <%= form_for(@solution) do |f| %>
+  <div class="row">
+    <div class="span3 offset0">  
+	     <div class="control-group">
+	     <%= f.label :Email, "Email de contacto *"%>
+	     <div class="controls">
+	     <div class="input-prepend">
+	     <span class="add-on"><i class="icon-envelope"></i></span>
+		   <%= f.text_field :email, :placeholder => "Agregar Email (obligatorio)", style: "width: 180px;"%>
+       </div>
+	     </div>
+	     </div>
+      </div>
+    <div class="span3 offset1">
+      <%= f.label :Telefono_de_contacto, "Telefono de contacto" %>
+	    <%= f.text_field :telephone, :placeholder => "Formato: dd-dd-dd-dd"  %>
+    </div>
+    </div>
+  
    <div class="row">
-    <div class="span4">  
-
-      <div class="field" id="email_err">
-	<div class="control-group">
-	  <%= f.label :Email%>
-	  <div class="controls">
-	    <div class="input-prepend">
-	      <span class="add-on"><i class="icon-envelope"></i></span>
-		<%= f.text_field :email, :placeholder => "Agregar Email (obligatorio)"%>
-	      <span id="emailerror" style="font-family: Verdana, Arial, 
-		Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-		position:relative;visibility:hidden;">
-		<strong>¡¡Error!!</strong> El campo debe tener un correo valido
-	      </span>
-	    </div>
-	  </div>
-	</div>
-      </div>
+    <div class="span3 offset0">  
+	     <%= f.label :Compañia, "Compañia" %>
+	     <%= f.text_field :company,:placeholder => "Agregar Nombre de Compañia" %>
+	   </div>
+    
+    <div class="span3 offset1">
+     	<%= f.label :Telefono_de_la_compañia, "Telefono de la compañia" %>
+	    <%= f.text_field :company_telephone, :placeholder => "Formato: dd-dd-dd-dd"  %>
     </div>
-    <div class="span6">
-
-      <div class="field" id="telefono5">
-	<%= f.label :Telefono_de_contacto %>
-	<%= f.text_field :telephone, :placeholder => "Agregar Número de Contacto"  %>
-	<span id="telerror" style="font-family: Verdana, Arial, 
-	  Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	  position:relative;visibility:hidden;">
-	  <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
-	</span>
-      </div>
-    </div>
-   </div>
-   
-   <div class="row">
-    <div class="span4">  
-      <% if @solution.errors.messages.include?(:company) %>
-	<%@solution.errors.messages[:company].each do |message|%>
-	  <%= message%>
-	<% end %>
-      <% end %>
-      <div class="field">
-	<%= f.label :Compañia %>
-	<%= f.text_field :company,:placeholder => "Agregar Nombre de Compañia" %>
-	<span id="companyerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-         <strong>¡¡Error!!</strong> El campo no debe estar vacio
-	</span>
-      </div>
-    </div>
-    <div class="span6">
-      <div class="field" id="telcomp">
-	<%= f.label :Telefono_de_la_compañia %>
-	<%= f.text_field :company_telephone, :placeholder => "Agregar Teléfono de Compañia"  %>
-	<span id="company_telephoneerror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-       	 <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
-	</span>
-      </div>
-   </div>
-
-          <fieldset> 
-          <div style="padding-left:200px">
-  <% if @solution.errors.messages.include?(:text) %>
-
-         El campo debe ser un numero entero positivo.
-              <% end %>
-    </span>
-  </div>
-  
-  <% if @solution.errors.messages.include?(:currency) %>
-     <%@solution.errors.messages[:currency].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
-  <div class="field">
-  
-
-  </div>
-  
-  <% if @solution.errors.messages.include?(:email) %>
-     <%@solution.errors.messages[:email].each do |message|%>
-
-       <%= message%>
-     <% end %>
-  <% end %>
-
-  <div class="field">
-    <%= f.text_area :text,:placeholder => "Escribir la Solución", :resize => "none" %>
-    <span id="texterror" style="font-family: Verdana, Arial, 
-         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-         position:relative;visibility:hidden;">
-      <div class="container">  
-	<div class="row">  
-	  <div class="span4"> 
-	    <div class="alert alert-error">  
-	      <a class="close" data-dismiss="alert">×</a>  
-	      <strong>¡¡Error!!</strong> El campo no debe estar vacio  
-	    </div>  
-	  </div>  
-	</div>  
-      </div>  
-    </span>
   </div>
 
-          </fieldset>
+    <div class="row">
+    <div class="span7 offset0">
+     <%= f.label :Description, "Descripción *"%>
+    <%= f.text_area :text,:placeholder => "Escribir la Solución",  style: "resize: none; width: 90.5%; height: 280px;" %>
+    </div>
+  </div>
 
-  <div style="padding-left:30px">
-   <div class="row">
-    <div class="span4">
-     <% if @solution.errors.messages.include?(:estimate) %>
-      <%@solution.errors.messages[:estimate].each do |message|%>
-	<%= message%>
-      <% end %>
-     <% end %>
-     <div class="field">
-      <%= f.label :Presupuesto%>
-      <%= f.text_field :estimate, :placeholder => "Ingresar Presupuesto" %>
-      <span id="estimateerror" style="font-family: Verdana, Arial, 
-	Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	position:relative;visibility:hidden;">
-       <strong>¡¡Error!!</strong> El campo debe tener un telefono valido
-      </span>
+    <div class="row">
+
+        <div class="span1 offset0">
+        <%= f.label :Presupuesto%>
+        <%= f.text_field :estimate, :placeholder => "Ingresar Presupuesto", style: "width: 150px;"%>
+      </div>
+
+
+      <div class="span2 offset1">
+      <%= f.label :Tipo_de_moneda, "Tipo de moneda" %>
+        <% if (@solution.currency.nil?) %>
+          <%= f.select :currency_id, options_for_select(@currencies) , {} ,style: "width: 100px;" %>
+        <%else%>
+          <%= f.select :currency_id, options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id]), {},style: "width: 100px;" %>
+        <%end%>
      </div>
-    </div>
-    <div class="span6">
-     <% if @solution.errors.messages.include?(:currency) %>
-      <%@solution.errors.messages[:currency].each do |message|%>
-        <%= message%>
-      <% end %>
-     <% end %> 
-     <div class="field">
-   <%= f.label :Tipo_de_moneda %><br>
-    <% if (@solution.currency.nil?) %>
-      <%= f.select(:currency_id,
-      options_for_select(@currencies)) %><br />
-    <%else%>
-      <%= f.select(:currency_id,
-      options_for_select(@currencies, [@solution.currency.acronym,@solution.currency.id])) %><br />
-    <%end%>
-      <span id="currencyerror" style="font-family: Verdana, Arial, 
-	      Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
-	      position:relative;visibility:hidden;">
-	<strong>¡¡Error!!</strong> El campo no debe estar vacio
-      </span>
-     </div>
-    </div>
+ 
    </div>
-  </div>
-  
-  <% if @solution.errors.messages.include?(:problem_id) %>
-     <%@solution.errors.messages[:problem].each do |message|%>
-       <%= message%>
-     <% end %>
-  <% end %>
 
-  <div class="field">
     <% if !@problem.nil? %>
-    <%= f.hidden_field :problem_id, :value => @problem.id %><br>
+      <%= f.hidden_field :problem_id, :value => @problem.id %>
     <% else %>
-    <%= f.hidden_field :problem_id, :valude => @solution.problem_id %>
+      <%= f.hidden_field :problem_id, :valude => @solution.problem_id %>
     <%end%>
-  </div>
   
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %><br>
-  </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="actions">
-    <div class="span5">
-      <%= f.submit%>
+    <div align="right">
+      <%if @solution.created_at.nil?%>
+      <%= f.submit "Crear aporte",:class => "btn btn-info"%>&nbsp;
+      <%else%>
+      <%= f.submit "Actualizar",:class => "btn btn-warning"%>&nbsp;
+      <%end%>
+      <%= link_to  "Cancelar", problem_path(@problem), :class => "btn btn-default" %>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
     </div>
-  </div>
-
-  
 <% end %>

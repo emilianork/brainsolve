@@ -8,7 +8,7 @@
       <div class="controls">
       <div class="input-prepend">
       <span class="add-on"><i class="icon-envelope"></i></span>
-      <%= f.email_field :email,:autofocus => true , :placeholder => "Introduzca e-mail" %>
+      <%= f.email_field :email,:autofocus => true , :placeholder => "Introduzca e-mail", style: "width: 180px;"  %>
  </div>
       </div>
       </div>
@@ -70,12 +70,16 @@
 <div class="row">
   <div class="span3 offset0">
     <%= f.label :telefono, "Telefono" %>
-    <%= f.text_field :telephone , :placeholder => "Introduzca teléfono" %>
+    <%= f.text_field :telephone , :placeholder => "Formato: dd-dd-dd-dd" %>
   </div>
 </div>
 <div class="row">
   <div class="span3 offset5">
-  <%= f.submit "Registar",:class => "btn btn-info"%> &nbsp; &nbsp;
-  <%= link_to  "Cancelar", root_path, :class => "btn btn-default" %>
+  <%= f.submit "Registar",:class => "btn btn-info"%> &nbsp;
+       <%if request.env["HTTP_REFERER"].nil? %>
+      <%= link_to 'Cancelar', root_path , :class => 'btn btn-default' %>
+    <%else%>
+      <%= link_to 'Cancelar', :back , :class => 'btn btn-default' %>
+  <%end%>
 </div>
 <%end%>

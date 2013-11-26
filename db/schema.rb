@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.integer  "currency_id"
     t.integer  "notification_id"
     t.string   "estimate"
+    t.integer  "currency_id"
+    t.integer  "notification_id"
   end
 
   create_table "users", force: true do |t|
