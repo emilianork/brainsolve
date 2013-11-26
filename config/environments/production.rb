@@ -75,6 +75,15 @@ Brainsolve::Application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
+
+  Brainsolve::Application.configure do
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { :address => "smtp.gmail.com",
+      :port => 587, :domain => "mail-sin-respuesta", :authentication => "plain",
+      :user_name => "brainsolve.c", :password => "FexG4Pi3", :enable_starttls_auto => true
+  }
+  end
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
