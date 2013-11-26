@@ -88,9 +88,9 @@
   <tbody class="tablareducida" style="width: 600px" >
     <% @solutions.each do |solution| %>
       <tr>
-        <td class="descripcion"><%= solution.user.nickname[0...15] %></td>
+        <td class="descripcion"><%= solution.user.nickname[0...21] %></td>
         
-        <td><%= solution.email[0..14]%></td>
+        <td><%= solution.email[0..21]%></td>
 
 
         

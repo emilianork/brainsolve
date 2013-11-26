@@ -16,7 +16,7 @@
     <% @problems.each do |problem| %>
       <tr>
 
-        <td><%= problem.title%></td>
+        <td><%= problem.title[0..23]%></td>
 
         <td><%= problem.areas_of_knowledge.acronym[0..10] %></td>
         <td><%= problem.user.nickname[0...15] %></td>
