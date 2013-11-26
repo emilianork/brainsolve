@@ -102,7 +102,7 @@ class SolutionsController < ApplicationController
     @notifications.each do |notification|
       notification = Notification.find_by_id(notification)
       if !(notification.nil?) then
-        #notification.update_attributes(view: true)
+        notification.update_attributes(view: true)
       end
     end
 

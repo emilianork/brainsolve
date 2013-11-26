@@ -13,7 +13,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-
+ 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
 
@@ -36,6 +36,7 @@
     <%= javascript_include_tag "application" %>
  </head>
  <body>
+   <div id="negro" class="sobrepuesto_negro"></div>
    <div class="navbar navbar-fixed-top ">
       <div class= "navbar-inner ">
          <div class="brand ">
@@ -89,5 +90,7 @@
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
+
+   <%= render "layouts/notifications"%>
 </body >
 </html>
