@@ -1,21 +1,11 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-  <title>Brainsolve</title>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-   <%= stylesheet_link_tag "pagination", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-
-<body>
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <link rel="shortcut icon" href="/home/charly/brainsolve/app/assets/images/brain.jpg"/>
     <title><%= content_for?(:title) ? yield(:title) : "Brainsolve" %></title>
     <%= csrf_meta_tags %>
 
@@ -44,22 +34,19 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
  </head>
+
  <body>
    <div id="menu" class="navbar navbar-fixed-top" >
       <div class= "navbar-inner">
          <div class="row">
-            <div class="brand " style="padding-left:23%;">
+            <div class="brand " style="padding-left:20%;">
                <div class="span1">
-                  <%=link_to image_tag("images.jpeg"),url_for(root_path) %>
+                  <%=link_to image_tag("logo.png"),url_for(root_path) %>
                </div>   
             </div>
-            <div class="brand">
-               <h1> Brainsolve </h1>
-            </div>
-            <ul class="nav">
+            <ul class="nav" style="padding-top:20px;">
                <li>
                <li><%= link_to "Lista de Problemas", problems_path  %></li>
 	            <li class='last'>	
@@ -78,9 +65,10 @@
    </div>
    <div>
     <div class="container contenedorGeneral"> 
+
       <div class="row">
-         <div class="span2">
-            <div class="cajitaPerfil affix">
+         <div class="span2" >
+            <div class="cajitaPerfil affix" style="margin-left:10%;">
                <%= image_tag 'onion.jpg', :alt => 'logo', :class => "img-rounded" %>
                <div id= "enlaces">
 	               <h4>Usuario</h4>   	
@@ -89,8 +77,9 @@
                </div>
             </div><!--/aqui se cierra la cajita del perfil --> 
          </div><!--/span2 esta es la cajita que encierra al perfil -->
-         <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">
-         
+
+         <div class= "offset1 span7 hero-unit" style="padding: 2% 5%;">  
+
             <%= bootstrap_flash %>
             <%= yield %>
          </div><!--/Dentro de esto va lo demas que genera rails -->
@@ -98,9 +87,11 @@
    </div><!-- Se cierra el contenedor general -->
     
    <div align="center">
+
       <footer>
          <p >&copy; Brainsolve 2013</p>
       </footer>
    </div> <!--END align center-->
+   <%render "layouts/notifications"%>
 </body >
 </html>

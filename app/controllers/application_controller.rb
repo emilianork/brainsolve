@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_role
 
+  helper_method :view_notifications
+  
+
   def current_role
     if current_user.nil? then
       @current_role = nil
@@ -14,7 +17,23 @@ class ApplicationController < ActionController::Base
     return @current_role
   end
   
- 
+  def view_notifications
+    if current_user.nil? then
+      @notifications ||= []
+      return @notifications
+    end
+    
+    if current_role == "problematic" then
+      @notifications ||= []
+      return @notifications
+    end
+    
+    if current_role == "creative"
+      @notifications ||= current_user.notifications.where(:view => false).to_a
+      return @notifications
+    end
+  end
+  
   protected
   
   def configure_permitted_parameters
@@ -23,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
   
   def permission_denied
-    flash[:error] = "Sorry, you are not allowed to access that page."
+    flash[:error] = "Lo siento, no tienes permitido ingresar a esta página."
     redirect_to root_path
   end
 end

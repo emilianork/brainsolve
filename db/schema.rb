@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20131117091434) do
 
   create_table "solutions", force: true do |t|
     t.text     "text",              null: false
-    t.integer  "estimate"
     t.string   "email",             null: false
     t.string   "company"
     t.integer  "problem_id",        null: false
@@ -60,6 +59,8 @@ ActiveRecord::Schema.define(version: 20131117091434) do
     t.string   "telephone"
     t.string   "company_telephone"
     t.integer  "currency_id"
+    t.integer  "notification_id"
+    t.string   "estimate"
   end
 
   create_table "users", force: true do |t|

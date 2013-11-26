@@ -36,18 +36,24 @@ ready = ->
   $("#solution_email").blur ->
     if Campo.correoValido(@value)
       $("#emailerror").css visibility: 'hidden'
+      $('#email_err > div').removeClass 'field_with_errors'
+      $('#email_err > div').addClass 'field'
     else
       $("#emailerror").css visibility: 'visible'
       
   $("#solution_telephone").blur ->
     if Campo.telefonoValido(@value)
       $("#telerror").css visibility: 'hidden'
+      $('#telefono5 > div').removeClass 'field_with_errors'
+      $('#telefono5 > div').addClass 'field'
     else
       $("#telerror").css visibility: 'visible'
       
   $("#solution_company_telephone").blur ->
     if Campo.telefonoValido(@value)
       $("#company_telephoneerror").css visibility: 'hidden'
+      $('#telcomp > div').removeClass 'field_with_errors'
+      $('#telcomp > div').addClass 'field'
     else
       $("#company_telephoneerror").css visibility: 'visible'     
       

@@ -66,6 +66,16 @@
         <%= message%>
       <% end %>
   <% end %>
+  <div class="field">
+    <%= f.label :Email%>*<br>
+    <%= f.text_field :contact %>
+    <span id="emailerror" style="font-family: Verdana, Arial, 
+         Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
+         position:relative;visibility:hidden;">
+         El campo debe ser un correo electronico valido
+    </span>
+  </div>
+  
 
   <div class="box2">
   <% if @problem.errors.messages.include?(:description) %>
@@ -80,7 +90,7 @@
     <span class="descriperror" style="font-family: Verdana, Arial, 
          Helvetica, sans-serif; font-size: 12pt;color: #CC3300;
          position:relative;visibility:hidden;">
-         El campo no debe estar vacio!!!
+         El campo no debe estar vacio
     </span>
     
   </div>
@@ -97,7 +107,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %><br>
   </div>
   <div class="actions">
-    <%= f.submit %>
+   <%= f.submit  %> 
   </div>
 <% end %>
 

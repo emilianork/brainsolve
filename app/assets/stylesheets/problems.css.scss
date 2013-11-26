@@ -1,12 +1,20 @@
 // Place all the styles related to the problems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+
+
+
+
+
+
  .table-nonfluid { width: auto; }
 
-.table tbody td{
-  overflow:hidden; max-width:20em; 
-  
-}
+
 
 .box{
   width:240px;
@@ -25,12 +33,23 @@ clear:left;
 /* Aplica las propiedades aproximadas de twitter para el fondo blanco para ambos cuadros */
 .fondoBlanco{
   
-  background-color:red;
+  background-color:#D5F1FF; 
+  width:900px;
+  margin: 0px auto;
+   
+}
+
+/*estilos para centrar el menu principal*/
+.menuCentro{
+
+background-color:white;
   
-  width:1100px;
   
   
 }
+
+.descripcion{}
+
 
 
 
@@ -41,6 +60,7 @@ clear:left;
 }
 
 
+
 /*da formato al menu superior brainsolve*/
 .menuSuperior{  
   padding-top:10px;
@@ -48,8 +68,17 @@ clear:left;
   
 }
 
-#menu > *{
-  display: block;
-	margin-left: auto;
-	margin-right: auto;
+/*pone color de fondo al texto de los datos de los datos del problemático*/
+.fondoDatos{
+
+
+  background-color:white;
+  float:left;
+  border-radius:7px;
+  border:1px solid gray;
+  -moz-border-radius:7px;
+  padding: 0px 4px;
+
 }
+
+
