@@ -15,7 +15,7 @@ es:
       locked: "Your account is locked."
       not_found_in_database: "Email o contraseña invalidos."
       timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
+      unauthenticated: "Necesitas registrate o entrar, antes de poder continuar."
       unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:

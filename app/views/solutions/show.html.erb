@@ -1,11 +1,6 @@
 
 <div align="right">
-
-<%if request.env["HTTP_REFERER"].nil? %>
-    <%= link_to 'Regresar', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
- <%else%>
-    <%= link_to 'Regresar', :back , :class => 'btn btn-default' %>
-<%end%>
+    <%= link_to 'Atrás', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
 
 <%if @solution.owner(current_user) %>
 &nbsp;
@@ -130,11 +125,8 @@
 
 <div align="right">
 
-<%if request.env["HTTP_REFERER"].nil? %>
-    <%= link_to 'Regresar', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
- <%else%>
-    <%= link_to 'Regresar', :back , :class => 'btn btn-default' %>
-<%end%>
+
+    <%= link_to 'Atrás', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
 
 <%if @solution.owner(current_user) %>
 &nbsp;

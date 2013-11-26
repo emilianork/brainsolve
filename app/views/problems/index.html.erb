@@ -19,11 +19,11 @@
         <td><%= problem.title%></td>
 
         <td><%= problem.areas_of_knowledge.acronym[0..10] %></td>
-        <td><%= problem.user.nickname[0..15] %></td>
+        <td><%= problem.user.nickname[0...15] %></td>
         <td ><%= link_to 'Ver', problem, :class => 'btn btn-default colorBlanco' %>
 
         <% if (problem.owner(current_user)) %>
-          <%= link_to 'Editar', problem_path(problem), :class => 'btn btn-warning' %>
+          <%= link_to 'Editar', edit_problem_path(problem), :class => 'btn btn-warning' %>
          <%= link_to 'Eliminar', problem, method: :delete, :class=>'btn btn-danger' ,data: { confirm: '¿Estas seguro de eliminarlo?' } %></td>
 
         <% end %>

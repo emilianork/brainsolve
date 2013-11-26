@@ -78,7 +78,11 @@ class ProblemsController < ApplicationController
   def destroy
     @problem.destroy
     respond_to do |format|
-      format.html { redirect_to problems_url }
+      if request.env["HTTP_REFERER"].nil? then
+        format.html { redirect_to root_url }
+      else
+        format.html { redirect_to :back }
+      end
       format.json { head :no_content }
     end
   end
