@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :except => [:show, :index]
   filter_resource_access
+   before_action :set_areas_of_knowledge
 
   # GET /problems
   # GET /problems.json
@@ -18,13 +19,11 @@ class ProblemsController < ApplicationController
   # GET /problems/new
   def new
     @problem = Problem.new
-    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
     @problem.contact = current_user.email
   end
 
   # GET /problems/1/edit
   def edit
-    @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
   end
 
   # POST /problems
@@ -36,6 +35,15 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'El problema fue creado satisfactoriamente' }
         format.json { render action: 'show', status: :created, location: @problem }
       else
+        flash[:error] = []
+        @problem.errors.messages.each do |key, messages|
+          messages.each do |message|
+            flash[:error] << "Titulo: #{message}." if key.to_s == "title"
+            flash[:error] << "Telefono de contacto: #{message}." if key.to_s == "telephone"
+            flash[:error] << "Email de contacto: #{message}." if key.to_s == "contact"
+            flash[:error] << "Descripcion: #{message}." if key.to_s == "description"
+          end
+        end
         format.html { render action: 'new' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
@@ -50,6 +58,15 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'El problema fue actualizado satisfactoriamente' }
         format.json { head :no_content }
       else
+        flash[:error] = []
+        @problem.errors.messages.each do |key, messages|
+          messages.each do |message|
+            flash[:error] << "Titulo: #{message}." if key.to_s == "title"
+            flash[:error] << "Telefono de contacto: #{message}." if key.to_s == "telephone"
+            flash[:error] << "Email de contacto: #{message}." if key.to_s == "contact"
+            flash[:error] << "Descripcion: #{message}." if key.to_s == "description"
+          end
+        end
         format.html { render action: 'edit' }
         format.json { render json: @problem.errors, content_type: 'text/json' }
       end
@@ -67,6 +84,10 @@ class ProblemsController < ApplicationController
   end
 
   private
+
+    def set_areas_of_knowledge
+       @areas_of_knowlegde = AreasOfKnowledge.all.map{|a| [a.name,a.id]}
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_problem

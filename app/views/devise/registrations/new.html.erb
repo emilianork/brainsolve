@@ -75,7 +75,11 @@
 </div>
 <div class="row">
   <div class="span3 offset5">
-  <%= f.submit "Registar",:class => "btn btn-info"%> &nbsp; &nbsp;
-  <%= link_to  "Cancelar", root_path, :class => "btn btn-default" %>
+  <%= f.submit "Registar",:class => "btn btn-info"%> &nbsp;
+       <%if request.env["HTTP_REFERER"].nil? %>
+      <%= link_to 'Cancelar', root_path , :class => 'btn btn-default' %>
+    <%else%>
+      <%= link_to 'Cancelar', :back , :class => 'btn btn-default' %>
+  <%end%>
 </div>
 <%end%>

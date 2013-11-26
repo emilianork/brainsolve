@@ -1,59 +1,149 @@
-<!-- <p id="notice"><%= notice %></p>-->
 
-<p>
-  <strong>Texto: </strong>
-  <%= @solution.text %>
-</p>
+<div align="right">
 
-<p>
-  <strong>Presupuesto: </strong>
-  <%= @solution.estimate %>
-</p>
-
-<p>
-
-  <strong>Tipo de moneda:</strong>
-  <%= @solution.currency.acronym %>
-</p>
-
-<p>
-  <strong>Email: </strong>
-  <%= @solution.email %>
-</p>
-
-<p>
-  <strong>Telefono de contacto: </strong>
-  <%= @solution.telephone %>
-</p>
-
-<p>
-  <strong>Compañia: </strong>
-  <%= @solution.company %>
-</p>
-
-<p>
-  <strong>Telefono de la compañia: </strong>
-  <%= @solution.company_telephone %>
-</p>
-
-<p>
-  <strong>Usuario: </strong>
-  <%= @solution.user.nickname %>
-</p>
-<%= link_to problem_path(@solution.problem_id)  do %>
-  <button type="button" class="btn btn-default">&larr;Atrás</button>
-<% end %>
+<%if request.env["HTTP_REFERER"].nil? %>
+    <%= link_to 'Regresar', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
+ <%else%>
+    <%= link_to 'Regresar', :back , :class => 'btn btn-default' %>
+<%end%>
 
 <%if @solution.owner(current_user) %>
-  <%= link_to edit_solution_path(@solution) do%> 
-    <button type="button" class="btn btn-default">Editar</button>
-  <% end %>
+&nbsp;
+  <%= link_to "Editar", edit_solution_path(@solution), :class => "btn btn-warning"%> 
 <% end %>
 
 <%if @solution.problem.owner(current_user)%>
 <%if @solution.notification.nil? then %>
-<%= link_to choose_solution_path(@solution), :method => :post do %>
-  <button type="button" class="btn btn-default">Elegir</button>
+&nbsp;
+<%= link_to "Elegir",choose_solution_path(@solution), :method => :post, :class => "btn btn-info" %>
 <%end%>
+
 <%end%>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+   <div class="row">
+    <div class="span3 offset0">  
+		  <strong>Usuario: </strong>
+		  <div class="fondoDatos" style="width: 296px;">
+		      <%= @solution.user.nickname %>
+		  </div>
+	      
+	   
+  </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="span3 offset0" >  
+	     
+		  <strong>Email de contacto: </strong>
+		  <div class="fondoDatos" style="width: 296px;">
+		      <%= @solution.email %>
+		  </div>
+	     
+      </div>
+      <% if !@solution.telephone = "" %>
+    <div class="span3 offset1">
+	      
+		  <strong>Telefono de contacto: </strong>
+		  <div class="fondoDatos" style="width: 200px;">
+		      <%= @solution.telephone %>
+		  </div>
+	     
+    </div>
+    <%end%>
+  </div>
+  
+  <% if !(@solution.company == "" && @solution.company_telephone == "") %>
+  <br>
+  <div class="row">
+    <div class="span3 offset0">  
+	     
+	     <%if !(@solution.company == "")%>
+		   <strong>Compañia: </strong>
+		   <div class="fondoDatos" style="width: 200px;">
+		      <%= @solution.company %>
+		   </div>
+		<%end%>
+
+		 <%if (@solution.company == "" && !(@solution.company_telephone == "")) %>
+		  <strong> Telefono de la compañia:</strong>
+		  <div class="fondoDatos" style="width: 296px;">
+		      <%= @solution.company_telephone %>
+		  </div>
+	     <%end%>
+      </div>
+
+     <% if !(@solution.company == "")%>
+    <div class="span3 offset1">
+		   <strong>Telefono de la compañia: </strong>
+		   <div class="fondoDatos" style="width: 200px;">
+		      <%= @solution.company_telephone %>
+		   </div>
+	      
+    </div>
+    <%end%>
+
+  </div>
+    <%end%>
+    <br>
+    <div class="row">
+    <div class="span2 offset0">
+	      
+		   <strong>Descripción: </strong>
+		   <div class="fondoDatos" style="width: 600px;padding: 4px 4px;">
+		      <%= @solution.text %>
+		   </div>
+	      
+    </div>
+  </div>
+  
+    <br>
+    <div class="row">
+
+        <div class="span3 offset0">
+	      
+		    <strong>Presupuesto: </strong>
+		    <div class="fondoDatos" style="width: 150px;">
+			<%= @solution.estimate %>
+		    </div>
+	     
+      </div>
+
+
+      <div class="span2 offset1">
+	      
+		    <strong>Tipo de moneda:</strong>
+		    <div class="fondoDatos" style="width: 100px;">
+			<%= @solution.currency.acronym %>
+		    </div>
+	      
+     </div>
+  
+</div>
+
+<br>
+
+<div align="right">
+
+<%if request.env["HTTP_REFERER"].nil? %>
+    <%= link_to 'Regresar', problem_path(@solution.problem_id), :class => 'btn btn-default' %>
+ <%else%>
+    <%= link_to 'Regresar', :back , :class => 'btn btn-default' %>
 <%end%>
+
+<%if @solution.owner(current_user) %>
+&nbsp;
+  <%= link_to "Editar", edit_solution_path(@solution), :class => "btn btn-warning"%> 
+<% end %>
+
+<%if @solution.problem.owner(current_user)%>
+<%if @solution.notification.nil? then %>
+&nbsp;
+<%= link_to "Elegir",choose_solution_path(@solution), :method => :post, :class => "btn btn-info" %>
+<%end%>
+
+<%end%>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
