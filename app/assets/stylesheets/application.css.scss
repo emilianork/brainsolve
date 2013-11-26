@@ -20,12 +20,12 @@ div.box1 {
 	position: center;
 }
 
-@font-face { 
-   font-family: "AverageSans"; 
-   src: url("AverageSans-Regular.ttf");
-   format ("ttf"); 
-}
-
+/*@font-face { 
+*   font-family: "AverageSans"; 
+*   src: url("AverageSans-Regular.ttf");
+*   format ("ttf"); 
+*}
+*/
 
 thead{
 }
@@ -126,7 +126,7 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
         }
 
 td{
-   font-family: AverageSans, regular;
+   /*font-family: AverageSans, regular;*/
    font-size: 1em;
 }
 
